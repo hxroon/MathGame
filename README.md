@@ -2,82 +2,53 @@
 A three level based math game where user can decide difficulty level 
 
 
-
-
 Background
-Based on preliminary analysis of the DFR submission framework, approximately 168 SOPs have been identified for conversion.
-The team has developed an SOP Building AI Agent intended to assist with SOP generation, standardization, process mapping, and knowledge management.
-The purpose of this exercise is to evaluate how the conversion effort could be executed efficiently and what operating model would best support completion by October 31, 2026.
-Key Assumptions
-The following assumptions require validation:
-Approximately 168 SOPs require conversion.
-The AI Agent is available to support SOP generation.
-Business users will review and approve generated SOPs.
-SOPs will ultimately be stored within SharePoint.
-Conversion effort may vary significantly depending on SOP complexity.
-Potential Conversion Approach
-Option 1: Convert and Validate Sequentially
-Convert an SOP using the AI Agent and immediately validate it with the business before proceeding to the next SOP.
-Advantages
-High quality control.
-Issues identified early.
-Challenges
-Slower throughput.
-Dependent on business availability.
-Option 2: Convert First, Validate in Batches
-Convert a large group of SOPs first, then perform validation reviews in batches.
-Advantages
-Maximizes AI utilization.
-Faster conversion throughput.
-Easier progress tracking.
-Challenges
-Potential rework if common issues are identified later.
-Initial Recommendation
-A phased approach may be most effective:
-Phase 1
-Convert SOPs using the AI Agent.
-Phase 2
-Conduct validation reviews by business area.
-Phase 3
-Upload approved SOPs into SharePoint.
-Phase 4
-Establish ongoing review and maintenance process.
-This approach prioritizes throughput while maintaining appropriate business review checkpoints.
-Resource Considerations
-Several factors will influence the delivery timeline:
-Average effort required for one SOP conversion.
-Number of resources available to perform conversions.
-Level of business involvement required for validation.
-Complexity differences across business groups.
-Time required for SharePoint organization and governance.
-Potential Organizational Structure
-Option A
-Complete one business at a time.
-Advantages:
-Clear ownership.
-Easier stakeholder management.
-Challenges:
-Risk of bottlenecks.
-Option B
-Run multiple businesses in parallel.
-Advantages:
-Faster overall completion.
-Better utilization of available resources.
-Challenges:
-Increased coordination requirements.
-SharePoint Structure Considerations
-Potential hierarchy:
-Business
-→ L7 Sub Business
-→ SOP Category
-→ SOP Name
-→ Version History
-This structure would support scalability, ownership, and future maintenance.
-Discussion Questions
-The following items would help refine the analysis:
-What is the average effort required to complete one end-to-end SOP conversion using the AI Agent?
-Approximately how many SOPs have already been converted?
-Does validation occur immediately after conversion, or is validation expected to occur in batches?
-Are there dedicated resources available for SOP conversion activities, or will this be completed alongside existing responsibilities?
-Is there a preferred prioritization order across businesses?
-Are all 168 SOPs considered equal in complexity, or should they be categorized by effort level?
+
+As an initial step, the DFR Global Markets Submission dataset was reviewed to better understand the potential scope of SOP conversion activities.
+
+The dataset contained approximately 54,100 submission records. To align with the guidance provided, the analysis was filtered to:
+
+- One business date
+- Active_Flag = Active
+- Approval_Required = Yes
+
+Initial review showed that the data could be analyzed at multiple levels, including PLSheet Name, L7 Sub Business, and Business.
+
+A PLSheet-level approach appeared too granular, as many individual sheets may be supported by the same underlying operating procedure. Conversely, a Business-level approach appeared too broad for operational tracking and ownership purposes.
+
+Based on discussions and preliminary analysis, the L7 Sub Business level appears to provide a more practical balance between operational detail and manageability. Using this framework, the current estimate is approximately 168 SOPs requiring conversion and onboarding into the standardized SOP framework.
+
+This estimate serves as the working assumption for the planning exercise and may be refined as additional validation is completed.
+
+
+
+
+
+
+
+
+
+
+Thanks for taking the time to meet with me.
+
+I spent some time going through the DFR file and trying to better understand the problem we're trying to solve. I built a few pivot tables to understand the structure of the data and found the 7 Business groups and approximately 71 L7 Sub Business groupings. That helped me understand how the data can be rolled up at different levels.
+
+Initially, I thought the goal was to determine the appropriate onboarding structure for SOP conversion, but after reviewing your follow-up message and the SOP AI Agent material, my understanding is that the bigger question is how we can realistically convert approximately 168 SOPs by October 31 and what operating model would best support that effort.
+
+I started putting together some initial thoughts and assumptions around conversion planning, resourcing, validation, and governance. I also used ChatGPT as a sounding board to help structure my thinking and identify assumptions that may need to be validated. Rather than jumping straight to a recommendation, I wanted to make sure I was solving the right problem first.
+
+There are a few areas where I was hoping to get your guidance:
+
+1. How was the estimate of 168 SOPs ultimately determined from the DFR analysis?
+
+2. Have any SOPs already been converted using the AI Agent? If so, approximately how many?
+
+3. What would be considered a completed SOP conversion? Is it when the AI generates the SOP, when the business validates it, or when it receives final approval?
+
+4. Do we have any benchmark for how long a typical SOP conversion currently takes using the AI Agent?
+
+5. For the final deliverable, are you looking for a recommendation deck, a project plan, or more of a reporting framework that can eventually be used with Tina and Nick?
+
+My initial thought is that a phased approach may make sense where SOPs are first converted using the AI Agent and then validated in batches, but I wasn't comfortable making a firm recommendation until I better understood the assumptions around effort, resources, and what success looks like.
+
+I wanted to validate my understanding with you before I went further down a path that might not align with what you're looking for.
