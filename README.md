@@ -1,6 +1,7 @@
 # MathGame
 A three level based math game where user can decide difficulty level 
-
+"Overall, I found it helpful. One thing that stood out to me was that the presentation kept coming back to the idea that AI isn't really the bottleneck anymore. Most organizations already have access to the tools, but the bigger challenge seems to be around data quality, governance, and redesigning processes to actually create value."
+"I also thought it was interesting that over 90% of companies have adopted productivity tools like Copilot, but only around 1% have moved into agentic AI. It seems like there's still a pretty big gap between using AI to help employees work faster and using it to automate work.
 
 Background
 
