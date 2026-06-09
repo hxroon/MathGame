@@ -2,28 +2,6 @@
 A three level based math game where user can decide difficulty level
 
 
-Current Understanding
-SOP was AI-generated (SOP Generation Agent v7.2).
-SOP is currently in Draft status pending business review.
-Objective is to validate SOP accuracy against the FX Options PnL Masterfile.
-Focus is on ensuring process steps, controls, and workbook references are accurate.
-Workbook Structure Observations
-Workbook contains approximately 30-40 tabs.
-Tabs appear to be grouped into:
-P&L reporting (Trader Sheet, Murex PnL, YTD tabs)
-Reconciliations (Platform Reconciliation, Book Mapping, Brokerage)
-Reporting outputs (Email Sheet, DFR tabs)
-Supporting calculations and macro sheets (FXOMacro tabs)
-Validation Approach
-Review Section 8 (Daily Cycle) first.
-Map each SOP step to supporting workbook tabs.
-Confirm:
-Referenced tabs exist.
-Process flow matches workbook structure.
-Screenshots are current.
-No missing or outdated steps.
-Open Questions
-Which tabs are considered primary inputs?
-Which tabs are final reporting outputs?
-Are there any tabs no longer used in production?
-Is the expectation process validation or detailed formula validation?
+I've attached a first-pass draft based on our discussion yesterday. I focused on the overall conversion strategy, timeline assumptions, burndown approach, and potential resourcing scenarios required to achieve the October 31 target.
+The slides are intended as a starting point for discussion, and I'd appreciate any feedback or suggested adjustments. I'm happy to iterate further based on your guidance.
+One thing that stood out to me while building the model is that the current assumptions appear to rely on resources dedicating a significant portion of their time to SOP conversion. Given that this is not the team's primary focus, I suspect the final plan may need additional resourcing assumptions or adjusted delivery targets, but I'd be interested in your thoughts.
