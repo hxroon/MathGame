@@ -1,64 +1,175 @@
-# PROCESS FLOW DIAGRAM GENERATION FOR PASS 2
+PROCESS FLOW AND VISUAL DIAGRAM GENERATION STANDARDS
 
-PASS 2 is responsible for generating renderer-ready process flow outputs based on the uploaded Product Control source material, workbook, SOP, procedures, SME responses, process notes, reconciliations, controls, and system descriptions.
+PURPOSE
 
-The objective is to automatically create two renderer-compatible representations of the process so the analyst can determine which produces the best visual output within the PC SOP Process Flow Renderer.
+PASS 2 must generate visual documentation in TWO formats:
 
-The agent must always generate BOTH outputs.
+1. PROSE MODE
+2. SPEC MODE
 
-OUTPUT 1: PROSE MODE
+Both formats are mandatory.
 
-Generate a structured narrative process map using numbered steps and clear ownership. Each process step must include the process activity, responsible role, systems used, controls performed, inputs, outputs, decision points, and escalation requirements where applicable. The narrative must be concise enough for renderer parsing but detailed enough for SOP documentation. Use the actual process described in the uploaded source material. Do not invent steps. If information is unavailable, mark it as "Requires SME Confirmation."
+The purpose of Prose Mode is to provide a detailed analyst-readable narrative.
 
-Format:
+The purpose of Spec Mode is to provide structured input for the PC SOP Process Flow Renderer.
 
-## Process Map
+The agent must never generate only one format.
 
-### Step 1: [Process Step Name] [Owner: Role]
+For every visual generated, the agent must generate BOTH formats.
 
-Description of activity.
+---
 
-[System: System Name]
+SUPPORTED VISUAL TYPES
 
-[Control: Control Name]
+The following visual types must be supported:
 
-[Input: Input Source]
+- Process Flow Diagram
+- Data Flow Diagram
+- Reconciliation Logic Diagram
+- Exception Escalation Diagram
+- Control Framework Diagram
+- System Architecture Diagram
+- Swimlane Diagram
+- Data Lineage Diagram
+- Validation Framework Diagram
+- Month-End Workflow Diagram
+- Daily Operational Workflow Diagram
 
-[Output: Output Generated]
+If a visual is required in the SOP, both Prose Mode and Spec Mode must be generated.
 
-Repeat for all major workflow steps.
+---
 
-Include all decision points, exception paths, reconciliations, reviews, approvals, sign-offs, and escalation activities.
+OUTPUT ORDER
 
-OUTPUT 2: SPEC MODE
+For every diagram:
 
-Generate a deterministic renderer specification optimized for the PC SOP Process Flow Renderer.
+Generate output in this order:
 
-The specification must be generated directly from the uploaded process and must represent the actual workflow rather than generic examples.
+Diagram Title
 
-Format exactly as follows:
+Prose Mode
+
+[narrative process]
+
+Spec Mode
+
+[renderer specification]
+
+Never reverse the order.
+
+Never output only one mode.
+
+---
+
+PROSE MODE REQUIREMENTS
+
+Prose Mode must describe:
+
+Step Number
+
+Owner
+
+System Used
+
+Input
+
+Process
+
+Control
+
+Output
+
+Escalation Path
+
+Example:
+
+Step 1: Market Open Validation
+Owner: Trader / Product Control
+
+System:
+Bloomberg
+Trader Sheet
+
+Input:
+Spot rates
+
+Process:
+Validate spot rates have refreshed.
+
+Control:
+Cross-check Bloomberg feed.
+
+Output:
+Validated market data.
+
+Escalation:
+Notify Technology Support if Bloomberg feed unavailable.
+
+---
+
+SPEC MODE REQUIREMENTS
+
+Immediately after Prose Mode generate:
 
 ##DIAGRAM_SPEC_START##
 
-META agent SOP Agent
-
-META product [Actual Product Name]
-
-META version [Generated SOP Version]
-
-LANE [Role Identifier] [Role Name]
-
-NODE [Node ID] [Lane] [Node Type] [Node Label]
-
-EDGE [From Node] [To Node]
-
-CONTROL [Control ID] [Control Name]
-
-TRIGGER [Trigger ID] [Trigger Description]
+and end with
 
 ##DIAGRAM_SPEC_END##
 
-Node types should include:
+The renderer specification must contain:
+
+META
+
+LANE
+
+NODE
+
+EDGE
+
+sections.
+
+---
+
+META SECTION
+
+Always include:
+
+META agent SOP Agent
+
+META product [Product Name]
+
+META version [SOP Version]
+
+META diagram [Diagram Type]
+
+---
+
+LANE SECTION
+
+Every role becomes a lane.
+
+Example:
+
+LANE FO Front Office
+
+LANE PC Product Control
+
+LANE OPS Operations
+
+LANE TECH Technology
+
+LANE FIN Finance
+
+---
+
+NODE SECTION
+
+Node format:
+
+NODE [ID] [LANE] [TYPE] [DESCRIPTION]
+
+Allowed Types:
 
 start
 
@@ -70,65 +181,188 @@ decision
 
 escalation
 
-review
-
-approval
-
 end
 
-Decision nodes must include Yes and No paths.
+Examples:
 
-Exception handling must be represented as separate branches.
+NODE N1 FO start Market Open
 
-Escalation activities must be represented as dedicated nodes.
+NODE N2 TECH process Load Murex Extract
 
-Controls must be represented as dedicated control objects.
+NODE N3 PC control Book Mapping Validation
 
-All roles identified within the process must be mapped to swimlanes.
+NODE N4 PC decision Variance Above Threshold
 
-OUTPUT ORDER
+NODE N5 PC escalation Escalate To Senior PC
 
-Always generate:
+NODE N6 PC end Daily Sign Off
 
-1. Systems Overview
+---
 
-2. Process Overview
+EDGE SECTION
 
-3. Renderer Prose Mode
+Node relationships.
 
-4. Renderer Spec Mode
+Examples:
 
-5. Controls Summary
+EDGE N1 N2
 
-6. Decision Points Summary
+EDGE N2 N3
 
-7. Escalation Summary
+EDGE N3 N4
 
-QUALITY REQUIREMENTS
+EDGE N4 N5 YES
 
-The generated outputs must be based solely on the uploaded source material and generated SOP content.
+EDGE N4 N6 NO
 
-Do not generate Mermaid syntax.
+---
 
-Do not generate HTML.
+PROCESS FLOW RULES
 
-Do not generate SVG.
+Flow direction must always be logical and sequential.
 
-Do not reference Mermaid Live.
+Start
 
-Do not require external rendering tools.
+Load
 
-The objective is to create renderer-ready outputs that can be pasted directly into the PC SOP Process Flow Renderer for visualization.
+Validate
 
-If information is missing, incomplete, ambiguous, or inferred, explicitly flag it as "Requires SME Confirmation."
+Reconcile
 
-Before generating the output verify that:
+Investigate
 
-- All process steps are represented.
-- All controls are captured.
-- All systems are identified.
-- All decisions have decision paths.
-- All exception handling is captured.
-- All escalation paths are represented.
-- All ownership roles are assigned.
-- Both Prose Mode and Spec Mode outputs have been generated.
+Escalate
+
+Approve
+
+Sign Off
+
+End
+
+Decision points must always be represented using decision nodes.
+
+All YES/NO paths must be explicit.
+
+No orphan nodes.
+
+No disconnected paths.
+
+---
+
+SWIMLANE RULES
+
+If multiple teams participate:
+
+Trader
+
+Front Office
+
+Operations
+
+Technology
+
+Product Control
+
+Finance
+
+must be separated into individual lanes.
+
+Ownership must always be visible.
+
+---
+
+RECONCILIATION LOGIC RULES
+
+For reconciliations include:
+
+Source System
+
+Target System
+
+Tolerance
+
+Break Identification
+
+Investigation Path
+
+Resolution Path
+
+Escalation Path
+
+Sign-Off
+
+Each becomes a node sequence.
+
+---
+
+DATA FLOW RULES
+
+Data Flow Diagrams must show:
+
+Source
+
+Transformation
+
+Validation
+
+Aggregation
+
+Reporting
+
+Output
+
+Every data movement must become a process node.
+
+Every validation becomes a control node.
+
+---
+
+CONTROL FRAMEWORK RULES
+
+Controls must be represented as control nodes.
+
+Include:
+
+Preventive Controls
+
+Detective Controls
+
+Manual Controls
+
+Automated Controls
+
+Escalation Controls
+
+Sign-Off Controls
+
+---
+
+MANDATORY VALIDATION
+
+Before completing PASS 2 verify:
+
+✓ Prose Mode exists
+
+✓ Spec Mode exists
+
+✓ META exists
+
+✓ LANE exists
+
+✓ NODE exists
+
+✓ EDGE exists
+
+✓ Start node exists
+
+✓ End node exists
+
+✓ Decision branches labelled
+
+✓ Escalations represented
+
+✓ Ownership assigned
+
+If any validation fails regenerate output before presenting to user.
+
+The agent must never output a diagram without both Prose Mode and Spec Mode.
