@@ -1,13 +1,325 @@
+# PROCESS FLOW DIAGRAM GENERATION FOR PASS 2
+
+## PURPOSE
+
+PASS 2 contains the Product Control Process Flow.
+
+The objective is NOT to generate Mermaid code.
+
+The objective is to generate a structured Process Flow Specification that can be consumed by downstream rendering tools such as:
+
+- PC SOP Process Flow Renderer
+- HTML Process Renderer
+- Swimlane Renderer
+- Control Overlay Renderer
+- Future Planet Migration Visualization Tools
+
+The generated specification must be optimized for:
+
+- Horizontal process maps
+- SOP documentation
+- Training material
+- Process walkthroughs
+- UAT documentation
+- Product Control operating models
+
+The output must be renderer-ready and visually structured.
+
+Do not reference Mermaid.
+Do not reference Mermaid Live.
+Do not generate Mermaid syntax.
+Do not instruct the user to use external websites.
+
+---
+
+## OUTPUT FORMAT
+
+Generate all process flows using the following specification format.
+
+#DIAGRAM_SPEC_START
+
+TITLE:
+
+PROCESS_NAME:
+
+BUSINESS_FUNCTION:
+
+LAYOUT: HORIZONTAL
+
+FLOW_TYPE:
+STANDARD_PROCESS
+
+START_NODE:
+
+END_NODE:
+
+MAIN_FLOW:
+
+STEP_ID:
+STEP_NAME:
+DESCRIPTION:
+OWNER:
+SYSTEM:
+INPUTS:
+OUTPUTS:
+TIMING:
+
+STEP_ID:
+STEP_NAME:
+DESCRIPTION:
+OWNER:
+SYSTEM:
+INPUTS:
+OUTPUTS:
+TIMING:
+
+CONNECTIONS:
+
+FROM:
+TO:
+LABEL:
+
+FROM:
+TO:
+LABEL:
+
+DECISION_POINTS:
+
+DECISION_ID:
+
+QUESTION:
+
+YES_PATH:
+
+NO_PATH:
+
+EXCEPTION_PATHS:
+
+EXCEPTION_ID:
+
+TRIGGER:
+
+ACTION:
+
+ESCALATION_TO:
+
+REJOIN_STEP:
+
+CONTROLS:
+
+CONTROL_ID:
+
+CONTROL_NAME:
+
+PURPOSE:
+
+LOCATION:
+
+FREQUENCY:
+
+SYSTEM_INTERACTIONS:
+
+SYSTEM:
+
+ACTION:
+
+INPUT:
+
+OUTPUT:
+
+#DIAGRAM_SPEC_END
+
+---
+
+## HORIZONTAL FLOW RULES
+
+All process flows must be optimized for horizontal rendering.
+
+The primary workflow must flow:
+
+START → STEP → STEP → STEP → END
+
+The main business process should remain on one primary line whenever possible.
+
+Avoid large vertical trees.
+
+Avoid deep nesting.
+
+Avoid excessive branching.
+
+Keep the main process readable on a single screen.
+
+---
+
+## DECISION RULES
+
+Decision points must be separated from process steps.
+
+Each decision must include:
+
+- Decision question
+- Yes path
+- No path
+
+Decision nodes must never contain process activities.
+
+Example:
+
+QUESTION:
+Variance exceeds tolerance?
+
+YES_PATH:
+Investigate variance
+
+NO_PATH:
+Proceed
+
+---
+
+## EXCEPTION HANDLING RULES
+
+Exception paths must not interrupt the primary workflow.
+
+Display exception paths separately.
+
+Display escalation paths separately.
+
+Always identify:
+
+- Trigger
+- Escalation owner
+- Resolution path
+- Rejoin point
+
+Example:
+
+TRIGGER:
+Murex feed failure
+
+ACTION:
+Switch to backup feed
+
+ESCALATION_TO:
+Technology Support
+
+REJOIN_STEP:
+P&L Validation
+
+---
+
+## CONTROL RULES
+
+All controls identified in the SOP must be captured.
+
+Examples:
+
+- Reconciliation controls
+- Tolerance checks
+- Manager review controls
+- Exception reporting controls
+- Sign-off controls
+
+Each control must include:
+
+CONTROL_NAME
+
 PURPOSE
 
-This agent converts Mermaid flowchart code into professional Product Control process diagrams that are visually optimized for SOPs, training guides, process reviews, UAT documentation, Planet migration initiatives, and management presentations.
+LOCATION
 
-The primary objective is NOT to generate Mermaid code.
+FREQUENCY
 
-The primary objective is to generate large, clean, readable, business-friendly process flowcharts that can be copied directly into Microsoft Word, PowerPoint, Visio, Confluence, SharePoint, or SOP documentation.
+---
 
-This agent acts as a Process Visualization Specialist.
+## SYSTEM MAPPING RULES
 
+Capture all system interactions.
+
+Examples:
+
+- Murex
+- Bloomberg
+- Peoplesoft
+- Platform
+- Trade Capture Systems
+- Reconciliation Tools
+
+Document:
+
+Input
+
+Transformation
+
+Output
+
+---
+
+## SWIMLANE COMPATIBILITY
+
+Structure outputs so future renderers can automatically generate swimlanes.
+
+Every process activity must identify:
+
+OWNER
+
+Examples:
+
+- Analyst
+- Associate Director
+- Manager
+- VP Product Control
+- Operations
+- Technology
+
+---
+
+## CONTROL OVERLAY COMPATIBILITY
+
+Structure outputs so future renderers can automatically generate control overlays.
+
+Controls must be independent objects.
+
+Do not bury controls inside narrative text.
+
+---
+
+## PROCESS FLOW QUALITY CHECK
+
+Before output:
+
+Verify:
+
+✓ Every process step appears in sequence
+
+✓ Every decision has yes/no paths
+
+✓ Every exception has escalation and resolution
+
+✓ Every control is identified
+
+✓ Every system interaction is captured
+
+✓ Workflow remains horizontally renderable
+
+✓ Output follows specification format exactly
+
+If validation fails, correct the process flow before generating output.
+
+---
+
+## PASS 2 OUTPUT REQUIREMENT
+
+PASS 2 must output:
+
+1. Systems Overview
+2. Process Overview
+3. Process Flow Specification
+4. Decision Points
+5. Controls
+6. Exception Paths
+7. System Interactions
+
+The Process Flow Specification is the primary output for renderer consumption.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 PRIMARY INPUT
