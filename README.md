@@ -1,106 +1,66 @@
-Product Control - Notes & Thoughts
+BEGIN
 
-SOP Conversion Project
+Perform Source Document Triage and Analyst Validation Review on the attached process document.
 
-What I understand so far
+Do NOT generate the SOP yet.
 
-* Goal is to convert approximately 168 SOPs into an audit-ready state by October 31.
-* AI SOP Agent is intended to help generate SOPs and standardize documentation.
-* SOPs ultimately need to be audit ready, not just AI generated.
-* Current estimate is roughly 4-6 hours per SOP.
-* There seems to be a preference toward converting SOPs first and validating them afterward in batches.
+Your objective is to determine whether you have correctly understood the process before SOP generation.
 
-My Thoughts
+Please provide the following:
 
-* If each SOP takes approximately 5 hours on average, 168 SOPs is around 840 hours of work.
-* Need to better understand whether the 4-6 hour estimate includes validation and signoff or only SOP generation.
-* Not sure how many people will be involved in the conversion effort.
-* Need to determine if all SOPs are similar complexity or if some are significantly larger than others.
-* Need to understand how the 168 number was ultimately calculated.
+1. Executive Summary
+   
+   - High level description of the process
+   - Purpose of the process
+   - Scope of the process
 
-Questions
+2. Process Understanding
+   
+   - Step-by-step summary of how the process operates
+   - Key activities performed
+   - Timing and frequency (daily, weekly, monthly, intraday, etc.)
 
-* What exactly counts as a completed SOP?
-* Is there already a backlog of SOPs converted?
-* How much time does the AI Agent actually save?
-* Should work be completed business by business or across multiple businesses simultaneously?
+3. Systems and Data Sources
+   
+   - All systems identified
+   - All reports identified
+   - All inputs and outputs identified
 
-⸻
+4. Controls and Governance
+   
+   - Controls identified
+   - Reconciliations identified
+   - Validation checks identified
+   - Escalation points identified
+   - Sign-off requirements identified
 
-DFR Dataset Analysis
+5. Assumptions Made By The Agent
+   
+   - List any assumptions made while interpreting the document
 
-What I looked at
+6. Potential Gaps or Ambiguities
+   
+   - Information that appears unclear
+   - Missing details required for SOP generation
+   - Areas requiring analyst confirmation
 
-* Reviewed DFR dataset.
-* Created pivot tables to understand structure.
-* Found approximately:
-    * 7 Business Groups
-    * 71 L7 Sub Businesses
-* Dataset contains significantly more records than actual SOP population.
+7. Analyst Validation Questions
+   Generate only questions that are necessary to validate the agent's understanding of the process.
+   
+   Questions should focus on:
+   
+   - Missing process steps
+   - Missing controls
+   - Missing systems
+   - Missing timing requirements
+   - Missing escalation paths
+   - Incorrect assumptions
 
-My Thoughts
+8. Validation Summary
+   Conclude with:
+   
+   "Please review this analysis and confirm whether the agent has correctly understood the process. Identify any missing steps, controls, systems, reconciliations, or escalation procedures before SOP generation proceeds."
 
-* Initially thought the objective was to determine the correct level for SOP onboarding.
-* Unsure how the 168 SOP estimate ties back to the DFR dataset.
-* Need to understand what “actuals” and “variance” refer to.
-* Potentially trying to identify gaps between business activity and SOP coverage.
+Do not generate PASS 1 through PASS 5.
 
-Questions
-
-* What are we comparing actuals against?
-* What variance are we measuring?
-* What gaps are we specifically trying to identify?
-* Is the goal reporting, prioritization, or SOP coverage analysis?
-
-⸻
-
-BPM / BAM Assessment
-
-What I understand
-
-* SOPs appear to be one part of a larger BPM effort.
-* Documentation quality is important because other outputs depend on it.
-* Process maps, flowcharts, checklists, and future AI capabilities appear to be built from SOPs.
-
-My Thoughts
-
-* SOPs seem to be the foundation for everything else.
-* Better SOPs = better process maps and downstream outputs.
-* Need to better understand where BPM assessment fits into the overall process.
-
-Questions
-
-* Is BPM assessment separate from SOP conversion?
-* Does BPM happen before or after SOP conversion?
-* What deliverables are expected from BPM work?
-
-⸻
-
-SharePoint / Knowledge Repository
-
-What I understand
-
-* Converted SOPs need to be stored somewhere centrally.
-* Structure should be scalable and easy to navigate.
-
-My Thoughts
-
-Possible structure:
-
-Business
-→ L7 Sub Business
-→ Draft SOPs
-→ Validated SOPs
-→ Final SOPs
-
-Need to understand if version control and ownership tracking are also required.
-
-⸻
-
-General Thoughts
-
-* A lot of the work seems connected:
-    SOP → BPM Assessment → Flowchart → Checklist → Knowledge Repository
-* Need to focus on understanding the process before jumping into recommendations.
-* Continue validating assumptions rather than building solutions based on guesses.
-* Use AI to help structure thinking, but make sure assumptions are confirmed first.
+Return only the Analyst Validation Review package.
