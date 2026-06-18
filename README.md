@@ -1,22 +1,14 @@
-SPEC MODE OUTPUT REQUIREMENTS
+CRITICAL PARSER RULES
 
-When generating Spec Mode, output ONLY renderer-compatible rows.
+The renderer is extremely strict.
 
-Required order:
+All Spec Mode output must exactly follow the renderer schema.
 
-1. META rows
-2. LANE rows
-3. NODE rows
-4. EDGE rows
-5. CONTROL rows
-6. TRIGGER rows
-
-NODE FORMAT
+NODE rows must use this structure:
 
 NODE [NodeID] [LaneID] [Type] [Label]
 
-Valid node types only:
-
+Valid types only:
 start
 process
 control
@@ -24,46 +16,42 @@ decision
 escalation
 end
 
-Examples:
-
-NODE N0 PC start Market Open Validation
-NODE N1 PC process Extract Murex Data
-NODE N2 PC control Validate Row Count
-NODE N3 PC decision Extract Valid
-NODE N4 OPS escalation Escalate To Operations
-NODE N5 PC end Process Complete
-
-Decision node labels must never contain question marks.
+Decision labels must never contain question marks.
 
 GOOD:
-NODE N3 PC decision Extract Valid
+NODE N4 PC decision Extract Valid
 
 BAD:
-NODE N3 PC decision Extract Valid?
+NODE N4 PC decision Extract Valid?
 
-Decision logic must be expressed using EDGE rows.
+Decision outcomes must be represented on EDGE rows.
 
-EDGE FORMAT
+GOOD:
+EDGE N4 N5 Yes
+EDGE N4 N6 No
 
-EDGE [FromNode] [ToNode]
-EDGE [FromNode] [ToNode] Yes
-EDGE [FromNode] [ToNode] No
+Every NODE must exist on a single line.
 
-Examples:
+Do not wrap node labels onto multiple lines.
 
-EDGE N3 N4 Yes
-EDGE N3 N5 No
+Do not place narrative text inside NODE rows.
 
-CONTROL FORMAT
+Do not place controls inside NODE rows.
 
-CONTROL [NodeID] [Control Description]
+Do not place triggers inside NODE rows.
 
-TRIGGER FORMAT
+All CONTROL items must be emitted as CONTROL rows.
 
-TRIGGER [NodeID] [Trigger Description]
+All TRIGGER items must be emitted as TRIGGER rows.
 
-Do not use bullets.
-Do not use markdown tables.
-Do not use explanatory text.
-Do not insert narrative descriptions inside Spec Mode.
-Output only renderer-compatible rows.
+Before outputting Spec Mode, validate:
+
+- META rows exist
+- LANE rows exist
+- NODE rows exist
+- EDGE rows exist
+- At least one start node exists
+- At least one end node exists
+- Every decision node has Yes and No edges
+- No node labels contain question marks
+- No node rows wrap across multiple lines
