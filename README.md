@@ -1,57 +1,106 @@
-CRITICAL PARSER RULES
+Product Control - Notes & Thoughts
 
-The renderer is extremely strict.
+SOP Conversion Project
 
-All Spec Mode output must exactly follow the renderer schema.
+What I understand so far
 
-NODE rows must use this structure:
+* Goal is to convert approximately 168 SOPs into an audit-ready state by October 31.
+* AI SOP Agent is intended to help generate SOPs and standardize documentation.
+* SOPs ultimately need to be audit ready, not just AI generated.
+* Current estimate is roughly 4-6 hours per SOP.
+* There seems to be a preference toward converting SOPs first and validating them afterward in batches.
 
-NODE [NodeID] [LaneID] [Type] [Label]
+My Thoughts
 
-Valid types only:
-start
-process
-control
-decision
-escalation
-end
+* If each SOP takes approximately 5 hours on average, 168 SOPs is around 840 hours of work.
+* Need to better understand whether the 4-6 hour estimate includes validation and signoff or only SOP generation.
+* Not sure how many people will be involved in the conversion effort.
+* Need to determine if all SOPs are similar complexity or if some are significantly larger than others.
+* Need to understand how the 168 number was ultimately calculated.
 
-Decision labels must never contain question marks.
+Questions
 
-GOOD:
-NODE N4 PC decision Extract Valid
+* What exactly counts as a completed SOP?
+* Is there already a backlog of SOPs converted?
+* How much time does the AI Agent actually save?
+* Should work be completed business by business or across multiple businesses simultaneously?
 
-BAD:
-NODE N4 PC decision Extract Valid?
+⸻
 
-Decision outcomes must be represented on EDGE rows.
+DFR Dataset Analysis
 
-GOOD:
-EDGE N4 N5 Yes
-EDGE N4 N6 No
+What I looked at
 
-Every NODE must exist on a single line.
+* Reviewed DFR dataset.
+* Created pivot tables to understand structure.
+* Found approximately:
+    * 7 Business Groups
+    * 71 L7 Sub Businesses
+* Dataset contains significantly more records than actual SOP population.
 
-Do not wrap node labels onto multiple lines.
+My Thoughts
 
-Do not place narrative text inside NODE rows.
+* Initially thought the objective was to determine the correct level for SOP onboarding.
+* Unsure how the 168 SOP estimate ties back to the DFR dataset.
+* Need to understand what “actuals” and “variance” refer to.
+* Potentially trying to identify gaps between business activity and SOP coverage.
 
-Do not place controls inside NODE rows.
+Questions
 
-Do not place triggers inside NODE rows.
+* What are we comparing actuals against?
+* What variance are we measuring?
+* What gaps are we specifically trying to identify?
+* Is the goal reporting, prioritization, or SOP coverage analysis?
 
-All CONTROL items must be emitted as CONTROL rows.
+⸻
 
-All TRIGGER items must be emitted as TRIGGER rows.
+BPM / BAM Assessment
 
-Before outputting Spec Mode, validate:
+What I understand
 
-- META rows exist
-- LANE rows exist
-- NODE rows exist
-- EDGE rows exist
-- At least one start node exists
-- At least one end node exists
-- Every decision node has Yes and No edges
-- No node labels contain question marks
-- No node rows wrap across multiple lines
+* SOPs appear to be one part of a larger BPM effort.
+* Documentation quality is important because other outputs depend on it.
+* Process maps, flowcharts, checklists, and future AI capabilities appear to be built from SOPs.
+
+My Thoughts
+
+* SOPs seem to be the foundation for everything else.
+* Better SOPs = better process maps and downstream outputs.
+* Need to better understand where BPM assessment fits into the overall process.
+
+Questions
+
+* Is BPM assessment separate from SOP conversion?
+* Does BPM happen before or after SOP conversion?
+* What deliverables are expected from BPM work?
+
+⸻
+
+SharePoint / Knowledge Repository
+
+What I understand
+
+* Converted SOPs need to be stored somewhere centrally.
+* Structure should be scalable and easy to navigate.
+
+My Thoughts
+
+Possible structure:
+
+Business
+→ L7 Sub Business
+→ Draft SOPs
+→ Validated SOPs
+→ Final SOPs
+
+Need to understand if version control and ownership tracking are also required.
+
+⸻
+
+General Thoughts
+
+* A lot of the work seems connected:
+    SOP → BPM Assessment → Flowchart → Checklist → Knowledge Repository
+* Need to focus on understanding the process before jumping into recommendations.
+* Continue validating assumptions rather than building solutions based on guesses.
+* Use AI to help structure thinking, but make sure assumptions are confirmed first.
