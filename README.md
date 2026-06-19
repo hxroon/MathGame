@@ -1,4 +1,20 @@
-Quick clarification.
-I know we discussed sending Patrick the agent analysis and questions. I noticed that on June 15 you had already sent him an SOP for the 92459 Fixed Income Inventory file.
-Is the "92459 Mar 2026 AI Rec" file we discussed on the call a different file/process, or is it related to the SOP that was already sent to Patrick?
-I just want to make sure I'm working on the correct file before I send anything out.
+Hi Patrick,
+
+I have completed the initial AI assessment of the 92459 Mar 2026 AI Rec.xlsx file using the SOP Agent.
+
+Could you please review the Executive Summary below and confirm whether the agent has correctly understood the reconciliation process? Where applicable, could you also provide responses to the clarification questions.
+
+Once I receive your feedback, I will update the analysis and proceed with SOP generation.
+
+Executive Summary
+
+[Paste Executive Summary Here]
+
+Clarification Questions
+
+[Paste Clarification Questions Here]
+
+Thank you,
+
+Haroon Chughtai
+Analyst, Product Control
