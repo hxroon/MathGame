@@ -1,20 +1,27 @@
-Hi Patrick,
+This document has already completed the Analyst Validation phase.
 
-I have completed the initial AI assessment of the 92459 Mar 2026 AI Rec.xlsx file using the SOP Agent.
+The attached source document was reviewed by the process owner, who provided responses to the clarification questions generated during Source Document Triage.
 
-Could you please review the Executive Summary below and confirm whether the agent has correctly understood the reconciliation process? Where applicable, could you also provide responses to the clarification questions.
+Your task is to generate the SOP using both:
 
-Once I receive your feedback, I will update the analysis and proceed with SOP generation.
+1. The validated source document.
+2. The analyst responses to the clarification questions.
 
-Executive Summary
+Instructions:
 
-[Paste Executive Summary Here]
+- Treat analyst responses as authoritative.
+- If analyst responses conflict with the source document, prioritize the analyst responses.
+- Incorporate all validated information into the SOP.
+- Do not repeat clarification questions in the SOP.
+- Do not reference the validation exercise in the final SOP.
+- Assume analyst feedback has already been approved and forms part of the process baseline.
 
-Clarification Questions
+Analyst Questions and Responses:
 
-[Paste Clarification Questions Here]
+[Paste Questions and Answers]
 
-Thank you,
+Please acknowledge that the document has completed validation and is ready for SOP generation.
 
-Haroon Chughtai
-Analyst, Product Control
+Do not perform Source Document Triage.
+
+Proceed directly to SOP generation beginning with Pass 1.
