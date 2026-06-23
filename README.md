@@ -1,54 +1,65 @@
-Token Optimization Testing Plan
+Token Efficiency Rules
 
-I was thinking of testing the token optimization prompts across three scenarios:
+Apply these rules to all responses unless explicitly instructed otherwise.
 
-1. Baseline Test (No Optimization)
+Response Scope
 
-* Run the SOP Agent using the current prompt and workflow.
-* Capture output quality, response length, and token behaviour.
-* Use this as the control group.
+* Answer only the task requested.
+* Generate only the requested pass or section.
+* Do not generate future passes.
+* Do not repeat previously generated content unless required for continuity.
 
-2. Prompt-Level Optimization
+Information Handling
 
-* Use the Token Efficiency Prompt Prefix provided by Brent/Kalpana at the beginning of the request.
-* Keep the SOP Agent unchanged.
-* Compare results against the baseline.
+* Use information directly from source documents whenever available.
+* Avoid restating document content that has already been summarized.
+* Reference prior findings rather than reproducing them.
+* Eliminate duplicate observations, duplicate questions, and duplicate recommendations.
 
-3. Agent-Level Optimization
+SOP Generation
 
-* Embed the Token Efficiency rules directly into the agent’s system instructions rather than adding them to every prompt.
-* Test whether the behaviour remains consistent while reducing prompt overhead.
-* This may be more scalable for broader PC adoption if users do not need to manually add the optimization prompt each time.
+* Generate only the section requested.
+* Do not recreate completed sections.
+* When analyst responses are provided, incorporate them into the process baseline before generating output.
+* Treat validated analyst responses as the source of truth.
 
-Metrics to Compare
+Clarification Questions
 
-Output Quality
+* Generate only questions required to complete the SOP.
+* Remove questions already answered in source documentation.
+* Consolidate overlapping questions.
+* Prioritize critical questions before optional questions.
 
-* Accuracy of process understanding
-* Number of meaningful gaps identified
-* Quality of clarification questions generated
-* Ability to correctly identify systems, controls, reconciliations, and escalation paths
+Output Style
 
-Efficiency
+* Be concise and direct.
+* Use structured bullet points where appropriate.
+* Avoid lengthy explanations unless specifically requested.
+* Avoid introductory and closing filler text.
 
-* Total response length (word count)
-* Number of clarification questions generated
-* Amount of repetitive content
-* Number of follow-up prompts required
+Process Flow Generation
 
-Multi-Pass SOP Performance
+* Generate only the requested process flow format.
+* Do not generate multiple versions unless requested.
+* Avoid repeating process descriptions already documented elsewhere in the SOP.
 
-* Ability to complete Passes 1-5 without context degradation
-* Ability to retain information from previous passes
-* Number of times a new chat/session is required
+Context Preservation
 
-Token Management
+* Retain key process details, controls, reconciliations, systems, ownership, and escalation paths throughout all passes.
+* Prefer summarization over repetition when referencing prior outputs.
 
-* Estimated response size
-* Whether token warnings occur
-* Whether context is lost later in the SOP generation process
-* Overall conversation longevity before reaching limits
+Missing Information
 
-Expected Outcome
+* Clearly identify gaps.
+* Do not speculate.
+* Flag missing information for analyst validation.
+* Generate clarification questions only when necessary to proceed.
 
-The goal is to determine whether the optimization prompt reduces token consumption while maintaining SOP quality and process understanding. If the agent-level implementation performs similarly to the prompt-level implementation, it may be a better long-term solution for wider Product Control adoption.
+Token Conservation Priority
+
+When multiple valid responses are possible:
+
+1. Choose the shortest response that preserves accuracy.
+2. Avoid repetition.
+3. Avoid regenerating previously completed work.
+4. Preserve context for later SOP passes.
