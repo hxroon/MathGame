@@ -1,47 +1,15 @@
-1. Excel Decoder / Data Architecture Agent
+Hi Michael,
 
-Goal: take any Excel workbook and explain how it works operationally.
+Thank you for sending these documents.
 
-It should identify:
+As I start working through the SOP conversion, I had a couple of questions to make sure I understand the source material correctly.
 
-* Tabs/sheets and purpose of each
-* Inputs, outputs, calculations, lookups, pivots
-* Data points/attributes
-* Relationships between sheets
-* Manual steps vs automated steps
-* Macros and what they do, if visible
-* Data flow from source input to final output
-* Risks/gaps, like hardcoded values, broken links, unclear owners
+1. Are all of the attached documents within each email intended to be used together as inputs for a single SOP, or do they relate to different processes/DFR sheets? If possible, could you let me know which DFR sheet or business process each set of documents corresponds to?
+2. I also noticed that several of the documents reference Excel workbooks or daily working files. Would it be possible to share the associated Excel templates/workbooks as well? Having the underlying Excel files will help improve the quality and accuracy of the AI-generated SOPs by providing additional process context.
 
-Ideal output:
+As I work through the documentation, I may have a few additional questions and will reach out as they come up.
 
-* HTML visual map
-* Data architecture summary
-* Workbook operating model
-* IT-friendly data model
+Thanks again for your help.
 
-Good test file:
-
-* FX Options Excel workbook
-
-Possible next step:
-Create an agent called Excel Workbook Decoder and use FX Options as the pilot.
-
-⸻
-
-2. Decomp Commentary Agent
-
-Goal: take actual vs estimate/decomp data and produce usable commentary.
-
-It should output:
-
-* Executive summary
-* Business name
-* Actual
-* Analyst/decomp comment
-* AI-generated comment
-
-Key issue to solve:
-
-* Consistency. Same input should produce the same style and quality.
-* It needs to work quickly, ideally within 15-20 minutes, because the process has a tight turnaround.
+Best,
+Haroon
