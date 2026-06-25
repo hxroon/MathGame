@@ -1,10 +1,47 @@
-Hi Jacob,
-Thank you again for the updates and feedback you've provided so far.
-I've attached the latest AI-generated version of the SOP for your review. When you have a chance, could you please review the document and let me know if there are any areas that need correction, clarification, or additional detail?
-In particular, it would be helpful if you could focus on the following sections:
-Section 16 – Suggested screenshots and supporting artifacts identified by the agent.
-Section 17 – Assumptions made by the agent while generating the SOP.
-Please review the assumptions captured in Section 17 and confirm whether they accurately reflect the process. If any assumptions are incorrect or if additional context should be included, please feel free to update the document directly or provide comments.
-More broadly, any feedback on the process flow, controls, reconciliations, escalation procedures, systems, or terminology would be greatly appreciated as we continue refining the SOP generation process.
-If it would be easier to walk through the document together, I'm happy to set up some time to discuss it as well.
-Thanks again for your help and feedback.
+1. Excel Decoder / Data Architecture Agent
+
+Goal: take any Excel workbook and explain how it works operationally.
+
+It should identify:
+
+* Tabs/sheets and purpose of each
+* Inputs, outputs, calculations, lookups, pivots
+* Data points/attributes
+* Relationships between sheets
+* Manual steps vs automated steps
+* Macros and what they do, if visible
+* Data flow from source input to final output
+* Risks/gaps, like hardcoded values, broken links, unclear owners
+
+Ideal output:
+
+* HTML visual map
+* Data architecture summary
+* Workbook operating model
+* IT-friendly data model
+
+Good test file:
+
+* FX Options Excel workbook
+
+Possible next step:
+Create an agent called Excel Workbook Decoder and use FX Options as the pilot.
+
+⸻
+
+2. Decomp Commentary Agent
+
+Goal: take actual vs estimate/decomp data and produce usable commentary.
+
+It should output:
+
+* Executive summary
+* Business name
+* Actual
+* Analyst/decomp comment
+* AI-generated comment
+
+Key issue to solve:
+
+* Consistency. Same input should produce the same style and quality.
+* It needs to work quickly, ideally within 15-20 minutes, because the process has a tight turnaround.
