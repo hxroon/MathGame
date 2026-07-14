@@ -1,1 +1,4 @@
-=SUMIFS(Table13[Sum of Estimate],Table13[BUSINESS_DATE],$C10,Table13[BUSINESS],$C$2,Table13[L7_SUB_BUSINESS],$C$3,Table13[PLSHEET_NAME],$B10,Table13[ActEstState],'Daily DFR Input'!$E$7)
+have been working on an AI agent that takes complex Excel workbooks and automatically generates an interactive HTML report explaining how the workbook works. It identifies the workbook structure, worksheets, data flow, business logic, risks and controls, and provides a high level executive summary to make onboarding and knowledge transfer much easier.
+When you have a chance, we'd really appreciate your feedback. Is there anything else you think we should include, remove, or improve? More generally, does the report provide the information you would expect when trying to understand a new workbook?
+One challenge we've encountered is producing consistent outputs across different workbooks. While many workbooks are similar in purpose, they often vary significantly in structure and design, making consistency one of the more difficult aspects to refine.
+Any feedback would be greatly appreciated.
