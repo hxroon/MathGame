@@ -1,2 +1,1 @@
-
-Just to confirm my understanding, since Vivian confirmed there are two DFR sheets (Repo PnL and TCFGOCI), does that mean we should create two Process SOPs, one for each DFR sheet, and include all of the related supporting documents under each SOP?
+I just want to make sure I'm understanding correctly. Vivian grouped the documents into four document groups, but we also confirmed there are only two DFR sheets, Repo PnL and TCFGOCI. Should I keep the four groups only for organizing the source documents, and then create two Process SOPs based on the two DFR sheets?
