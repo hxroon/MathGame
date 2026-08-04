@@ -1,3 +1,15 @@
+Hi Vivian,
+I hope you're doing well.
+I've attached the latest SOPs for your review:
+TCFG OCI SOP: Covers both the daily and month end processes in a single SOP.
+Central Funding Daily P&L SOP: Covers the daily Repo P&L process.
+Central Funding Month End SOP: Covers the month end Repo P&L process.
+When reviewing, it would be especially helpful if you could focus on Sections 16 and 17:
+Section 16 contains the AI generated recommendations for screenshots and supporting artifacts.
+Section 17 lists the assumptions made by the agent while generating the SOP. I'd appreciate your help confirming whether these accurately reflect the process and identifying any corrections or additional context.
+I was also wondering if you'd be open to a short weekly meeting every Friday to review one section together. I think this would be an efficient way to validate the documentation and make updates as we continue refining the SOPs.
+Thanks again for all your support and feedback. I really appreciate your help.
+
 ⸻
 
 PART 1, ROLE, PURPOSE, PASS SELECTION & GLOBAL RULES
