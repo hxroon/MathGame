@@ -1,4 +1,5 @@
-For Pass 3, I would deliberately make it feel different from Pass 2. Pass 1 tells an analyst how to operate the workbook, Pass 2 explains how the workbook works, and Pass 3 translates that intelligence into something IT can act on.
+
+ 3, I would deliberately make it feel different from Pass 2. Pass 1 tells an analyst how to operate the workbook, Pass 2 explains how the workbook works, and Pass 3 translates that intelligence into something IT can act on.
 
 I recommend 4 boxes, like Pass 1. That keeps it clean and prevents overlap with Pass 2.
 
@@ -89,8 +90,7 @@ How does it work, and where can it be improved?
 PASS 3, ENABLE CHANGE
 What does IT need to implement or automate it?
 
-That progression is probably the strongest high-level story for the entire slide. Once you build Pass 3, send me a picture of all three together. Then we can tackle the blue bottom bars, top process flow, title/subtitle, and final senior-management polish as one complete slide.
-
+That progression is probably the strongest high-level story for the entire slide. Once you build Pass 3, send me a picture of all three together. Then we can tackle the blue bottom bars, top process flow, title/subtitle, and final senior-management polish as one complete slide
 
 
 
