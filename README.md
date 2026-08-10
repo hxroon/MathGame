@@ -1,96 +1,50 @@
+If you can fit 4 maximum, I would actually keep it to exactly 4 Strategic Value boxes. Five would make that last column noticeably denser than the three passes.
 
- 3, I would deliberately make it feel different from Pass 2. Pass 1 tells an analyst how to operate the workbook, Pass 2 explains how the workbook works, and Pass 3 translates that intelligence into something IT can act on.
+I would use these four:
 
-I recommend 4 boxes, like Pass 1. That keeps it clean and prevents overlap with Pass 2.
+1. REDUCE KEY-PERSON DEPENDENCY
 
-PASS 3: IT HANDOFF & TECHNICAL REQUIREMENTS
+Icon: People + knowledge/document
 
-Under the heading:
+Captures embedded workbook knowledge so processes are less dependent on individual expertise.
 
-TRANSLATE workbook intelligence into structured technical requirements that enable IT to assess, redesign and automate the process.
+2. ACCELERATE ONBOARDING & CONTINUITY
 
-Then use these four sections:
+Icon: Person + upward arrow or graduation cap
 
-1. DEFINE TECHNICAL REQUIREMENTS
+Provides structured guidance to help analysts understand and operate unfamiliar workbooks faster.
 
-PNG icon: clipboard with gear, document with code, or requirements checklist
+3. STRENGTHEN CONTROL TRANSPARENCY
 
-Converts workbook logic, inputs, outputs and processing rules into structured technical requirements.
+Icon: Shield + magnifying glass
 
-This answers: What does IT actually need to build or replicate?
+Makes controls, reconciliations, dependencies and exceptions visible and easier to assess.
 
-2. MAP SYSTEM & DATA REQUIREMENTS
+4. ENABLE AUTOMATION & MODERNIZATION
 
-PNG icon: database connected to systems, server/network, connected database nodes
+Icon: Gear + lightning bolt or automation/robotic process
 
-Documents source systems, data inputs, transformations, dependencies and required outputs for implementation.
+Converts workbook intelligence into actionable optimization opportunities and IT-ready requirements.
 
-This is different from Pass 2's architecture mapping. Pass 2 discovers these relationships, Pass 3 packages them for implementation.
+I would drop "Standardize Workbook Knowledge" as its own box, because standardization is already an outcome running through Passes 1 to 3.
 
-3. CAPTURE BUSINESS & CONTROL REQUIREMENTS
+For the fourth-column header, I'd use:
 
-PNG icon: shield with document/checklist, governance icon
-
-Translates reconciliations, validations, exceptions and business rules into requirements that must be preserved.
-
-This one is extremely important. You don't want IT automating the workbook while accidentally removing the controls embedded in it.
-
-It tells management that you're not just handing IT formulas and data flows. You're preserving the Product Control requirements behind them.
-
-4. PREPARE THE IT HANDOFF
-
-PNG icon: handoff between two people, document with arrow, handshake with file
-
-Consolidates requirements, dependencies, risks, assumptions and open items into an implementation-ready handoff.
-
-This is the culmination of Pass 3.
-
-So visually, your third column would read:
+> STRATEGIC VALUE
 
 
----
 
-PASS 3: IT HANDOFF & TECHNICAL REQUIREMENTS
+And directly underneath:
 
-TRANSLATE workbook intelligence into structured technical requirements that enable IT to assess, redesign and automate the process.
-
-📋 1. DEFINE TECHNICAL REQUIREMENTS
-Converts workbook logic, inputs, outputs and processing rules into structured technical requirements.
-
-🗄️ 2. MAP SYSTEM & DATA REQUIREMENTS
-Documents source systems, data inputs, transformations, dependencies and required outputs for implementation.
-
-🛡️ 3. CAPTURE BUSINESS & CONTROL REQUIREMENTS
-Translates reconciliations, validations, exceptions and business rules into requirements that must be preserved.
-
-🤝 4. PREPARE THE IT HANDOFF
-Consolidates requirements, dependencies, risks, assumptions and open items into an implementation-ready handoff.
+> TRANSFORM complex workbook knowledge into standardized, transparent and automation-ready process intelligence.
 
 
----
 
-One thing I would intentionally NOT put in Pass 3
+This also gives you a very clean story when presenting:
 
-Don't put automation opportunities, formula optimization, XLOOKUP versus VLOOKUP, manual process improvement, etc. here.
+Pass 1: Operate it correctly → Pass 2: Understand how it works → Pass 3: Make it implementation-ready → Strategic Value: Reduce dependency, accelerate onboarding, strengthen controls and enable automation.
 
-We already put that in Pass 2, and that's the right place because the agent discovers those opportunities while analyzing the workbook.
-
-Pass 3 takes the findings and says:
-
-"Here is what IT needs to know to do something about it."
-
-That gives you a very clean three-pass progression:
-
-PASS 1, OPERATE
-How does an analyst run it?
-
-PASS 2, UNDERSTAND & ASSESS
-How does it work, and where can it be improved?
-
-PASS 3, ENABLE CHANGE
-What does IT need to implement or automate it?
-
-That progression is probably the strongest high-level story for the entire slide. Once you build Pass 3, send me a picture of all three together. Then we can tackle the blue bottom bars, top process flow, title/subtitle, and final senior-management polish as one complete slide
+That is probably the strongest executive narrative for Slide 1.
 
 
 
