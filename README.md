@@ -1,14 +1,299 @@
-Hi Vivian,
-I hope you're doing well.
-I've attached the latest SOPs for your review:
-TCFG OCI SOP: Covers both the daily and month end processes in a single SOP.
-Central Funding Daily P&L SOP: Covers the daily Repo P&L process.
-Central Funding Month End SOP: Covers the month end Repo P&L process.
-When reviewing, it would be especially helpful if you could focus on Sections 16 and 17:
-Section 16 contains the AI generated recommendations for screenshots and supporting artifacts.
-Section 17 lists the assumptions made by the agent while generating the SOP. I'd appreciate your help confirming whether these accurately reflect the process and identifying any corrections or additional context.
-I was also wondering if you'd be open to a short weekly meeting every Friday to review one section together. I think this would be an efficient way to validate the documentation and make updates as we continue refining the SOPs.
-Thanks again for all your support and feedback. I really appreciate your help.
+Here is the final Slide 1 structure I would use. I would commit to this version and build it closely to the style of your manager's SOP Agent slide.
+
+Slide 1: Global Product Control, Excel Decoder AI Agent
+
+Subtitle
+
+One workbook, three purpose-built views, from analyst execution to process intelligence and technology transformation.
+
+The slide tells one story:
+
+> OPERATE → UNDERSTAND → TRANSFORM
+
+
+
+
+---
+
+TOP RIBBON
+
+Copy the oval and arrow concept from the existing slide.
+
+WORKBOOK INGESTED → AI WORKBOOK DECODE → PASS SELECTED → HTML GENERATED → INSIGHT & ACTION → REPEAT
+
+Keep this fairly thin. It is there to establish the workflow, not explain it.
+
+
+---
+
+MAIN BODY
+
+Use four vertical sections.
+
+Make Pass 2 slightly wider because it is the core analytical capability.
+
+Approximate widths:
+
+Pass 1: 24% | Pass 2: 30% | Pass 3: 24% | Strategic Value: 22%
+
+
+---
+
+1. PASS 1, OPERATE
+
+Workbook Execution Guide
+
+Opening statement:
+
+TRANSLATE workbook mechanics into practical instructions that allow an analyst to operate the process correctly.
+
+Then use four compact sections.
+
+PRE-RUN REQUIREMENTS
+
+Source files, systems, access, dependencies and prerequisite activities.
+
+EXECUTION SEQUENCE
+
+Imports, refreshes, manual inputs, calculations and required ordering.
+
+VALIDATION & CONTROLS
+
+Reconciliations, control totals, reasonability checks and exception identification.
+
+OUTPUT & COMPLETION
+
+Final outputs, distribution, storage, completion criteria and escalation points.
+
+Then have a highlighted question box:
+
+HOW DO I RUN THIS WORKBOOK?
+
+At the very bottom of the column:
+
+INTERACTIVE HTML EXECUTION GUIDE
+
+Small subtext:
+
+Operational, step-by-step, analyst focused
+
+
+---
+
+2. PASS 2, UNDERSTAND
+
+Comprehensive Workbook Intelligence
+
+Opening statement:
+
+DECODE the complete business, process, data and calculation architecture embedded within the workbook.
+
+This should visually be the strongest column.
+
+WORKBOOK ARCHITECTURE
+
+Sheet inventory, functional classification, inputs, transformations, calculations, controls and outputs.
+
+DATA LINEAGE & DEPENDENCIES
+
+Upstream sources, cross-sheet relationships, transformations and downstream outputs.
+
+Add a tiny flow visual here:
+
+INPUT → TRANSFORM → CALCULATE → CONTROL → OUTPUT
+
+FORMULA & LOGIC INTELLIGENCE
+
+Formula patterns, lookups, aggregations, hardcodes, calculations and cross-sheet logic.
+
+PROCESS & CONTROL MAPPING
+
+Operational sequence, manual touchpoints, reconciliations, controls and system interactions.
+
+AUTOMATION & OPTIMIZATION
+
+Formula improvements, inefficient logic, manual processes and automation opportunities.
+
+Then the question box:
+
+HOW DOES THIS WORKBOOK ACTUALLY WORK?
+
+Bottom:
+
+INTERACTIVE HTML INTELLIGENCE DASHBOARD
+
+Small subtext:
+
+Architecture • Data Flow • Process Flow • Dependencies • Relationships
+
+This is where you emphasize the diagrams without trying to show all of them on Slide 1.
+
+
+---
+
+3. PASS 3, TRANSFORM
+
+Technology Handoff Package
+
+Opening statement:
+
+TRANSLATE workbook intelligence into structured requirements for technology assessment, automation or redevelopment.
+
+SOURCE-TO-TARGET
+
+Sources, fields, transformations, calculations and destination outputs.
+
+BUSINESS & CALCULATION RULES
+
+Formula logic, mappings, thresholds, decision rules and exceptions.
+
+SYSTEM DEPENDENCIES
+
+Upstream sources, interfaces, workbook dependencies and downstream consumers.
+
+CONTROL REQUIREMENTS
+
+Reconciliations, validation logic, tolerances, exceptions and audit requirements.
+
+IMPLEMENTATION CONSIDERATIONS
+
+Technical risks, unresolved requirements, automation candidates and SME validation points.
+
+Then:
+
+WHAT DOES TECHNOLOGY NEED?
+
+Bottom:
+
+INTERACTIVE HTML IT HANDOFF
+
+Small subtext:
+
+Structured, traceable, technology focused
+
+
+---
+
+4. STRATEGIC VALUE
+
+Make this visually similar to the right side of your manager's current slide.
+
+At the top, put something like:
+
+FROM WORKBOOK KNOWLEDGE TO ENTERPRISE VALUE
+
+Then four stacked boxes.
+
+REDUCE KEY-PERSON RISK
+
+Capture knowledge currently embedded in spreadsheets and individual expertise.
+
+ACCELERATE KNOWLEDGE TRANSFER
+
+Help analysts understand and operate unfamiliar processes faster.
+
+IMPROVE PROCESS TRANSPARENCY
+
+Expose calculations, dependencies, controls and data movement.
+
+ENABLE TRANSFORMATION
+
+Create a structured bridge between Product Control and Technology.
+
+Then a prominent final green/navy box:
+
+STANDARDIZE PC WORKBOOK INTELLIGENCE
+
+Underneath:
+
+Repeatable • Evidence-Based • Scalable • Technology-Ready
+
+
+---
+
+BOTTOM FOUNDATION BAR
+
+This is the one addition I would definitely make.
+
+Run a thin dark bar underneath Pass 1, Pass 2 and Pass 3:
+
+COMMON AI DECODER FOUNDATION
+
+Then across the bar:
+
+Workbook Evidence | Confidence Classification | Standardized HTML | Visual Mapping | Consistent Navigation | No Unsupported Assumptions
+
+This shows that although the three passes have different purposes, they all use the same controlled methodology.
+
+
+---
+
+Overall visual
+
+Your finished slide should roughly look like this:
+
+GLOBAL PRODUCT CONTROL, EXCEL DECODER AI AGENT
+One workbook, three purpose-built views, from analyst execution
+to process intelligence and technology transformation.
+
+ [WORKBOOK] → [AI DECODE] → [PASS SELECTED] → [HTML] → [INSIGHT] → ↻
+
+
+┌──────────────────┬──────────────────────┬──────────────────┬─────────────────┐
+│ 1. PASS 1        │ 2. PASS 2            │ 3. PASS 3        │ 4. STRATEGIC    │
+│    OPERATE       │    UNDERSTAND        │    TRANSFORM      │    VALUE        │
+├──────────────────┼──────────────────────┼──────────────────┼─────────────────┤
+│ Workbook         │ Comprehensive        │ Technology       │ REDUCE          │
+│ Execution Guide  │ Workbook             │ Handoff Package  │ KEY-PERSON RISK │
+│                  │ Intelligence         │                  │                 │
+│ Pre-Run          │                      │ Source-to-Target │ ACCELERATE      │
+│ Requirements     │ Architecture         │                  │ KNOWLEDGE       │
+│                  │                      │ Business Rules   │ TRANSFER        │
+│ Execution        │ Data Lineage         │                  │                 │
+│ Sequence         │ & Dependencies       │ Dependencies     │ IMPROVE         │
+│                  │                      │                  │ TRANSPARENCY    │
+│ Validation       │ INPUT → TRANSFORM    │ Controls         │                 │
+│ & Controls       │ → CALCULATE          │                  │ ENABLE          │
+│                  │ → CONTROL → OUTPUT   │ Implementation   │ TRANSFORMATION  │
+│ Output &         │                      │ Considerations   │                 │
+│ Completion       │ Formula Intelligence│                  │                 │
+│                  │                      │                  │                 │
+│ "HOW DO I        │ Process & Controls   │ "WHAT DOES       │ STANDARDIZE     │
+│  RUN THIS?"      │                      │  TECHNOLOGY      │ PC WORKBOOK     │
+│                  │ Automation &         │  NEED?"          │ INTELLIGENCE    │
+│                  │ Optimization         │                  │                 │
+│                  │                      │                  │                 │
+│                  │ "HOW DOES THIS       │                  │                 │
+│                  │  ACTUALLY WORK?"     │                  │                 │
+├──────────────────┼──────────────────────┼──────────────────┤                 │
+│ HTML EXECUTION   │ HTML INTELLIGENCE    │ HTML IT HANDOFF  │                 │
+│ GUIDE            │ DASHBOARD            │                  │                 │
+├──────────────────┴──────────────────────┴──────────────────┤                 │
+│ COMMON AI DECODER FOUNDATION                              │                 │
+│ Evidence | Confidence | HTML | Visuals | Consistency      │                 │
+└────────────────────────────────────────────────────────────┴─────────────────┘
+
+One important design decision
+
+I would not put screenshots of the HTML on Slide 1. Your manager's example works because every piece of space contributes to explaining the operating model. Screenshots would make this slide harder to read.
+
+Save the visual proof for Slide 2, where we can show what is actually inside the decoder, architecture diagrams, data dependency mapping, formula intelligence, controls, automation recommendations such as XLOOKUP vs VLOOKUP, confidence classifications, and the standardized HTML experience.
+
+That gives you a very clean two-slide story:
+
+Slide 1: How it works, OPERATE → UNDERSTAND → TRANSFORM
+
+Slide 2: What it actually delivers, INTELLIGENCE → VISUALIZATION → OPTIMIZATION → CONTROL → VALUE.
+
+
+
+
+
+
+
+
+
+
 
 ⸻
 
