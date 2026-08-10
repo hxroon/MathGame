@@ -1,17 +1,106 @@
-1. UNDERSTAND THE WORKBOOK 🔍
-Identifies the workbook's purpose, required inputs, starting point and setup.
-This tells the audience exactly what the AI is doing. When presenting, you can say:
-"The agent first establishes what the workbook does and what the analyst needs before they begin."
-2. RUN THE WORKBOOK ⚙️
-Reconstructs the required sequence of data loads, refreshes, manual actions and calculations.
-Presentation explanation:
-"It then works through the workbook logic to determine the sequence an analyst would follow to actually run it."
-3. VALIDATE THE RESULTS 🛡️
-Identifies reconciliations, control checks and exceptions used to confirm results are reasonable.
-Presentation explanation:
-"It doesn't stop at execution. It identifies the checks within the workbook that indicate whether the process ran correctly."
-4. COMPLETE THE PROCESS 📄✓
-Identifies final outputs, distribution requirements and steps required to close the process.
+Yes, Pass 1 is good enough to lock in for now. I would not keep tweaking it until we see all three columns together.
+
+Let's move to Pass 2, which should be the most information-dense column because this is where the agent actually decodes and analyzes the workbook.
+
+PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+
+For the coloured header:
+
+PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+
+Directly underneath, matching your Pass 1 structure:
+
+DECODE workbook architecture, data relationships, business logic and controls into a comprehensive process view.
+
+I recommend 5 capability boxes for Pass 2 rather than four. Pass 2 is intentionally the deepest analysis.
+
+1. MAP THE ARCHITECTURE
+
+PNG icon: stacked layers, database layers, or connected sheets
+
+Text:
+
+Maps worksheets, inputs, outputs and dependencies to show how the workbook is structured.
+
+This represents the Architecture and Worksheets portions of your HTML dashboard.
+
+2. TRACE DATA & PROCESS FLOW
+
+PNG icon: flowchart, connected nodes, branching arrows
+
+Text:
+
+Traces data from source through transformations, calculations, reconciliations and final outputs.
+
+This is important because your Pass 2 HTML specifically contains the data dependency diagrams and process flow diagrams. I would make this visually prominent.
+
+3. DECODE LOGIC & FORMULAS
+
+PNG icon: formula, calculator, function symbol, or code brackets
+
+Text:
+
+Identifies key formulas, calculation patterns, lookup logic and relationships driving workbook results.
+
+This covers things like SUMIFS, VLOOKUP, cross-sheet references and other calculation logic.
+
+4. IDENTIFY CONTROLS & RISKS
+
+PNG icon: shield with checkmark, similar to Pass 1 but perhaps with a small magnifying glass
+
+Text:
+
+Surfaces reconciliations, validation checks, manual dependencies, exceptions and potential control risks.
+
+This brings the Product Control perspective into the analysis.
+
+5. SURFACE AUTOMATION OPPORTUNITIES
+
+PNG icon: gear with lightning bolt, robot/process automation, or magic wand
+
+Text:
+
+Identifies opportunities to simplify, automate and optimize workbook logic, formulas and manual activities.
+
+This is where your new requirement becomes important.
+
+It should include things such as:
+
+VLOOKUP → XLOOKUP, where appropriate
+Repeated formulas → optimized formulas
+Manual activities → potential automation
+Duplicated calculations → consolidation opportunities
+Inefficient workbook logic → recommended alternatives
+
+The HTML Automation tab can contain the detailed recommendations. The PowerPoint only needs to communicate that this capability exists.
+
+Visually
+
+I'd build Pass 2 exactly like your Pass 1:
+
+PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+
+DECODE workbook architecture, data relationships, business logic and controls into a comprehensive process view.
+
+🗂️ 1. MAP THE ARCHITECTURE
+Maps worksheets, inputs, outputs and dependencies to show how the workbook is structured.
+
+🔀 2. TRACE DATA & PROCESS FLOW
+Traces data from source through transformations, calculations, reconciliations and final outputs.
+
+ƒx 3. DECODE LOGIC & FORMULAS
+Identifies key formulas, calculation patterns, lookup logic and relationships driving workbook results.
+
+🛡️ 4. IDENTIFY CONTROLS & RISKS
+Surfaces reconciliations, validation checks, manual dependencies, exceptions and potential control risks.
+
+⚙️ 5. SURFACE AUTOMATION OPPORTUNITIES
+Identifies opportunities to simplify, automate and optimize workbook logic, formulas and manual activities.
+
+Don't worry if this column initially looks more crowded than Pass 1. Pass 2 genuinely does more, so we can tighten the wording and spacing once you put it into PowerPoint.
+
+And I would keep "Trace Data & Process Flow" as its own box. Those dependency maps and flow diagrams are one of the strongest visual capabilities of the agent, so senior management should see that explicitly rather than having it buried under architecture.
+
 
 
 Here is the final Slide 1 structure I would use. I would commit to this version and build it closely to the style of your manager's SOP Agent slide.
