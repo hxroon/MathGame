@@ -1,3 +1,19 @@
+1. UNDERSTAND THE WORKBOOK 🔍
+Identifies the workbook's purpose, required inputs, starting point and setup.
+This tells the audience exactly what the AI is doing. When presenting, you can say:
+"The agent first establishes what the workbook does and what the analyst needs before they begin."
+2. RUN THE WORKBOOK ⚙️
+Reconstructs the required sequence of data loads, refreshes, manual actions and calculations.
+Presentation explanation:
+"It then works through the workbook logic to determine the sequence an analyst would follow to actually run it."
+3. VALIDATE THE RESULTS 🛡️
+Identifies reconciliations, control checks and exceptions used to confirm results are reasonable.
+Presentation explanation:
+"It doesn't stop at execution. It identifies the checks within the workbook that indicate whether the process ran correctly."
+4. COMPLETE THE PROCESS 📄✓
+Identifies final outputs, distribution requirements and steps required to close the process.
+
+
 Here is the final Slide 1 structure I would use. I would commit to this version and build it closely to the style of your manager's SOP Agent slide.
 
 Slide 1: Global Product Control, Excel Decoder AI Agent
