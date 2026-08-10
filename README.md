@@ -1,105 +1,102 @@
-Yes, Pass 1 is good enough to lock in for now. I would not keep tweaking it until we see all three columns together.
+For Pass 3, I would deliberately make it feel different from Pass 2. Pass 1 tells an analyst how to operate the workbook, Pass 2 explains how the workbook works, and Pass 3 translates that intelligence into something IT can act on.
 
-Let's move to Pass 2, which should be the most information-dense column because this is where the agent actually decodes and analyzes the workbook.
+I recommend 4 boxes, like Pass 1. That keeps it clean and prevents overlap with Pass 2.
 
-PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+PASS 3: IT HANDOFF & TECHNICAL REQUIREMENTS
 
-For the coloured header:
+Under the heading:
 
-PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+TRANSLATE workbook intelligence into structured technical requirements that enable IT to assess, redesign and automate the process.
 
-Directly underneath, matching your Pass 1 structure:
+Then use these four sections:
 
-DECODE workbook architecture, data relationships, business logic and controls into a comprehensive process view.
+1. DEFINE TECHNICAL REQUIREMENTS
 
-I recommend 5 capability boxes for Pass 2 rather than four. Pass 2 is intentionally the deepest analysis.
+PNG icon: clipboard with gear, document with code, or requirements checklist
 
-1. MAP THE ARCHITECTURE
+Converts workbook logic, inputs, outputs and processing rules into structured technical requirements.
 
-PNG icon: stacked layers, database layers, or connected sheets
+This answers: What does IT actually need to build or replicate?
 
-Text:
+2. MAP SYSTEM & DATA REQUIREMENTS
 
-Maps worksheets, inputs, outputs and dependencies to show how the workbook is structured.
+PNG icon: database connected to systems, server/network, connected database nodes
 
-This represents the Architecture and Worksheets portions of your HTML dashboard.
+Documents source systems, data inputs, transformations, dependencies and required outputs for implementation.
 
-2. TRACE DATA & PROCESS FLOW
+This is different from Pass 2's architecture mapping. Pass 2 discovers these relationships, Pass 3 packages them for implementation.
 
-PNG icon: flowchart, connected nodes, branching arrows
+3. CAPTURE BUSINESS & CONTROL REQUIREMENTS
 
-Text:
+PNG icon: shield with document/checklist, governance icon
 
-Traces data from source through transformations, calculations, reconciliations and final outputs.
+Translates reconciliations, validations, exceptions and business rules into requirements that must be preserved.
 
-This is important because your Pass 2 HTML specifically contains the data dependency diagrams and process flow diagrams. I would make this visually prominent.
+This one is extremely important. You don't want IT automating the workbook while accidentally removing the controls embedded in it.
 
-3. DECODE LOGIC & FORMULAS
+It tells management that you're not just handing IT formulas and data flows. You're preserving the Product Control requirements behind them.
 
-PNG icon: formula, calculator, function symbol, or code brackets
+4. PREPARE THE IT HANDOFF
 
-Text:
+PNG icon: handoff between two people, document with arrow, handshake with file
 
-Identifies key formulas, calculation patterns, lookup logic and relationships driving workbook results.
+Consolidates requirements, dependencies, risks, assumptions and open items into an implementation-ready handoff.
 
-This covers things like SUMIFS, VLOOKUP, cross-sheet references and other calculation logic.
+This is the culmination of Pass 3.
 
-4. IDENTIFY CONTROLS & RISKS
+So visually, your third column would read:
 
-PNG icon: shield with checkmark, similar to Pass 1 but perhaps with a small magnifying glass
 
-Text:
+---
 
-Surfaces reconciliations, validation checks, manual dependencies, exceptions and potential control risks.
+PASS 3: IT HANDOFF & TECHNICAL REQUIREMENTS
 
-This brings the Product Control perspective into the analysis.
+TRANSLATE workbook intelligence into structured technical requirements that enable IT to assess, redesign and automate the process.
 
-5. SURFACE AUTOMATION OPPORTUNITIES
+📋 1. DEFINE TECHNICAL REQUIREMENTS
+Converts workbook logic, inputs, outputs and processing rules into structured technical requirements.
 
-PNG icon: gear with lightning bolt, robot/process automation, or magic wand
+🗄️ 2. MAP SYSTEM & DATA REQUIREMENTS
+Documents source systems, data inputs, transformations, dependencies and required outputs for implementation.
 
-Text:
+🛡️ 3. CAPTURE BUSINESS & CONTROL REQUIREMENTS
+Translates reconciliations, validations, exceptions and business rules into requirements that must be preserved.
 
-Identifies opportunities to simplify, automate and optimize workbook logic, formulas and manual activities.
+🤝 4. PREPARE THE IT HANDOFF
+Consolidates requirements, dependencies, risks, assumptions and open items into an implementation-ready handoff.
 
-This is where your new requirement becomes important.
 
-It should include things such as:
+---
 
-VLOOKUP → XLOOKUP, where appropriate
-Repeated formulas → optimized formulas
-Manual activities → potential automation
-Duplicated calculations → consolidation opportunities
-Inefficient workbook logic → recommended alternatives
+One thing I would intentionally NOT put in Pass 3
 
-The HTML Automation tab can contain the detailed recommendations. The PowerPoint only needs to communicate that this capability exists.
+Don't put automation opportunities, formula optimization, XLOOKUP versus VLOOKUP, manual process improvement, etc. here.
 
-Visually
+We already put that in Pass 2, and that's the right place because the agent discovers those opportunities while analyzing the workbook.
 
-I'd build Pass 2 exactly like your Pass 1:
+Pass 3 takes the findings and says:
 
-PASS 2: WORKBOOK & PROCESS INTELLIGENCE
+"Here is what IT needs to know to do something about it."
 
-DECODE workbook architecture, data relationships, business logic and controls into a comprehensive process view.
+That gives you a very clean three-pass progression:
 
-🗂️ 1. MAP THE ARCHITECTURE
-Maps worksheets, inputs, outputs and dependencies to show how the workbook is structured.
+PASS 1, OPERATE
+How does an analyst run it?
 
-🔀 2. TRACE DATA & PROCESS FLOW
-Traces data from source through transformations, calculations, reconciliations and final outputs.
+PASS 2, UNDERSTAND & ASSESS
+How does it work, and where can it be improved?
 
-ƒx 3. DECODE LOGIC & FORMULAS
-Identifies key formulas, calculation patterns, lookup logic and relationships driving workbook results.
+PASS 3, ENABLE CHANGE
+What does IT need to implement or automate it?
 
-🛡️ 4. IDENTIFY CONTROLS & RISKS
-Surfaces reconciliations, validation checks, manual dependencies, exceptions and potential control risks.
+That progression is probably the strongest high-level story for the entire slide. Once you build Pass 3, send me a picture of all three together. Then we can tackle the blue bottom bars, top process flow, title/subtitle, and final senior-management polish as one complete slide.
 
-⚙️ 5. SURFACE AUTOMATION OPPORTUNITIES
-Identifies opportunities to simplify, automate and optimize workbook logic, formulas and manual activities.
 
-Don't worry if this column initially looks more crowded than Pass 1. Pass 2 genuinely does more, so we can tighten the wording and spacing once you put it into PowerPoint.
 
-And I would keep "Trace Data & Process Flow" as its own box. Those dependency maps and flow diagrams are one of the strongest visual capabilities of the agent, so senior management should see that explicitly rather than having it buried under architecture.
+
+
+
+
 
 
 
