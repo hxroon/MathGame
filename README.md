@@ -1,173 +1,106 @@
-Yes. If you're allowed to use a recorded demo, I would change the purpose of Slide 2 completely.
+I agree, Slide 2 does not need to copy Slide 1's four-column structure or use the top ribbon. Slide 1 explains the agent, so Slide 2 can feel more like an executive operating-model slide.
 
-You do not need Slide 2 to show screenshots of the HTML dashboards. The demo can prove the agent works. Slide 2 should explain the operating model and why this can scale.
+For the main slide title, I'd use:
 
-Slide 2: From Workbook to Actionable Intelligence
+Excel Decoder AI Agent, Operating Model & Scalability
 
-I would make Slide 2 answer:
+Subtitle:
 
-> How does this move from a single workbook analysis into a repeatable Product Control capability?
+> A repeatable framework that converts workbook knowledge into validated, standardized and actionable process intelligence.
 
 
 
-That complements Slide 1 very well:
+That immediately signals that Slide 2 is about how the capability works in practice and how it could scale.
 
-Slide 1 = What the agent does
-Demo = What the agent looks like in action
-Slide 2 = How the capability is used, governed and scaled
+Column 1
 
-Recommended Slide 2 layout
+For the first section header, I would use:
 
-I'd use three large sections across the slide, with a fourth smaller section for management outcomes.
+1. ANALYST-LED WORKFLOW
 
-COLUMN 1, USER EXPERIENCE
+I prefer this over "Simple Analyst Workflow" because "simple" doesn't add much for senior management, while analyst-led reinforces that AI is supporting the analyst rather than operating without oversight.
 
-Heading: 1. SIMPLE ANALYST WORKFLOW
+Directly underneath, use a short lead-in:
 
-Icon: Person + laptop
+> ENABLE analysts to decode complex workbooks through a consistent, guided workflow.
 
-UPLOAD WORKBOOK
-Analyst provides the Excel workbook as the primary source.
+
+
+Then I would structure Column 1 as a vertical four-stage flow, not four traditional text boxes.
+
+① INGEST WORKBOOK
+
+Icon: Excel/file upload PNG
+
+> Analyst provides the workbook as the primary source for analysis.
+
+
 
 ↓
 
-SELECT PASS
-Choose the required output based on the objective.
+② SELECT PURPOSE
+
+Icon: Cursor/checklist PNG
+
+> Select Pass 1, Pass 2 or Pass 3 based on the required objective.
+
+
 
 ↓
 
-GENERATE HTML VIEW
-Agent produces a standardized, interactive dashboard.
+③ GENERATE HTML VIEW
+
+Icon: Browser/dashboard PNG
+
+> Agent analyzes the workbook and generates the selected interactive HTML output.
+
+
 
 ↓
 
-REVIEW & REFINE
-Analyst validates findings and provides additional context where required.
+④ REVIEW & REFINE
 
-Small statement at bottom:
+Icon: Person + checkmark/magnifying glass PNG
 
-> One workbook input, multiple purpose-built outputs.
-
-
-
-This reinforces that the process is actually usable.
-
-
----
-
-COLUMN 2, INTELLIGENCE & GOVERNANCE
-
-Heading: 2. AI WITH HUMAN VALIDATION
-
-This is important for senior management because they'll immediately wonder, "How much are we trusting AI?"
-
-Use four small blocks:
-
-EVIDENCE-BASED ANALYSIS
-Workbook structure, formulas, relationships and available metadata drive findings.
-
-CONFIDENCE & LIMITATIONS
-Verified, inferred and unavailable information are explicitly distinguished.
-
-ANALYST VALIDATION
-Business context and assumptions can be reviewed before outputs are relied upon.
-
-STANDARDIZED OUTPUT
-Every workbook follows the same HTML structure and classification methodology.
-
-Icon: AI/brain + shield/check.
-
-This makes the agent sound controlled rather than simply "AI reads Excel."
-
-
----
-
-COLUMN 3, CONTINUOUS IMPROVEMENT
-
-Heading: 3. FROM DECODE TO TRANSFORMATION
-
-This is where I'd show the longer-term cycle.
-
-Create a circular or vertical process:
-
-Decode Workbook
-↓
-Surface Process Intelligence
-↓
-Identify Risks & Dependencies
-↓
-Identify Optimization Opportunities
-↓
-Create IT Requirements
-↓
-Feed Learnings Forward
-
-And put a circular arrow back to the beginning.
-
-Underneath:
-
-> Each workbook becomes both an analysis output and an opportunity to identify reusable patterns across Product Control.
+> Analyst reviews findings, validates assumptions and adds business context where required.
 
 
 
-That is the strategic piece I think senior management will care about.
+Then at the bottom of Column 1, I'd add a small highlighted outcome:
 
-
----
-
-COLUMN 4, WHAT THIS ENABLES
-
-Make this narrower, similar to the Strategic Value section on Slide 1.
-
-ENTERPRISE POTENTIAL
-
-Use four boxes:
-
-STANDARDIZATION
-Consistent analysis across heterogeneous workbooks.
-
-KNOWLEDGE RETENTION
-Embedded process knowledge becomes visible and reusable.
-
-CONTROL INSIGHT
-Common risks, dependencies and manual controls can be surfaced.
-
-AUTOMATION PIPELINE
-Optimization opportunities can be translated into structured IT requirements.
-
-
----
-
-Add one strong strip across the bottom
-
-Instead of four separate blue strips like Slide 1, I'd have one dark blue bar spanning Slide 2:
-
-> FROM INDIVIDUAL WORKBOOK KNOWLEDGE → STANDARDIZED PROCESS INTELLIGENCE → ACTIONABLE TRANSFORMATION OPPORTUNITIES
+> ONE WORKBOOK → THREE PURPOSE-BUILT VIEWS
 
 
 
-That gives management the takeaway.
+One change I'd make from my previous suggestion
 
-Where the demo fits
+Don't call step 2 "Select Pass". Use "Select Purpose."
 
-I'd actually put a small box in the top-right corner of Slide 2:
+That's much better for management because the technology shouldn't require someone to understand what "Pass 2" means first. Conceptually, the user is saying:
 
-LIVE CAPABILITY DEMONSTRATION
-Workbook upload → Pass selection → HTML generation → Insights
+"I need to run this workbook"
+"I need to understand this workbook"
+"I need to prepare this for IT"
 
-You can insert a thumbnail from the recorded demo with a play icon if your PowerPoint setup allows you to embed the video.
+The agent maps that objective to the appropriate pass.
 
-Then your presentation becomes really clean:
+That also helps make the agent sound more intuitive and mature.
 
-Slide 1: "Here is the capability and the three passes."
+Visually, I would make Column 1 around 25 to 30% of Slide 2, leaving the majority of the slide for the more important story around human validation, governance, scaling and transformation.
 
-Demo: "Rather than just describing it, I'll quickly show you what happens when we give the agent a workbook."
+Once you build this first section, send me a picture and we can refine it before touching Column 2.
 
-Run a 60 to 90 second demo.
 
-Slide 2: "What you've just seen is designed as a repeatable operating model, with analyst validation, standardized outputs, and a path from workbook knowledge to transformation."
 
-That is much stronger than spending Slide 2 showing more screenshots. It moves the conversation from "cool AI tool" to "potential scalable Product Control capability."
+
+
+
+
+
+
+
+
+
 
 
 
