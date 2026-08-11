@@ -1,94 +1,171 @@
-I agree, Slide 2 does not need to copy Slide 1's four-column structure or use the top ribbon. Slide 1 explains the agent, so Slide 2 can feel more like an executive operating-model slide.
+Yes, and I actually think 3 columns is better for Slide 2. Slide 1 is already very dense. Giving Slide 2 more breathing room will make it feel intentional rather than like another version of Slide 1.
 
-For the main slide title, I'd use:
+I would keep your existing Analyst-Led Workflow as Column 1, then combine the other ideas into two stronger columns.
+
+COLUMN 1, ANALYST-LED WORKFLOW
+
+Keep exactly what you've built.
+
+Header
+
+ANALYST-LED WORKFLOW
+
+Description
+
+ENABLE analysts to decode complex workbooks through a guided workflow.
+
+1. INGEST WORKBOOK
+
+Icon: Excel workbook
+Analyst provides the workbook as the primary source for analysis.
+
+2. SELECT PURPOSE
+
+Icon: Cursor
+Selects the appropriate pass based on the required analysis objective.
+
+3. GENERATE HTML VIEW
+
+Icon: Dashboard/monitor
+Agent decodes the workbook and generates the selected interactive HTML dashboard.
+
+4. REVIEW & REFINE
+
+Icon: Document + check
+Analyst reviews findings, validates assumptions and adds business context where required.
+
+Bottom bar
+
+ONE WORKBOOK | THREE PURPOSE-BUILT VIEWS
+
+
+---
+
+COLUMN 2, VALIDATED PROCESS INTELLIGENCE
+
+This combines governance and continuous intelligence. I think this is stronger than separating them.
+
+Header
+
+VALIDATED PROCESS INTELLIGENCE
+
+Description
+
+VALIDATE AI-generated analysis while surfacing the dependencies, controls and opportunities embedded within the workbook.
+
+1. GROUND IN EVIDENCE
+
+Icon: Magnifying glass + document
+
+> Grounds findings in workbook structure, formulas, data relationships and available evidence.
+
+
+
+2. DISTINGUISH CONFIDENCE
+
+Icon: Gauge or confidence meter
+
+> Separates verified, inferred and unavailable information to make uncertainty transparent.
+
+
+
+3. APPLY ANALYST JUDGEMENT
+
+Icon: Person + checkmark
+
+> Incorporates analyst validation and business context before findings are relied upon.
+
+
+
+4. SURFACE PROCESS INSIGHTS
+
+Icon: Brain/network or magnifying glass + gear
+
+> Identifies dependencies, controls, risks and optimization opportunities across the process.
+
+
+
+Bottom bar
+
+EVIDENCE + AI ANALYSIS + HUMAN JUDGEMENT
+
+This is probably the most important column on Slide 2, so making it wider gives you room to explain the control model.
+
+
+---
+
+COLUMN 3, SCALE & TRANSFORM
+
+This becomes the forward-looking management column.
+
+Header
+
+SCALE & TRANSFORM
+
+Description
+
+SCALE workbook intelligence through a repeatable framework that converts individual analysis into broader transformation opportunities.
+
+1. STANDARDIZE KNOWLEDGE
+
+Icon: Stacked documents/books
+
+> Converts fragmented workbook knowledge into consistent, reusable process intelligence.
+
+
+
+2. IDENTIFY COMMON PATTERNS
+
+Icon: Connected nodes
+
+> Surfaces recurring dependencies, controls, manual activities and optimization opportunities.
+
+
+
+3. CREATE ACTIONABLE REQUIREMENTS
+
+Icon: Clipboard + gear
+
+> Translates findings into structured business and technical requirements for implementation.
+
+
+
+4. BUILD TRANSFORMATION PIPELINE
+
+Icon: Roadmap + gear or funnel + gear
+
+> Creates a pipeline of opportunities that can support prioritization and future technology transformation.
+
+
+
+Bottom bar
+
+FROM INDIVIDUAL WORKBOOKS → SCALABLE PROCESS INTELLIGENCE
+
+
+---
+
+The slide becomes much easier to present
+
+You now have a very simple executive storyline across the three columns:
+
+USE → VALIDATE & UNDERSTAND → SCALE & TRANSFORM
+
+You could literally present the entire slide around those three ideas:
+
+> "The operating model is designed around three principles. First, making the capability easy for analysts to use. Second, ensuring the intelligence generated is evidence-based and analyst validated. And third, using a repeatable methodology so the insights generated from individual workbooks can ultimately support broader standardization and transformation."
+
+
+
+That's cleaner than four columns, and it also gives you more room for the icons and descriptions, which are currently getting fairly small on screen.
+
+For the slide title, I'd keep:
 
 Excel Decoder AI Agent, Operating Model & Scalability
 
-Subtitle:
+And subtitle:
 
-> A repeatable framework that converts workbook knowledge into validated, standardized and actionable process intelligence.
-
-
-
-That immediately signals that Slide 2 is about how the capability works in practice and how it could scale.
-
-Column 1
-
-For the first section header, I would use:
-
-1. ANALYST-LED WORKFLOW
-
-I prefer this over "Simple Analyst Workflow" because "simple" doesn't add much for senior management, while analyst-led reinforces that AI is supporting the analyst rather than operating without oversight.
-
-Directly underneath, use a short lead-in:
-
-> ENABLE analysts to decode complex workbooks through a consistent, guided workflow.
-
-
-
-Then I would structure Column 1 as a vertical four-stage flow, not four traditional text boxes.
-
-① INGEST WORKBOOK
-
-Icon: Excel/file upload PNG
-
-> Analyst provides the workbook as the primary source for analysis.
-
-
-
-↓
-
-② SELECT PURPOSE
-
-Icon: Cursor/checklist PNG
-
-> Select Pass 1, Pass 2 or Pass 3 based on the required objective.
-
-
-
-↓
-
-③ GENERATE HTML VIEW
-
-Icon: Browser/dashboard PNG
-
-> Agent analyzes the workbook and generates the selected interactive HTML output.
-
-
-
-↓
-
-④ REVIEW & REFINE
-
-Icon: Person + checkmark/magnifying glass PNG
-
-> Analyst reviews findings, validates assumptions and adds business context where required.
-
-
-
-Then at the bottom of Column 1, I'd add a small highlighted outcome:
-
-> ONE WORKBOOK → THREE PURPOSE-BUILT VIEWS
-
-
-
-One change I'd make from my previous suggestion
-
-Don't call step 2 "Select Pass". Use "Select Purpose."
-
-That's much better for management because the technology shouldn't require someone to understand what "Pass 2" means first. Conceptually, the user is saying:
-
-"I need to run this workbook"
-"I need to understand this workbook"
-"I need to prepare this for IT"
-
-The agent maps that objective to the appropriate pass.
-
-That also helps make the agent sound more intuitive and mature.
-
-Visually, I would make Column 1 around 25 to 30% of Slide 2, leaving the majority of the slide for the more important story around human validation, governance, scaling and transformation.
-
-Once you build this first section, send me a picture and we can refine it before touching Column 2.
+A repeatable, analyst-led framework that converts complex workbooks into validated process intelligence and actionable transformation opportunities.
 
 
 
