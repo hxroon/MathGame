@@ -1,171 +1,17 @@
-Yes, and I actually think 3 columns is better for Slide 2. Slide 1 is already very dense. Giving Slide 2 more breathing room will make it feel intentional rather than like another version of Slide 1.
+Subject: Excel Decoder AI Agent Slides, Draft for Feedback
 
-I would keep your existing Analyst-Led Workflow as Column 1, then combine the other ideas into two stronger columns.
+Hi Shonda,
 
-COLUMN 1, ANALYST-LED WORKFLOW
+I’ve attached the current draft of the two Excel Decoder AI Agent slides for your review.
 
-Keep exactly what you've built.
+For Slide 1, I focused on showing the three distinct passes of the agent and what each is designed to accomplish, followed by the overall strategic value. My goal was to show the progression from helping an analyst operate a workbook, to decoding the underlying process intelligence, and ultimately translating that into IT-ready requirements.
 
-Header
+For Slide 2, I wanted to avoid repeating the capabilities already covered on Slide 1. Instead, I focused on the analyst-led workflow and how someone would actually interact with the agent. I’ve left the larger section for a recorded demo showing the end-to-end experience, from uploading the workbook and selecting a pass through to generating the HTML output.
 
-ANALYST-LED WORKFLOW
+This is still a draft, so I’d appreciate any feedback on the structure, level of detail, or anything you think should be added or removed before I finalize it.
 
-Description
-
-ENABLE analysts to decode complex workbooks through a guided workflow.
-
-1. INGEST WORKBOOK
-
-Icon: Excel workbook
-Analyst provides the workbook as the primary source for analysis.
-
-2. SELECT PURPOSE
-
-Icon: Cursor
-Selects the appropriate pass based on the required analysis objective.
-
-3. GENERATE HTML VIEW
-
-Icon: Dashboard/monitor
-Agent decodes the workbook and generates the selected interactive HTML dashboard.
-
-4. REVIEW & REFINE
-
-Icon: Document + check
-Analyst reviews findings, validates assumptions and adds business context where required.
-
-Bottom bar
-
-ONE WORKBOOK | THREE PURPOSE-BUILT VIEWS
-
-
----
-
-COLUMN 2, VALIDATED PROCESS INTELLIGENCE
-
-This combines governance and continuous intelligence. I think this is stronger than separating them.
-
-Header
-
-VALIDATED PROCESS INTELLIGENCE
-
-Description
-
-VALIDATE AI-generated analysis while surfacing the dependencies, controls and opportunities embedded within the workbook.
-
-1. GROUND IN EVIDENCE
-
-Icon: Magnifying glass + document
-
-> Grounds findings in workbook structure, formulas, data relationships and available evidence.
-
-
-
-2. DISTINGUISH CONFIDENCE
-
-Icon: Gauge or confidence meter
-
-> Separates verified, inferred and unavailable information to make uncertainty transparent.
-
-
-
-3. APPLY ANALYST JUDGEMENT
-
-Icon: Person + checkmark
-
-> Incorporates analyst validation and business context before findings are relied upon.
-
-
-
-4. SURFACE PROCESS INSIGHTS
-
-Icon: Brain/network or magnifying glass + gear
-
-> Identifies dependencies, controls, risks and optimization opportunities across the process.
-
-
-
-Bottom bar
-
-EVIDENCE + AI ANALYSIS + HUMAN JUDGEMENT
-
-This is probably the most important column on Slide 2, so making it wider gives you room to explain the control model.
-
-
----
-
-COLUMN 3, SCALE & TRANSFORM
-
-This becomes the forward-looking management column.
-
-Header
-
-SCALE & TRANSFORM
-
-Description
-
-SCALE workbook intelligence through a repeatable framework that converts individual analysis into broader transformation opportunities.
-
-1. STANDARDIZE KNOWLEDGE
-
-Icon: Stacked documents/books
-
-> Converts fragmented workbook knowledge into consistent, reusable process intelligence.
-
-
-
-2. IDENTIFY COMMON PATTERNS
-
-Icon: Connected nodes
-
-> Surfaces recurring dependencies, controls, manual activities and optimization opportunities.
-
-
-
-3. CREATE ACTIONABLE REQUIREMENTS
-
-Icon: Clipboard + gear
-
-> Translates findings into structured business and technical requirements for implementation.
-
-
-
-4. BUILD TRANSFORMATION PIPELINE
-
-Icon: Roadmap + gear or funnel + gear
-
-> Creates a pipeline of opportunities that can support prioritization and future technology transformation.
-
-
-
-Bottom bar
-
-FROM INDIVIDUAL WORKBOOKS → SCALABLE PROCESS INTELLIGENCE
-
-
----
-
-The slide becomes much easier to present
-
-You now have a very simple executive storyline across the three columns:
-
-USE → VALIDATE & UNDERSTAND → SCALE & TRANSFORM
-
-You could literally present the entire slide around those three ideas:
-
-> "The operating model is designed around three principles. First, making the capability easy for analysts to use. Second, ensuring the intelligence generated is evidence-based and analyst validated. And third, using a repeatable methodology so the insights generated from individual workbooks can ultimately support broader standardization and transformation."
-
-
-
-That's cleaner than four columns, and it also gives you more room for the icons and descriptions, which are currently getting fairly small on screen.
-
-For the slide title, I'd keep:
-
-Excel Decoder AI Agent, Operating Model & Scalability
-
-And subtitle:
-
-A repeatable, analyst-led framework that converts complex workbooks into validated process intelligence and actionable transformation opportunities.
+Thanks,
+Anav
 
 
 
