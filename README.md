@@ -1,50 +1,184 @@
-If you can fit 4 maximum, I would actually keep it to exactly 4 Strategic Value boxes. Five would make that last column noticeably denser than the three passes.
+Yes. If you're allowed to use a recorded demo, I would change the purpose of Slide 2 completely.
 
-I would use these four:
+You do not need Slide 2 to show screenshots of the HTML dashboards. The demo can prove the agent works. Slide 2 should explain the operating model and why this can scale.
 
-1. REDUCE KEY-PERSON DEPENDENCY
+Slide 2: From Workbook to Actionable Intelligence
 
-Icon: People + knowledge/document
+I would make Slide 2 answer:
 
-Captures embedded workbook knowledge so processes are less dependent on individual expertise.
-
-2. ACCELERATE ONBOARDING & CONTINUITY
-
-Icon: Person + upward arrow or graduation cap
-
-Provides structured guidance to help analysts understand and operate unfamiliar workbooks faster.
-
-3. STRENGTHEN CONTROL TRANSPARENCY
-
-Icon: Shield + magnifying glass
-
-Makes controls, reconciliations, dependencies and exceptions visible and easier to assess.
-
-4. ENABLE AUTOMATION & MODERNIZATION
-
-Icon: Gear + lightning bolt or automation/robotic process
-
-Converts workbook intelligence into actionable optimization opportunities and IT-ready requirements.
-
-I would drop "Standardize Workbook Knowledge" as its own box, because standardization is already an outcome running through Passes 1 to 3.
-
-For the fourth-column header, I'd use:
-
-> STRATEGIC VALUE
+> How does this move from a single workbook analysis into a repeatable Product Control capability?
 
 
 
-And directly underneath:
+That complements Slide 1 very well:
 
-> TRANSFORM complex workbook knowledge into standardized, transparent and automation-ready process intelligence.
+Slide 1 = What the agent does
+Demo = What the agent looks like in action
+Slide 2 = How the capability is used, governed and scaled
+
+Recommended Slide 2 layout
+
+I'd use three large sections across the slide, with a fourth smaller section for management outcomes.
+
+COLUMN 1, USER EXPERIENCE
+
+Heading: 1. SIMPLE ANALYST WORKFLOW
+
+Icon: Person + laptop
+
+UPLOAD WORKBOOK
+Analyst provides the Excel workbook as the primary source.
+
+↓
+
+SELECT PASS
+Choose the required output based on the objective.
+
+↓
+
+GENERATE HTML VIEW
+Agent produces a standardized, interactive dashboard.
+
+↓
+
+REVIEW & REFINE
+Analyst validates findings and provides additional context where required.
+
+Small statement at bottom:
+
+> One workbook input, multiple purpose-built outputs.
 
 
 
-This also gives you a very clean story when presenting:
+This reinforces that the process is actually usable.
 
-Pass 1: Operate it correctly → Pass 2: Understand how it works → Pass 3: Make it implementation-ready → Strategic Value: Reduce dependency, accelerate onboarding, strengthen controls and enable automation.
 
-That is probably the strongest executive narrative for Slide 1.
+---
+
+COLUMN 2, INTELLIGENCE & GOVERNANCE
+
+Heading: 2. AI WITH HUMAN VALIDATION
+
+This is important for senior management because they'll immediately wonder, "How much are we trusting AI?"
+
+Use four small blocks:
+
+EVIDENCE-BASED ANALYSIS
+Workbook structure, formulas, relationships and available metadata drive findings.
+
+CONFIDENCE & LIMITATIONS
+Verified, inferred and unavailable information are explicitly distinguished.
+
+ANALYST VALIDATION
+Business context and assumptions can be reviewed before outputs are relied upon.
+
+STANDARDIZED OUTPUT
+Every workbook follows the same HTML structure and classification methodology.
+
+Icon: AI/brain + shield/check.
+
+This makes the agent sound controlled rather than simply "AI reads Excel."
+
+
+---
+
+COLUMN 3, CONTINUOUS IMPROVEMENT
+
+Heading: 3. FROM DECODE TO TRANSFORMATION
+
+This is where I'd show the longer-term cycle.
+
+Create a circular or vertical process:
+
+Decode Workbook
+↓
+Surface Process Intelligence
+↓
+Identify Risks & Dependencies
+↓
+Identify Optimization Opportunities
+↓
+Create IT Requirements
+↓
+Feed Learnings Forward
+
+And put a circular arrow back to the beginning.
+
+Underneath:
+
+> Each workbook becomes both an analysis output and an opportunity to identify reusable patterns across Product Control.
+
+
+
+That is the strategic piece I think senior management will care about.
+
+
+---
+
+COLUMN 4, WHAT THIS ENABLES
+
+Make this narrower, similar to the Strategic Value section on Slide 1.
+
+ENTERPRISE POTENTIAL
+
+Use four boxes:
+
+STANDARDIZATION
+Consistent analysis across heterogeneous workbooks.
+
+KNOWLEDGE RETENTION
+Embedded process knowledge becomes visible and reusable.
+
+CONTROL INSIGHT
+Common risks, dependencies and manual controls can be surfaced.
+
+AUTOMATION PIPELINE
+Optimization opportunities can be translated into structured IT requirements.
+
+
+---
+
+Add one strong strip across the bottom
+
+Instead of four separate blue strips like Slide 1, I'd have one dark blue bar spanning Slide 2:
+
+> FROM INDIVIDUAL WORKBOOK KNOWLEDGE → STANDARDIZED PROCESS INTELLIGENCE → ACTIONABLE TRANSFORMATION OPPORTUNITIES
+
+
+
+That gives management the takeaway.
+
+Where the demo fits
+
+I'd actually put a small box in the top-right corner of Slide 2:
+
+LIVE CAPABILITY DEMONSTRATION
+Workbook upload → Pass selection → HTML generation → Insights
+
+You can insert a thumbnail from the recorded demo with a play icon if your PowerPoint setup allows you to embed the video.
+
+Then your presentation becomes really clean:
+
+Slide 1: "Here is the capability and the three passes."
+
+Demo: "Rather than just describing it, I'll quickly show you what happens when we give the agent a workbook."
+
+Run a 60 to 90 second demo.
+
+Slide 2: "What you've just seen is designed as a repeatable operating model, with analyst validation, standardized outputs, and a path from workbook knowledge to transformation."
+
+That is much stronger than spending Slide 2 showing more screenshots. It moves the conversation from "cool AI tool" to "potential scalable Product Control capability."
+
+
+
+
+
+
+
+
+
+
+
 
 
 
