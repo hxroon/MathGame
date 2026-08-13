@@ -1,41 +1,265 @@
-Subject: Excel Decoder AI Agent Slides, Draft for Feedback
+Yes, test the Python in VS Code first. That is the cleanest way to prove the logic works before you try to integrate it into the agent.
+
+The most important thing is to confirm whether your RBC Assist Pro agent can actually execute Python. Simply pasting Python into the agent instructions does not guarantee it will run. In systems that support code execution, Python can reliably analyze uploaded spreadsheets, but availability depends on the workspace and enabled tools.  
+
+I would do this in three stages.
+
+First, build and test a small Python script in VS Code against one of the same spread decomp files. The script should focus only on improving the AI Commentary inputs, not rebuilding the Executive Summary or HTML.
+
+Second, once the script is producing good structured output, check RBC Assist Pro’s Add Tools area for anything like Python, Code Interpreter, Data Analysis, Notebook, or code execution. If nothing like that exists, then we know the integration will need a different approach, such as an approved custom tool or connector.
+
+Third, update the agent instructions so the AI Commentary uses the Python-calculated facts instead of doing all the ranking itself.
+
+Here is the first Python prototype I would test:
+
+import pandas as pd
+import numpy as np
+from pathlib import Path
+# =========================
+# CONFIGURATION
+# =========================
+FILE_PATH = Path("spread_decomp.xlsx")
+DECOMP_SHEET = "Spread Decomp"
+COMMENTARY_SHEET = "Spread Commentary"
+DRIVER_COLUMNS = [
+    "NTA",
+    "MTM",
+    "Origination Fees",
+    "Carry/Theta",
+    "Other"
+]
+# Change these names if the workbook headers differ
+BUSINESS_COL = "Business Line"
+ACTUAL_COL = "Actual P&L"
+COMMENT_COL = "Decomp Commentary"
+# =========================
+# LOAD WORKBOOK
+# =========================
+decomp = pd.read_excel(FILE_PATH, sheet_name=DECOMP_SHEET)
+commentary = pd.read_excel(FILE_PATH, sheet_name=COMMENTARY_SHEET)
+decomp.columns = decomp.columns.astype(str).str.strip()
+commentary.columns = commentary.columns.astype(str).str.strip()
+# =========================
+# BASIC CLEANING
+# =========================
+def clean_business_name(value):
+    if pd.isna(value):
+        return None
+    return str(value).strip()
+decomp[BUSINESS_COL] = decomp[BUSINESS_COL].apply(clean_business_name)
+commentary[BUSINESS_COL] = commentary[BUSINESS_COL].apply(clean_business_name)
+decomp = decomp[decomp[BUSINESS_COL].notna()].copy()
+commentary = commentary[commentary[BUSINESS_COL].notna()].copy()
+# Remove obvious metadata rows
+metadata_values = {
+    "Daily",
+    "Report Check",
+    "Variance Code",
+    "Variance Codes"
+}
+decomp = decomp[~decomp[BUSINESS_COL].isin(metadata_values)]
+commentary = commentary[~commentary[BUSINESS_COL].isin(metadata_values)]
+# =========================
+# NUMERIC NORMALIZATION
+# =========================
+for col in DRIVER_COLUMNS:
+    if col in decomp.columns:
+        decomp[col] = pd.to_numeric(decomp[col], errors="coerce").fillna(0)
+commentary[ACTUAL_COL] = pd.to_numeric(
+    commentary[ACTUAL_COL],
+    errors="coerce"
+)
+# =========================
+# COMBINE DECOMP + COMMENTARY
+# =========================
+merged = commentary.merge(
+    decomp[[BUSINESS_COL] + [c for c in DRIVER_COLUMNS if c in decomp.columns]],
+    on=BUSINESS_COL,
+    how="left"
+)
+# =========================
+# DRIVER ANALYSIS
+# =========================
+def analyze_drivers(row):
+    drivers = {}
+    for col in DRIVER_COLUMNS:
+        if col in row.index:
+            value = row[col]
+            if pd.notna(value) and value != 0:
+                drivers[col] = float(value)
+    ranked = sorted(
+        drivers.items(),
+        key=lambda x: abs(x[1]),
+        reverse=True
+    )
+    top_driver = ranked[0] if ranked else (None, 0)
+    second_driver = ranked[1] if len(ranked) > 1 else (None, 0)
+    return pd.Series({
+        "Top Driver": top_driver[0],
+        "Top Driver Amount": top_driver[1],
+        "Secondary Driver": second_driver[0],
+        "Secondary Driver Amount": second_driver[1]
+    })
+driver_analysis = merged.apply(analyze_drivers, axis=1)
+merged = pd.concat([merged, driver_analysis], axis=1)
+# =========================
+# BUSINESS RANKING
+# =========================
+merged["Actual Abs"] = merged[ACTUAL_COL].abs()
+merged["Business Rank"] = (
+    merged["Actual Abs"]
+    .rank(method="dense", ascending=False)
+)
+merged["Direction"] = np.select(
+    [
+        merged[ACTUAL_COL] > 0,
+        merged[ACTUAL_COL] < 0
+    ],
+    [
+        "Positive",
+        "Negative"
+    ],
+    default="Flat"
+)
+# =========================
+# COMMENTARY INPUT FACTS
+# =========================
+def create_ai_fact_record(row):
+    return {
+        "business": row[BUSINESS_COL],
+        "actual": row[ACTUAL_COL],
+        "direction": row["Direction"],
+        "top_driver": row["Top Driver"],
+        "top_driver_amount": row["Top Driver Amount"],
+        "secondary_driver": row["Secondary Driver"],
+        "secondary_driver_amount": row["Secondary Driver Amount"],
+        "analyst_comment": row.get(COMMENT_COL, ""),
+        "business_rank": row["Business Rank"]
+    }
+ai_facts = merged.apply(
+    create_ai_fact_record,
+    axis=1
+).tolist()
+# =========================
+# OUTPUT FOR TESTING
+# =========================
+output_cols = [
+    BUSINESS_COL,
+    ACTUAL_COL,
+    "Direction",
+    "Top Driver",
+    "Top Driver Amount",
+    "Secondary Driver",
+    "Secondary Driver Amount",
+    "Business Rank",
+    COMMENT_COL
+]
+output_cols = [
+    col for col in output_cols
+    if col in merged.columns
+]
+merged[output_cols].to_excel(
+    "python_driver_analysis.xlsx",
+    index=False
+)
+print("Analysis complete.")
+print("Created: python_driver_analysis.xlsx")
+
+This is intentionally a prototype, not the final code.
+
+What I want you to check after running it is whether the generated python_driver_analysis.xlsx correctly identifies, for each business:
+
+* actual P&L
+* whether it is positive or negative
+* largest decomp driver
+* second-largest driver
+* relative business ranking
+* original analyst commentary
 
-Hi Shonda,
+If that works, the next version is where we add the really useful part, the parent-child hierarchy.
 
-I’ve attached the current draft of the two Excel Decoder AI Agent slides for your review.
+That version would create records such as:
 
-For Slide 1, I focused on showing the three distinct passes of the agent and what each is designed to accomplish, followed by the overall strategic value. My goal was to show the progression from helping an analyst operate a workbook, to decoding the underlying process intelligence, and ultimately translating that into IT-ready requirements.
+Parent: Investment Grade Total
+Largest positive child: IG EUR
+Largest negative child: IG CDA
+Top parent driver: MTM
+Driver source: IG EUR
+Primary offset: IG CDA
+Named client: HYUNDAI CAPITAL
 
-For Slide 2, I wanted to avoid repeating the capabilities already covered on Slide 1. Instead, I focused on the analyst-led workflow and how someone would actually interact with the agent. I’ve left the larger section for a recorded demo showing the end-to-end experience, from uploading the workbook and selecting a pass through to generating the HTML output.
+Then I would add a new instruction block to your existing agent, immediately before ## AI AGENT COMMENTARY COLUMN (CRITICAL):
 
-This is still a draft, so I’d appreciate any feedback on the structure, level of detail, or anything you think should be added or removed before I finalize it.
+PYTHON-ENRICHED BUSINESS DRIVER ANALYSIS
 
-Thanks,
-Anav
+Before generating the AI Agent Commentary column, use the structured Python analysis output as the factual source for business-driver relationships.
 
+The purpose of the Python analysis is to determine WHICH businesses are driving each result, not merely which decomp categories are present.
 
+For every parent and child business, use the Python-generated fields where available:
 
+* Actual P&L
+* Positive / negative direction
+* Business contribution ranking
+* Top driver
+* Top driver amount
+* Secondary driver
+* Secondary driver amount
+* Top positive child
+* Top negative child
+* Driver source business
+* Primary offset business
+* Named clients / deals
+* Parent-child reconciliation status
 
+COMMENTARY PRIORITY
 
+AI Agent Commentary must answer, in order:
 
+1. Which business or businesses drove the result?
+2. How much did each material business contribute?
+3. What decomp driver caused each material business movement?
+4. What businesses or drivers offset the primary movement?
+5. Were there named client or deal drivers worth highlighting?
 
+Do not produce commentary that only restates NTA, MTM, Carry/Theta, Origination Fees or other decomp categories without linking them to the business responsible.
 
+PARENT ROWS
 
+Parent commentary must prioritize child-business attribution.
 
+Preferred structure:
 
+“[Parent] was primarily driven by [Top Child] at [amount], mainly from [driver]. This was [supported / partially offset] by [Secondary Child] at [amount], driven by [driver]. [Named client or deal insight if available].”
 
+If several children materially contribute, identify the largest positive and largest negative child.
 
+CHILD ROWS
 
+Child commentary must identify:
 
+* the actual result,
+* the dominant driver,
+* the secondary driver or offset,
+* named client / deal information where available.
 
+Preferred structure:
 
+“[Business] recorded [Actual], primarily driven by [Top Driver] of [amount]. [Secondary Driver] contributed / offset [amount]. [Client or deal detail if available].”
 
+SOURCE OF TRUTH
 
+Do not recalculate rankings or driver amounts when Python-generated analysis is available.
 
+Use Python-generated rankings, aggregations and driver attribution as the numerical source of truth.
 
+The language model’s role is to synthesize and explain the verified facts, not to independently reproduce the calculations.
 
+Do not replace your manager’s existing prompt with this. Add it as an enhancement to the commentary section.
 
+One important note, because you asked specifically about where to test: use a copy or sanitized version of the workbook in VS Code if required by your organization’s data policies. Don’t move sensitive internal workbooks outside approved environments just to test the script.
 
+Once you test this first script and tell me what the actual column names in Spread Decomp and Spread Commentary are, I can write the Version 2 Python script with the parent-child logic, which is the part that will really improve your manager’s AI commentary.
 
 
 
@@ -44,292 +268,28 @@ Anav
 
 
 
-Here is the final Slide 1 structure I would use. I would commit to this version and build it closely to the style of your manager's SOP Agent slide.
 
-Slide 1: Global Product Control, Excel Decoder AI Agent
 
-Subtitle
 
-One workbook, three purpose-built views, from analyst execution to process intelligence and technology transformation.
 
-The slide tells one story:
 
-> OPERATE → UNDERSTAND → TRANSFORM
 
 
 
 
----
 
-TOP RIBBON
 
-Copy the oval and arrow concept from the existing slide.
 
-WORKBOOK INGESTED → AI WORKBOOK DECODE → PASS SELECTED → HTML GENERATED → INSIGHT & ACTION → REPEAT
 
-Keep this fairly thin. It is there to establish the workflow, not explain it.
 
 
----
 
-MAIN BODY
 
-Use four vertical sections.
 
-Make Pass 2 slightly wider because it is the core analytical capability.
 
-Approximate widths:
 
-Pass 1: 24% | Pass 2: 30% | Pass 3: 24% | Strategic Value: 22%
 
 
----
-
-1. PASS 1, OPERATE
-
-Workbook Execution Guide
-
-Opening statement:
-
-TRANSLATE workbook mechanics into practical instructions that allow an analyst to operate the process correctly.
-
-Then use four compact sections.
-
-PRE-RUN REQUIREMENTS
-
-Source files, systems, access, dependencies and prerequisite activities.
-
-EXECUTION SEQUENCE
-
-Imports, refreshes, manual inputs, calculations and required ordering.
-
-VALIDATION & CONTROLS
-
-Reconciliations, control totals, reasonability checks and exception identification.
-
-OUTPUT & COMPLETION
-
-Final outputs, distribution, storage, completion criteria and escalation points.
-
-Then have a highlighted question box:
-
-HOW DO I RUN THIS WORKBOOK?
-
-At the very bottom of the column:
-
-INTERACTIVE HTML EXECUTION GUIDE
-
-Small subtext:
-
-Operational, step-by-step, analyst focused
-
-
----
-
-2. PASS 2, UNDERSTAND
-
-Comprehensive Workbook Intelligence
-
-Opening statement:
-
-DECODE the complete business, process, data and calculation architecture embedded within the workbook.
-
-This should visually be the strongest column.
-
-WORKBOOK ARCHITECTURE
-
-Sheet inventory, functional classification, inputs, transformations, calculations, controls and outputs.
-
-DATA LINEAGE & DEPENDENCIES
-
-Upstream sources, cross-sheet relationships, transformations and downstream outputs.
-
-Add a tiny flow visual here:
-
-INPUT → TRANSFORM → CALCULATE → CONTROL → OUTPUT
-
-FORMULA & LOGIC INTELLIGENCE
-
-Formula patterns, lookups, aggregations, hardcodes, calculations and cross-sheet logic.
-
-PROCESS & CONTROL MAPPING
-
-Operational sequence, manual touchpoints, reconciliations, controls and system interactions.
-
-AUTOMATION & OPTIMIZATION
-
-Formula improvements, inefficient logic, manual processes and automation opportunities.
-
-Then the question box:
-
-HOW DOES THIS WORKBOOK ACTUALLY WORK?
-
-Bottom:
-
-INTERACTIVE HTML INTELLIGENCE DASHBOARD
-
-Small subtext:
-
-Architecture • Data Flow • Process Flow • Dependencies • Relationships
-
-This is where you emphasize the diagrams without trying to show all of them on Slide 1.
-
-
----
-
-3. PASS 3, TRANSFORM
-
-Technology Handoff Package
-
-Opening statement:
-
-TRANSLATE workbook intelligence into structured requirements for technology assessment, automation or redevelopment.
-
-SOURCE-TO-TARGET
-
-Sources, fields, transformations, calculations and destination outputs.
-
-BUSINESS & CALCULATION RULES
-
-Formula logic, mappings, thresholds, decision rules and exceptions.
-
-SYSTEM DEPENDENCIES
-
-Upstream sources, interfaces, workbook dependencies and downstream consumers.
-
-CONTROL REQUIREMENTS
-
-Reconciliations, validation logic, tolerances, exceptions and audit requirements.
-
-IMPLEMENTATION CONSIDERATIONS
-
-Technical risks, unresolved requirements, automation candidates and SME validation points.
-
-Then:
-
-WHAT DOES TECHNOLOGY NEED?
-
-Bottom:
-
-INTERACTIVE HTML IT HANDOFF
-
-Small subtext:
-
-Structured, traceable, technology focused
-
-
----
-
-4. STRATEGIC VALUE
-
-Make this visually similar to the right side of your manager's current slide.
-
-At the top, put something like:
-
-FROM WORKBOOK KNOWLEDGE TO ENTERPRISE VALUE
-
-Then four stacked boxes.
-
-REDUCE KEY-PERSON RISK
-
-Capture knowledge currently embedded in spreadsheets and individual expertise.
-
-ACCELERATE KNOWLEDGE TRANSFER
-
-Help analysts understand and operate unfamiliar processes faster.
-
-IMPROVE PROCESS TRANSPARENCY
-
-Expose calculations, dependencies, controls and data movement.
-
-ENABLE TRANSFORMATION
-
-Create a structured bridge between Product Control and Technology.
-
-Then a prominent final green/navy box:
-
-STANDARDIZE PC WORKBOOK INTELLIGENCE
-
-Underneath:
-
-Repeatable • Evidence-Based • Scalable • Technology-Ready
-
-
----
-
-BOTTOM FOUNDATION BAR
-
-This is the one addition I would definitely make.
-
-Run a thin dark bar underneath Pass 1, Pass 2 and Pass 3:
-
-COMMON AI DECODER FOUNDATION
-
-Then across the bar:
-
-Workbook Evidence | Confidence Classification | Standardized HTML | Visual Mapping | Consistent Navigation | No Unsupported Assumptions
-
-This shows that although the three passes have different purposes, they all use the same controlled methodology.
-
-
----
-
-Overall visual
-
-Your finished slide should roughly look like this:
-
-GLOBAL PRODUCT CONTROL, EXCEL DECODER AI AGENT
-One workbook, three purpose-built views, from analyst execution
-to process intelligence and technology transformation.
-
- [WORKBOOK] → [AI DECODE] → [PASS SELECTED] → [HTML] → [INSIGHT] → ↻
-
-
-┌──────────────────┬──────────────────────┬──────────────────┬─────────────────┐
-│ 1. PASS 1        │ 2. PASS 2            │ 3. PASS 3        │ 4. STRATEGIC    │
-│    OPERATE       │    UNDERSTAND        │    TRANSFORM      │    VALUE        │
-├──────────────────┼──────────────────────┼──────────────────┼─────────────────┤
-│ Workbook         │ Comprehensive        │ Technology       │ REDUCE          │
-│ Execution Guide  │ Workbook             │ Handoff Package  │ KEY-PERSON RISK │
-│                  │ Intelligence         │                  │                 │
-│ Pre-Run          │                      │ Source-to-Target │ ACCELERATE      │
-│ Requirements     │ Architecture         │                  │ KNOWLEDGE       │
-│                  │                      │ Business Rules   │ TRANSFER        │
-│ Execution        │ Data Lineage         │                  │                 │
-│ Sequence         │ & Dependencies       │ Dependencies     │ IMPROVE         │
-│                  │                      │                  │ TRANSPARENCY    │
-│ Validation       │ INPUT → TRANSFORM    │ Controls         │                 │
-│ & Controls       │ → CALCULATE          │                  │ ENABLE          │
-│                  │ → CONTROL → OUTPUT   │ Implementation   │ TRANSFORMATION  │
-│ Output &         │                      │ Considerations   │                 │
-│ Completion       │ Formula Intelligence│                  │                 │
-│                  │                      │                  │                 │
-│ "HOW DO I        │ Process & Controls   │ "WHAT DOES       │ STANDARDIZE     │
-│  RUN THIS?"      │                      │  TECHNOLOGY      │ PC WORKBOOK     │
-│                  │ Automation &         │  NEED?"          │ INTELLIGENCE    │
-│                  │ Optimization         │                  │                 │
-│                  │                      │                  │                 │
-│                  │ "HOW DOES THIS       │                  │                 │
-│                  │  ACTUALLY WORK?"     │                  │                 │
-├──────────────────┼──────────────────────┼──────────────────┤                 │
-│ HTML EXECUTION   │ HTML INTELLIGENCE    │ HTML IT HANDOFF  │                 │
-│ GUIDE            │ DASHBOARD            │                  │                 │
-├──────────────────┴──────────────────────┴──────────────────┤                 │
-│ COMMON AI DECODER FOUNDATION                              │                 │
-│ Evidence | Confidence | HTML | Visuals | Consistency      │                 │
-└────────────────────────────────────────────────────────────┴─────────────────┘
-
-One important design decision
-
-I would not put screenshots of the HTML on Slide 1. Your manager's example works because every piece of space contributes to explaining the operating model. Screenshots would make this slide harder to read.
-
-Save the visual proof for Slide 2, where we can show what is actually inside the decoder, architecture diagrams, data dependency mapping, formula intelligence, controls, automation recommendations such as XLOOKUP vs VLOOKUP, confidence classifications, and the standardized HTML experience.
-
-That gives you a very clean two-slide story:
-
-Slide 1: How it works, OPERATE → UNDERSTAND → TRANSFORM
-
-Slide 2: What it actually delivers, INTELLIGENCE → VISUALIZATION → OPTIMIZATION → CONTROL → VALUE.
 
 
 
