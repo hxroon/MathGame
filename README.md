@@ -12,15 +12,20 @@ Third, update the agent instructions so the AI Commentary uses the Python-calcul
 
 Here is the first Python prototype I would test:
 
+
 import pandas as pd
 import numpy as np
 from pathlib import Path
+
 # =========================
 # CONFIGURATION
 # =========================
+
 FILE_PATH = Path("spread_decomp.xlsx")
+
 DECOMP_SHEET = "Spread Decomp"
 COMMENTARY_SHEET = "Spread Commentary"
+
 DRIVER_COLUMNS = [
     "NTA",
     "MTM",
@@ -28,28 +33,40 @@ DRIVER_COLUMNS = [
     "Carry/Theta",
     "Other"
 ]
+
 # Change these names if the workbook headers differ
 BUSINESS_COL = "Business Line"
 ACTUAL_COL = "Actual P&L"
 COMMENT_COL = "Decomp Commentary"
+
+
 # =========================
 # LOAD WORKBOOK
 # =========================
+
 decomp = pd.read_excel(FILE_PATH, sheet_name=DECOMP_SHEET)
 commentary = pd.read_excel(FILE_PATH, sheet_name=COMMENTARY_SHEET)
+
 decomp.columns = decomp.columns.astype(str).str.strip()
 commentary.columns = commentary.columns.astype(str).str.strip()
+
+
 # =========================
 # BASIC CLEANING
 # =========================
+
 def clean_business_name(value):
     if pd.isna(value):
         return None
     return str(value).strip()
+
+
 decomp[BUSINESS_COL] = decomp[BUSINESS_COL].apply(clean_business_name)
 commentary[BUSINESS_COL] = commentary[BUSINESS_COL].apply(clean_business_name)
+
 decomp = decomp[decomp[BUSINESS_COL].notna()].copy()
 commentary = commentary[commentary[BUSINESS_COL].notna()].copy()
+
 # Remove obvious metadata rows
 metadata_values = {
     "Daily",
@@ -57,59 +74,81 @@ metadata_values = {
     "Variance Code",
     "Variance Codes"
 }
+
 decomp = decomp[~decomp[BUSINESS_COL].isin(metadata_values)]
 commentary = commentary[~commentary[BUSINESS_COL].isin(metadata_values)]
+
+
 # =========================
 # NUMERIC NORMALIZATION
 # =========================
+
 for col in DRIVER_COLUMNS:
     if col in decomp.columns:
         decomp[col] = pd.to_numeric(decomp[col], errors="coerce").fillna(0)
+
 commentary[ACTUAL_COL] = pd.to_numeric(
     commentary[ACTUAL_COL],
     errors="coerce"
 )
+
+
 # =========================
 # COMBINE DECOMP + COMMENTARY
 # =========================
+
 merged = commentary.merge(
     decomp[[BUSINESS_COL] + [c for c in DRIVER_COLUMNS if c in decomp.columns]],
     on=BUSINESS_COL,
     how="left"
 )
+
+
 # =========================
 # DRIVER ANALYSIS
 # =========================
+
 def analyze_drivers(row):
     drivers = {}
+
     for col in DRIVER_COLUMNS:
         if col in row.index:
             value = row[col]
             if pd.notna(value) and value != 0:
                 drivers[col] = float(value)
+
     ranked = sorted(
         drivers.items(),
         key=lambda x: abs(x[1]),
         reverse=True
     )
+
     top_driver = ranked[0] if ranked else (None, 0)
     second_driver = ranked[1] if len(ranked) > 1 else (None, 0)
+
     return pd.Series({
         "Top Driver": top_driver[0],
         "Top Driver Amount": top_driver[1],
         "Secondary Driver": second_driver[0],
         "Secondary Driver Amount": second_driver[1]
     })
+
+
 driver_analysis = merged.apply(analyze_drivers, axis=1)
 merged = pd.concat([merged, driver_analysis], axis=1)
+
+
 # =========================
 # BUSINESS RANKING
 # =========================
+
 merged["Actual Abs"] = merged[ACTUAL_COL].abs()
+
 merged["Business Rank"] = (
     merged["Actual Abs"]
     .rank(method="dense", ascending=False)
 )
+
 merged["Direction"] = np.select(
     [
         merged[ACTUAL_COL] > 0,
@@ -121,9 +160,12 @@ merged["Direction"] = np.select(
     ],
     default="Flat"
 )
+
+
 # =========================
 # COMMENTARY INPUT FACTS
 # =========================
+
 def create_ai_fact_record(row):
     return {
         "business": row[BUSINESS_COL],
@@ -136,13 +178,18 @@ def create_ai_fact_record(row):
         "analyst_comment": row.get(COMMENT_COL, ""),
         "business_rank": row["Business Rank"]
     }
+
+
 ai_facts = merged.apply(
     create_ai_fact_record,
     axis=1
 ).tolist()
+
+
 # =========================
 # OUTPUT FOR TESTING
 # =========================
+
 output_cols = [
     BUSINESS_COL,
     ACTUAL_COL,
@@ -154,16 +201,24 @@ output_cols = [
     "Business Rank",
     COMMENT_COL
 ]
+
 output_cols = [
     col for col in output_cols
     if col in merged.columns
 ]
+
 merged[output_cols].to_excel(
     "python_driver_analysis.xlsx",
     index=False
 )
+
 print("Analysis complete.")
 print("Created: python_driver_analysis.xlsx")
+
+
+
+
+
 
 This is intentionally a prototype, not the final code.
 
