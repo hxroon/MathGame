@@ -3,7 +3,7 @@ Yes. We’ll do this in very small steps so you can see exactly what each piece 
 For now, our goal is only:
 
 Excel file → Python reads it → Python shows us the sheet names and columns
-
+n
 Once that works, we build the parent-child logic.
 
 Step 1, put the workbook in the same folder
