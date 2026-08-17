@@ -1,320 +1,123 @@
-Yes, test the Python in VS Code first. That is the cleanest way to prove the logic works before you try to integrate it into the agent.
+Yes. We’ll do this in very small steps so you can see exactly what each piece is doing.
 
-The most important thing is to confirm whether your RBC Assist Pro agent can actually execute Python. Simply pasting Python into the agent instructions does not guarantee it will run. In systems that support code execution, Python can reliably analyze uploaded spreadsheets, but availability depends on the workspace and enabled tools.  
+For now, our goal is only:
 
-I would do this in three stages.
+Excel file → Python reads it → Python shows us the sheet names and columns
 
-First, build and test a small Python script in VS Code against one of the same spread decomp files. The script should focus only on improving the AI Commentary inputs, not rebuilding the Executive Summary or HTML.
+Once that works, we build the parent-child logic.
 
-Second, once the script is producing good structured output, check RBC Assist Pro’s Add Tools area for anything like Python, Code Interpreter, Data Analysis, Notebook, or code execution. If nothing like that exists, then we know the integration will need a different approach, such as an approved custom tool or connector.
+Step 1, put the workbook in the same folder
 
-Third, update the agent instructions so the AI Commentary uses the Python-calculated facts instead of doing all the ranking itself.
+Your decomp_test.py file is currently in Downloads.
 
-Here is the first Python prototype I would test:
+Put a copy of the spread decomp workbook in Downloads too.
 
+So you should have something like:
+
+Downloads
+├── decomp_test.py
+└── Spread Decomp.xlsx
+
+Use the exact workbook you are allowed to test with.
+
+Step 2, replace your Hello World code
+
+Delete:
+
+print("Hello world")
+
+and paste this:
 
 import pandas as pd
-import numpy as np
-from pathlib import Path
+file_name = "Spread Decomp.xlsx"
+excel_file = pd.ExcelFile(file_name)
+print("Sheets found:")
+print(excel_file.sheet_names)
 
-# =========================
-# CONFIGURATION
-# =========================
+Important, if your Excel file is called something different, replace:
 
-FILE_PATH = Path("spread_decomp.xlsx")
+"Spread Decomp.xlsx"
 
-DECOMP_SHEET = "Spread Decomp"
-COMMENTARY_SHEET = "Spread Commentary"
+with the exact filename.
 
-DRIVER_COLUMNS = [
-    "NTA",
-    "MTM",
-    "Origination Fees",
-    "Carry/Theta",
-    "Other"
-]
+For example:
 
-# Change these names if the workbook headers differ
-BUSINESS_COL = "Business Line"
-ACTUAL_COL = "Actual P&L"
-COMMENT_COL = "Decomp Commentary"
+file_name = "Daily Spread Decomp August.xlsx"
 
+Step 3, run it
 
-# =========================
-# LOAD WORKBOOK
-# =========================
+Click the ▶ button in the top right.
 
-decomp = pd.read_excel(FILE_PATH, sheet_name=DECOMP_SHEET)
-commentary = pd.read_excel(FILE_PATH, sheet_name=COMMENTARY_SHEET)
+If everything is working, the terminal should show something similar to:
 
-decomp.columns = decomp.columns.astype(str).str.strip()
-commentary.columns = commentary.columns.astype(str).str.strip()
+Sheets found:
+['Spread Decomp', 'Spread Commentary']
 
+That proves Python can read the workbook.
 
-# =========================
-# BASIC CLEANING
-# =========================
+If you get an error saying pandas is missing
 
-def clean_business_name(value):
-    if pd.isna(value):
-        return None
-    return str(value).strip()
+You may see something like:
 
+ModuleNotFoundError: No module named 'pandas'
 
-decomp[BUSINESS_COL] = decomp[BUSINESS_COL].apply(clean_business_name)
-commentary[BUSINESS_COL] = commentary[BUSINESS_COL].apply(clean_business_name)
+If that happens, click inside the terminal and type:
 
-decomp = decomp[decomp[BUSINESS_COL].notna()].copy()
-commentary = commentary[commentary[BUSINESS_COL].notna()].copy()
+pip install pandas openpyxl
 
-# Remove obvious metadata rows
-metadata_values = {
-    "Daily",
-    "Report Check",
-    "Variance Code",
-    "Variance Codes"
-}
+Then press Enter.
 
-decomp = decomp[~decomp[BUSINESS_COL].isin(metadata_values)]
-commentary = commentary[~commentary[BUSINESS_COL].isin(metadata_values)]
+Once it finishes, run your script again.
 
+pandas lets Python work with tabular data.
 
-# =========================
-# NUMERIC NORMALIZATION
-# =========================
+openpyxl lets pandas read .xlsx Excel files.
 
-for col in DRIVER_COLUMNS:
-    if col in decomp.columns:
-        decomp[col] = pd.to_numeric(decomp[col], errors="coerce").fillna(0)
+Step 4, once sheet names work
 
-commentary[ACTUAL_COL] = pd.to_numeric(
-    commentary[ACTUAL_COL],
-    errors="coerce"
+Then replace the code with this:
+
+import pandas as pd
+file_name = "Spread Decomp.xlsx"
+decomp = pd.read_excel(
+    file_name,
+    sheet_name="Spread Decomp"
 )
-
-
-# =========================
-# COMBINE DECOMP + COMMENTARY
-# =========================
-
-merged = commentary.merge(
-    decomp[[BUSINESS_COL] + [c for c in DRIVER_COLUMNS if c in decomp.columns]],
-    on=BUSINESS_COL,
-    how="left"
+commentary = pd.read_excel(
+    file_name,
+    sheet_name="Spread Commentary"
 )
+print("\nSPREAD DECOMP COLUMNS:")
+print(decomp.columns.tolist())
+print("\nSPREAD COMMENTARY COLUMNS:")
+print(commentary.columns.tolist())
+print("\nFIRST 5 ROWS OF SPREAD DECOMP:")
+print(decomp.head())
+print("\nFIRST 5 ROWS OF SPREAD COMMENTARY:")
+print(commentary.head())
 
+This is the first useful inspection step.
 
-# =========================
-# DRIVER ANALYSIS
-# =========================
+We are asking Python:
 
-def analyze_drivers(row):
-    drivers = {}
+What fields actually exist in this workbook?
 
-    for col in DRIVER_COLUMNS:
-        if col in row.index:
-            value = row[col]
-            if pd.notna(value) and value != 0:
-                drivers[col] = float(value)
+That matters because before I give you the parent-child analysis code, I want to know the exact column names, not guess based on the screenshots.
 
-    ranked = sorted(
-        drivers.items(),
-        key=lambda x: abs(x[1]),
-        reverse=True
-    )
+What to send me
 
-    top_driver = ranked[0] if ranked else (None, 0)
-    second_driver = ranked[1] if len(ranked) > 1 else (None, 0)
+After Step 4 runs, send me a picture of the terminal showing:
 
-    return pd.Series({
-        "Top Driver": top_driver[0],
-        "Top Driver Amount": top_driver[1],
-        "Secondary Driver": second_driver[0],
-        "Secondary Driver Amount": second_driver[1]
-    })
+* SPREAD DECOMP COLUMNS
+* SPREAD COMMENTARY COLUMNS
 
+You do not need to send me every row.
 
-driver_analysis = merged.apply(analyze_drivers, axis=1)
-merged = pd.concat([merged, driver_analysis], axis=1)
+Once I see the actual column names, I’ll give you the next code that starts constructing:
 
+Parent → children → actual contribution → top business drivers → decomp drivers
 
-# =========================
-# BUSINESS RANKING
-# =========================
-
-merged["Actual Abs"] = merged[ACTUAL_COL].abs()
-
-merged["Business Rank"] = (
-    merged["Actual Abs"]
-    .rank(method="dense", ascending=False)
-)
-
-merged["Direction"] = np.select(
-    [
-        merged[ACTUAL_COL] > 0,
-        merged[ACTUAL_COL] < 0
-    ],
-    [
-        "Positive",
-        "Negative"
-    ],
-    default="Flat"
-)
-
-
-# =========================
-# COMMENTARY INPUT FACTS
-# =========================
-
-def create_ai_fact_record(row):
-    return {
-        "business": row[BUSINESS_COL],
-        "actual": row[ACTUAL_COL],
-        "direction": row["Direction"],
-        "top_driver": row["Top Driver"],
-        "top_driver_amount": row["Top Driver Amount"],
-        "secondary_driver": row["Secondary Driver"],
-        "secondary_driver_amount": row["Secondary Driver Amount"],
-        "analyst_comment": row.get(COMMENT_COL, ""),
-        "business_rank": row["Business Rank"]
-    }
-
-
-ai_facts = merged.apply(
-    create_ai_fact_record,
-    axis=1
-).tolist()
-
-
-# =========================
-# OUTPUT FOR TESTING
-# =========================
-
-output_cols = [
-    BUSINESS_COL,
-    ACTUAL_COL,
-    "Direction",
-    "Top Driver",
-    "Top Driver Amount",
-    "Secondary Driver",
-    "Secondary Driver Amount",
-    "Business Rank",
-    COMMENT_COL
-]
-
-output_cols = [
-    col for col in output_cols
-    if col in merged.columns
-]
-
-merged[output_cols].to_excel(
-    "python_driver_analysis.xlsx",
-    index=False
-)
-
-print("Analysis complete.")
-print("Created: python_driver_analysis.xlsx")
-
-
-
-
-
-
-This is intentionally a prototype, not the final code.
-
-What I want you to check after running it is whether the generated python_driver_analysis.xlsx correctly identifies, for each business:
-
-* actual P&L
-* whether it is positive or negative
-* largest decomp driver
-* second-largest driver
-* relative business ranking
-* original analyst commentary
-
-If that works, the next version is where we add the really useful part, the parent-child hierarchy.
-
-That version would create records such as:
-
-Parent: Investment Grade Total
-Largest positive child: IG EUR
-Largest negative child: IG CDA
-Top parent driver: MTM
-Driver source: IG EUR
-Primary offset: IG CDA
-Named client: HYUNDAI CAPITAL
-
-Then I would add a new instruction block to your existing agent, immediately before ## AI AGENT COMMENTARY COLUMN (CRITICAL):
-
-PYTHON-ENRICHED BUSINESS DRIVER ANALYSIS
-
-Before generating the AI Agent Commentary column, use the structured Python analysis output as the factual source for business-driver relationships.
-
-The purpose of the Python analysis is to determine WHICH businesses are driving each result, not merely which decomp categories are present.
-
-For every parent and child business, use the Python-generated fields where available:
-
-* Actual P&L
-* Positive / negative direction
-* Business contribution ranking
-* Top driver
-* Top driver amount
-* Secondary driver
-* Secondary driver amount
-* Top positive child
-* Top negative child
-* Driver source business
-* Primary offset business
-* Named clients / deals
-* Parent-child reconciliation status
-
-COMMENTARY PRIORITY
-
-AI Agent Commentary must answer, in order:
-
-1. Which business or businesses drove the result?
-2. How much did each material business contribute?
-3. What decomp driver caused each material business movement?
-4. What businesses or drivers offset the primary movement?
-5. Were there named client or deal drivers worth highlighting?
-
-Do not produce commentary that only restates NTA, MTM, Carry/Theta, Origination Fees or other decomp categories without linking them to the business responsible.
-
-PARENT ROWS
-
-Parent commentary must prioritize child-business attribution.
-
-Preferred structure:
-
-“[Parent] was primarily driven by [Top Child] at [amount], mainly from [driver]. This was [supported / partially offset] by [Secondary Child] at [amount], driven by [driver]. [Named client or deal insight if available].”
-
-If several children materially contribute, identify the largest positive and largest negative child.
-
-CHILD ROWS
-
-Child commentary must identify:
-
-* the actual result,
-* the dominant driver,
-* the secondary driver or offset,
-* named client / deal information where available.
-
-Preferred structure:
-
-“[Business] recorded [Actual], primarily driven by [Top Driver] of [amount]. [Secondary Driver] contributed / offset [amount]. [Client or deal detail if available].”
-
-SOURCE OF TRUTH
-
-Do not recalculate rankings or driver amounts when Python-generated analysis is available.
-
-Use Python-generated rankings, aggregations and driver attribution as the numerical source of truth.
-
-The language model’s role is to synthesize and explain the verified facts, not to independently reproduce the calculations.
-
-Do not replace your manager’s existing prompt with this. Add it as an enhancement to the commentary section.
-
-One important note, because you asked specifically about where to test: use a copy or sanitized version of the workbook in VS Code if required by your organization’s data policies. Don’t move sensitive internal workbooks outside approved environments just to test the script.
-
-Once you test this first script and tell me what the actual column names in Spread Decomp and Spread Commentary are, I can write the Version 2 Python script with the parent-child logic, which is the part that will really improve your manager’s AI commentary.
+That’s when the script starts becoming directly useful for the enhanced AI commentary.
 
 
 
