@@ -1,3 +1,132 @@
+Yes, you have the basic idea. The important distinction is that Python would not be writing the final commentary. Python would act as the data preparation and analysis layer before RBC Assist Pro does the writing.
+
+Think of the process like this:
+
+Excel Decomp File → Python → Structured Analysis → RBC Assist Pro → Commentary + HTML
+
+Right now, the agent is effectively being asked to do everything itself. It has to open the spreadsheet, figure out the sheets and columns, identify parent and child businesses, calculate which businesses and drivers matter, interpret the decomp, and then write commentary. That gives the LLM a lot of opportunities to misunderstand the structure.
+
+With Python, we separate those jobs.
+
+What Python would actually produce
+
+For our first prototype, I would have Python create a JSON file. JSON is basically a very structured text file that AI models can understand extremely well.
+
+For example, instead of giving RBC Assist Pro a messy Excel section like this:
+
+Credit
+   IG CDA       -266.7
+   IG USA       -260.8
+   IG EUR        648.2
+   IG APAC         1.4
+Investment Grade Total 122.1
+
+Python could turn it into something conceptually like:
+
+{
+  "business": "Investment Grade Total",
+  "actual": 122.1,
+  "type": "parent",
+  "children": [
+    {
+      "business": "IG EUR",
+      "actual": 648.2,
+      "drivers": {
+        "MTM": 510.6,
+        "New Trading Activity": 135.5
+      }
+    },
+    {
+      "business": "IG CDA",
+      "actual": -266.7,
+      "drivers": {
+        "MTM": -29.0,
+        "Origination Fees": 21.6
+      },
+      "clients": ["HYUNDAI CAPITAL"]
+    },
+    {
+      "business": "IG USA",
+      "actual": -260.8,
+      "drivers": {
+        "MTM": -441.5,
+        "New Trading Activity": 193.4
+      }
+    }
+  ],
+  "largest_positive_business": "IG EUR",
+  "largest_negative_business": "IG USA",
+  "primary_driver": "MTM"
+}
+
+That last part is particularly important.
+
+Python isn't simply extracting the Excel data. We can make it analyze the relationships mathematically before the AI ever sees it.
+
+So it can tell the agent:
+
+> IG EUR was the largest positive business at C$648.2, IG USA was the largest negative business at C$260.8, and MTM was the dominant driver.
+
+
+
+Then RBC Assist Pro's job becomes much simpler:
+
+> "Using this verified structured analysis, write Product Control commentary explaining what businesses drove the parent result."
+
+
+
+How would RBC Assist Pro actually receive it?
+
+There are a few possible architectures, but for what you're doing I would start with a JSON file.
+
+You would run:
+
+Daily_SpreadDecomp.xls
+        ↓
+decomp_processor.py
+        ↓
+decomp_analysis.json
+
+Then, during testing, you upload decomp_analysis.json to RBC Assist Pro rather than expecting the agent to derive all of those relationships directly from Excel.
+
+The agent instructions would say something along the lines of:
+
+> Use the structured Python analysis as the authoritative source for business hierarchy, P&L values, driver rankings, parent-child relationships and contribution analysis. Use the LLM primarily to synthesize these facts into concise Product Control commentary.
+
+
+
+Your existing executive summary can stay essentially untouched, as your manager requested. We would mainly redesign the AI Agent Commentary logic.
+
+Eventually, it could become more automated
+
+If RBC Assist Pro supports executing Python or connecting to an internal processing service, the long-term architecture could potentially eliminate the manual JSON upload.
+
+But we should not assume that yet.
+
+Our proof of concept is much simpler:
+
+Step 1: Python successfully reads the Excel.
+
+Step 2: Python identifies the hierarchy and calculates business/driver contributions.
+
+Step 3: Python generates decomp_analysis.json.
+
+Step 4: Upload that JSON into your RBC Assist Pro agent.
+
+Step 5: Compare its AI commentary against the commentary produced when you upload the Excel directly.
+
+That comparison is what will demonstrate to your manager whether the Python preprocessing actually adds value.
+
+So if she asks what you're building, you can summarize it as:
+
+> "I'm testing whether we can use Python as a preprocessing layer. Instead of making the LLM interpret the raw spreadsheet structure itself, Python will extract and calculate the business, parent-child and driver relationships and pass that structured analysis to the agent. The AI can then focus on explaining what businesses actually drove the P&L rather than spending most of its reasoning on parsing the spreadsheet."
+
+
+
+That's a much stronger use case than simply saying we're using Python to "scrape Excel."
+
+
+
 Yes. We’ll do this in very small steps so you can see exactly what each piece is doing.
 
 For now, our goal is only:
