@@ -1,3 +1,340 @@
+The picture is clear enough. And based on what your manager told you, I would not present this like a formal PowerPoint presentation. The slide is there to establish the framework, then the actual demo is what should carry the presentation.
+
+For senior management, the engaging part is not explaining every feature. It is showing a very simple story:
+
+Here is the problem → here is what I built → here is what goes in → here is what comes out → here is why each output is useful.
+
+I would aim for roughly 8 to 10 minutes total, depending on questions, with only about 90 seconds on this slide.
+
+Your opening and slide script
+
+I would start conversationally:
+
+> “So what I wanted to show you today is the Excel Decoder AI Agent that I've been working on. The idea behind it is fairly simple. We have a lot of complex Product Control workbooks where a significant amount of process knowledge is embedded directly within the Excel file, whether that's formulas, inputs, reconciliations, manual steps or dependencies.”
+
+“What I've been testing is whether we can take one of those existing workbooks, ingest it into an AI agent, and automatically translate that embedded knowledge into something that is much easier to understand and use.”
+
+
+
+Then point to the workflow across the top.
+
+> “From a user perspective, the process is pretty straightforward. I ingest the workbook, select what I want to understand about it, and the agent generates an HTML output that I can review and refine.”
+
+
+
+Now explain the three passes, but do not read all the boxes.
+
+Pass 1
+
+Point to the left:
+
+> “The first pass is the Workbook Execution Guide. This is really from the analyst's perspective. If I were given this workbook tomorrow and needed to operate the process, what do I need to know? It identifies the inputs, the sequence for running the workbook, the validations that need to happen, and ultimately how the process gets completed.”
+
+
+
+Pass 2
+
+Point to the middle:
+
+> “The second pass goes a level deeper. Rather than telling me how to operate the workbook, it's trying to decode how the workbook actually works. It maps the architecture, traces the data and process flows, analyzes the formulas and logic, and starts identifying controls, risks and potential automation opportunities.”
+
+
+
+Pass 3
+
+Then the right:
+
+> “And the third pass takes that intelligence and translates it into more of an IT-ready view. So instead of IT having to reverse engineer the workbook themselves, the agent starts structuring the technical requirements, system and data dependencies, business rules and implementation considerations.”
+
+
+
+Then stop explaining the slide.
+
+I would say:
+
+> “Rather than spending more time on the slide, I think it'll make more sense if I actually show you what this looks like.”
+
+
+
+That is your transition into the demo.
+
+
+---
+
+Now open the Excel
+
+Have the workbook already open.
+
+Don't start scrolling through 30 tabs.
+
+Say:
+
+> “So this is the actual Excel workbook that I used for the test. This isn't a workbook that was created specifically for the agent. It's an existing Product Control workbook with multiple tabs, formulas, inputs, calculations and dependencies.”
+
+“This is effectively all I'm giving the agent as its source material.”
+
+
+
+I would actually pause there for a second.
+
+That's an important point for senior management. You're showing them input versus output.
+
+Then:
+
+> “I upload this workbook into the agent, and from there I can choose which of the three views I want to generate. Let me show you what it produced.”
+
+
+
+Then move directly to your Pass 1 HTML tab.
+
+
+---
+
+Pass 1 demo, Workbook Execution Guide
+
+I'd probably spend 2 minutes here, because it's the easiest output for everyone to immediately understand.
+
+Start at the top:
+
+> “Pass 1 is designed around a pretty simple question, if I'm an analyst receiving this workbook, how do I actually run it?”
+
+“So rather than just giving me a description of the workbook, the agent has tried to reconstruct the operating procedure.”
+
+
+
+Show Before You Begin
+
+Scroll to your inputs or Before You Begin section.
+
+> “The first area I'd highlight is Before You Begin. The agent identifies what needs to be available before the process even starts, such as the required source files, inputs, locations and any prerequisites.”
+
+
+
+Then immediately move on.
+
+Show Run the Workbook
+
+> “Then we get into what I think is one of the more useful sections, which is actually running the workbook. It's taking what it finds across the file and converting that into a sequential set of operating instructions.”
+
+
+
+Show a couple of steps.
+
+Don't read them all.
+
+Instead say:
+
+> “You can see it's identifying things like where data needs to be loaded, what needs to be refreshed, where calculations occur and where analyst intervention is required.”
+
+
+
+Show Validation Checks
+
+Then:
+
+> “And the other piece I wanted to highlight is validation. It's not enough to tell somebody what buttons to press. We also need to understand how they know the process worked correctly.”
+
+“So the agent identifies the reconciliations, checks and exceptions that should be reviewed before the output is relied upon.”
+
+
+
+Then your transition:
+
+> “So Pass 1 is really about turning workbook knowledge into something operational and repeatable.”
+
+
+
+Done. Move on.
+
+
+---
+
+Pass 2 demo, Workbook & Process Intelligence
+
+This is where you can make the presentation feel more impressive without spending five minutes explaining every section.
+
+Open the output and say:
+
+> “Pass 2 takes the same workbook, but asks a completely different question. Instead of asking 'how do I run this?', we're asking 'how does this actually work?'”
+
+
+
+That's a good line because everyone immediately understands the difference.
+
+Then show the architecture diagram.
+
+> “The first thing it does is reconstruct the workbook architecture, so I can see the worksheets, major inputs and outputs, and how the different parts of the workbook relate to each other.”
+
+
+
+Then show the process/data flow.
+
+> “It then takes that further and traces how the data moves through the workbook, from the original inputs, through transformations and calculations, into the eventual outputs.”
+
+
+
+If you have your larger flow diagrams, this is where I would linger for 20 to 30 seconds. Visuals are much more engaging than tables of text.
+
+Then briefly show formulas/logic:
+
+> “Behind that, it's also analyzing the formulas and calculation logic. So we're not just documenting that Sheet A connects to Sheet B, we're trying to understand what is actually happening between them.”
+
+
+
+Then automation opportunities:
+
+> “And once we've reconstructed that process, we can start asking a more interesting question, which parts of this process are manual, repetitive or potentially good candidates for automation?”
+
+
+
+Then move on.
+
+You don't need to show every control, risk, formula and dependency.
+
+Your Pass 2 conclusion:
+
+> “So Pass 1 tells me how to operate it. Pass 2 starts giving us process intelligence about what's actually happening underneath.”
+
+
+
+
+---
+
+Pass 3 demo, IT Handoff
+
+For Pass 3, I'd spend maybe 90 seconds.
+
+Start with:
+
+> “The third pass is where we're testing whether we can take what we've learned from the workbook and make it more actionable from a technology perspective.”
+
+
+
+Then show the requirements.
+
+> “The agent takes the workbook logic we've already identified and starts converting it into structured technical requirements.”
+
+
+
+Show an example.
+
+> “So rather than handing IT a large Excel workbook and asking them to reverse engineer it, we're starting to give them something much closer to a requirements package.”
+
+
+
+Then show systems/data requirements:
+
+> “It also captures things like source systems, data requirements, dependencies and outputs.”
+
+
+
+Then business/control requirements:
+
+> “And importantly, we're not losing the Product Control side of the process. The business rules, validations and controls that need to be preserved are captured alongside the technical requirements.”
+
+
+
+Finish:
+
+> “The intention isn't that AI makes the implementation decision. It's that we can potentially reduce the amount of manual discovery required to get to that conversation.”
+
+
+
+That last sentence is important for a senior management audience. You're positioning this as accelerating analysis, not magically replacing analysts or IT.
+
+
+---
+
+Then bring it all together
+
+At the end, don't go back through everything.
+
+I'd say:
+
+> “So really, it's one workbook being looked at through three different lenses.”
+
+“Pass 1 asks, how do I operate it?”
+
+“Pass 2 asks, how does it work?”
+
+“And Pass 3 asks, how could we translate that knowledge into something technology can act on?”
+
+“And all three of those outputs came from ingesting the same underlying Excel workbook.”
+
+
+
+Then:
+
+> “I'll pause there. Any questions on the agent or any of the outputs you'd like me to go back into?”
+
+
+
+That's a clean ending.
+
+How to keep it engaging
+
+Your biggest risk isn't that you're going to be boring. It's that you know so much about what you've built that you'll be tempted to explain everything.
+
+Don't.
+
+Think of yourself as controlling the camera. You're showing them specific evidence to support your story.
+
+For each pass, pick two or three impressive things, show them, explain why they matter, and move on.
+
+Also avoid repeatedly saying:
+
+> “The agent does this... the agent does this... the agent does this...”
+
+
+
+Frame things as questions instead:
+
+> “If I'm a new analyst, what do I need to know?” → Pass 1
+“If I want to understand what's happening underneath the workbook?” → Pass 2
+“If we wanted to modernize this process, what would IT need?” → Pass 3
+
+That gives the audience a reason to care about each output before you show it.
+
+And when you're actually clicking through the HTML, don't read the screen to them. Let them look at the detail. Your job is to tell them why the section they're looking at matters.
+
+If you do it that way, this should feel much more like you're showing senior management a working prototype than presenting a school project.
+
+
+“And ultimately, the value we're trying to create across all three passes is reducing key-person dependency, accelerating analyst onboarding, improving control transparency, and creating a clearer path toward automation and modernization.”
+Then make it more practical:
+“So rather than having critical workbook knowledge sitting with individual users, we're testing whether the agent can extract that knowledge, structure it, and make it reusable across analysts, management and technology teams.”
+Then transition:
+“Rather than going into more detail on the slide, I'll show you what that actually looks like using the workbook I tested.”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Yes, you have the basic idea. The important distinction is that Python would not be writing the final commentary. Python would act as the data preparation and analysis layer before RBC Assist Pro does the writing.
 
 Think of the process like this:
