@@ -1,36 +1,18 @@
-“The final pass is Pass 3, which shifts the focus from the end user and the business process to the technical architecture of the workbook.
-This pass is primarily designed for Finance IT, developers, BPM, or transformation teams that may eventually need to support, modify, or modernize the workbook.
-Rather than going through every section, I’ll show two areas that demonstrate what this pass is intended to provide.”
-Tab 1, Architecture
-Open Architecture, ideally where the System Architecture Diagram and Worksheet Layer Architecture are visible.
-“The first section I want to highlight is Architecture.
-The agent takes the workbook analysis from the previous passes and organizes the workbook into a technical architecture.
-At the top, we can see the external source, in this case Murex, feeding the workbook through the query connection. From there, the agent identifies the source worksheets, transformation and reconciliation components, the macro and calculation layers, and ultimately the reporting and distribution outputs.
-What I find useful here is that it does not simply provide a list of 32 worksheets. It attempts to classify them based on their role within the overall process.”
-Then scroll to the Worksheet Layer Architecture table.
-“You can see that more clearly here. The agent has separated the workbook into functional layers, including import, reference, transformation, macro support, calculations, validation, reporting, and archive.
-It also identifies the dependencies between those layers. So if someone from Finance IT inherited this workbook, they would have a starting point for understanding not only what exists, but how the components are intended to interact.”
-Then briefly show the Data Transformation Pipeline.
-“And underneath that, it translates those layers into a data transformation pipeline, showing how source data moves through transformation, calculations, validation, and ultimately reporting.
-This is really the main purpose of Pass 3, turning the workbook into technical documentation that another team can actually investigate and support.”
-Briefly mention the other technical sections
-You do not need to open all of them. Use the navigation bar while saying:
-“There is considerably more detail behind this. The pass also produces sections covering worksheet dependencies, external connections, VBA and macros, data lineage, performance optimization, technical risks, and maintenance.
-I won't go through each of those today, but they provide deeper technical documentation if a developer or support team needs to investigate a specific area.”
-This is important because it shows the breadth of Pass 3 without wasting presentation time.
-Tab 2, Modernization Roadmap
-Now open Modernization Roadmap.
-I think this is actually the strongest way to finish the entire three-pass demo.
-“The final section I want to show is the Modernization Roadmap, because this demonstrates how the output can potentially be used beyond documentation.
-Based on what the agent identified in the workbook, it compares the existing Excel-based environment with potential future-state technologies.”
-Point to the Current State → Target State table.
-“For example, the current process relies on areas such as manual Murex refreshes, VBA and formulas, Excel-based reporting, manual distribution, and file-server infrastructure.
-The agent then proposes potential modernization opportunities, such as Power Query or Dataflows for ingestion, more scalable calculation technologies, Power BI for reporting, Power Automate for distribution, and cloud-based infrastructure.”
-Then scroll through the phases.
-“Rather than recommending that everything be replaced immediately, it also organizes the potential migration into stages.
-Phase one focuses on stabilization, things like documenting the architecture, reviewing VBA, improving backups, error handling, and testing.
-Phase two focuses more on optimization and reducing manual dependencies.
-And only after that does phase three consider broader modernization opportunities
+Here’s a message I’d send to the Excel Decoder test group. I’d keep it fairly casual since they already know what the Decoder is:
+
+> Hi everyone, quick update on the Excel Decoder. I’ve made some significant changes to the agent and updated the instructions based on the feedback and testing we’ve done so far.
+
+The biggest change is that the Decoder now uses a 3-pass approach, rather than generating everything through the previous method:
+
+Pass 1, Operating Instructions: Focuses on how the workbook is actually used, including the key worksheets, inputs, outputs, formulas, controls, and day-to-day operating steps.
+
+Pass 2, Business Process: Looks at the workbook from a broader process perspective, including the workbook architecture, data flow, key formulas and calculations, and automation.
+
+Pass 3, Technical Handoff: Provides a more technical view for IT and transformation teams, including architecture, dependencies, external connections, VBA/macros, data lineage, technical risks, performance considerations, and potential modernization opportunities.
+
+The idea is to make the Decoder output more structured and useful depending on who is reviewing it, rather than having one large output trying to cover everything at once.
+
+The updated version is now available, so if you have a chance, please test it with some of your workbooks and let me know how the outputs look, especially anything that seems inaccurate, missing, or could be improved. Any feedback would be really helpful as we continue refining it.
 
 
 
