@@ -1,12 +1,36 @@
-Pass 2 takes the same workbook, but instead of asking how an analyst runs it, we're trying to understand how the workbook itself is built and how the process works underneath.”
-“The first area I want to show is Workbook Architecture. Here, the agent has broken the workbook into functional layers, starting from source data, through transformation and calculation, into validation, reporting and distribution.”
-“So rather than opening 30-plus tabs and trying to understand how they fit together manually, this gives us a structured view of the workbook architecture and the role each group of sheets appears to play.”
-“The next view is Data Flow and Dependencies. This starts mapping how information moves through the workbook, from the source system into the Murex P&L sheet, through reconciliation and transformation layers, into calculations, reporting and final distribution.”
-“The value here is understanding not just what sheets exist, but what depends on what. That becomes useful for troubleshooting, change impact analysis, and eventually modernization because we can start identifying where the key dependencies actually sit.”
-“The third section is Formulas and Logic. Here the agent is looking at the calculation patterns driving the workbook, things like period aggregation, brokerage adjustments, rollups and reconciliation logic.”
-“It also starts surfacing repeated formula patterns and areas where the workbook could potentially be simplified or modernized. So we're moving beyond documenting the workbook and starting to understand the logic that actually drives the result.”
-“And finally, the Automation and Optimization section takes that analysis and turns it into potential opportunities. For this workbook, the agent identified areas such as automating data refreshes, email distribution, reconciliation exception handling, formula modernization and potentially using Python for more scalable data-quality checks.”
-“The important point is that these recommendations are being generated from what the agent has identified in the workbook itself. So the goal isn't just to produce documentation, it's to use that workbook intelligence to identify where there may be opportunities to reduce manual effort or modernize the process
+“The final pass is Pass 3, which shifts the focus from the end user and the business process to the technical architecture of the workbook.
+This pass is primarily designed for Finance IT, developers, BPM, or transformation teams that may eventually need to support, modify, or modernize the workbook.
+Rather than going through every section, I’ll show two areas that demonstrate what this pass is intended to provide.”
+Tab 1, Architecture
+Open Architecture, ideally where the System Architecture Diagram and Worksheet Layer Architecture are visible.
+“The first section I want to highlight is Architecture.
+The agent takes the workbook analysis from the previous passes and organizes the workbook into a technical architecture.
+At the top, we can see the external source, in this case Murex, feeding the workbook through the query connection. From there, the agent identifies the source worksheets, transformation and reconciliation components, the macro and calculation layers, and ultimately the reporting and distribution outputs.
+What I find useful here is that it does not simply provide a list of 32 worksheets. It attempts to classify them based on their role within the overall process.”
+Then scroll to the Worksheet Layer Architecture table.
+“You can see that more clearly here. The agent has separated the workbook into functional layers, including import, reference, transformation, macro support, calculations, validation, reporting, and archive.
+It also identifies the dependencies between those layers. So if someone from Finance IT inherited this workbook, they would have a starting point for understanding not only what exists, but how the components are intended to interact.”
+Then briefly show the Data Transformation Pipeline.
+“And underneath that, it translates those layers into a data transformation pipeline, showing how source data moves through transformation, calculations, validation, and ultimately reporting.
+This is really the main purpose of Pass 3, turning the workbook into technical documentation that another team can actually investigate and support.”
+Briefly mention the other technical sections
+You do not need to open all of them. Use the navigation bar while saying:
+“There is considerably more detail behind this. The pass also produces sections covering worksheet dependencies, external connections, VBA and macros, data lineage, performance optimization, technical risks, and maintenance.
+I won't go through each of those today, but they provide deeper technical documentation if a developer or support team needs to investigate a specific area.”
+This is important because it shows the breadth of Pass 3 without wasting presentation time.
+Tab 2, Modernization Roadmap
+Now open Modernization Roadmap.
+I think this is actually the strongest way to finish the entire three-pass demo.
+“The final section I want to show is the Modernization Roadmap, because this demonstrates how the output can potentially be used beyond documentation.
+Based on what the agent identified in the workbook, it compares the existing Excel-based environment with potential future-state technologies.”
+Point to the Current State → Target State table.
+“For example, the current process relies on areas such as manual Murex refreshes, VBA and formulas, Excel-based reporting, manual distribution, and file-server infrastructure.
+The agent then proposes potential modernization opportunities, such as Power Query or Dataflows for ingestion, more scalable calculation technologies, Power BI for reporting, Power Automate for distribution, and cloud-based infrastructure.”
+Then scroll through the phases.
+“Rather than recommending that everything be replaced immediately, it also organizes the potential migration into stages.
+Phase one focuses on stabilization, things like documenting the architecture, reviewing VBA, improving backups, error handling, and testing.
+Phase two focuses more on optimization and reducing manual dependencies.
+And only after that does phase three consider broader modernization opportunities
 
 
 
