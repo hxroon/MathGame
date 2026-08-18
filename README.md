@@ -1,90 +1,12 @@
-Yes, then I would make Assumptions & Confidence one of the main parts of Pass 1, rather than treating it as a quick add-on. It is actually a strong feature to show senior management because it demonstrates that the agent is distinguishing between evidence and inference.
-
-I would structure Pass 1 as:
-
-Before You Begin → Operating Steps → Validation Checks → Assumptions & Confidence
-
-You can still keep the whole Pass 1 demo around 2 minutes.
-
-Updated Pass 1 script
-
-Start on the Overview for only a few seconds:
-
-> "So this is the first output, the Workbook Execution Guide. The easiest way to think about Pass 1 is that it's taking the workbook and looking at it from an analyst's perspective, what do I need to know to actually operate this process?"
-
-
-
-Then go to Before You Begin:
-
-> "Before getting into the actual steps, the agent identifies what needs to be in place first. So it's picked up things like required access, system dependencies, file preparation, macro requirements and the expected starting state of the workbook."
-
-"This gives a new analyst a starting point without having to discover all of these dependencies themselves."
-
-
-
-Then go to Operating Steps:
-
-> "From there, it reconstructs the workflow into an operating sequence. In this case, it identified 14 steps covering preparation, data imports, calculations, reconciliations, reporting and distribution."
-
-"I'm not going to go through all 14, but what's important is the structure. For each step, the agent tells me what action needs to happen, where it happens, what I should expect to see, how I validate it, potential issues, and its confidence."
-
-
-
-Scroll through a few so they can visually see the sequence.
-
-Then go to Validation Checks:
-
-> "It also pulls those validation points together into a dedicated control view. So rather than controls being spread throughout a large workbook, I can see the pre-execution checks, data validation, reconciliations and output checks in one place."
-
-"For an analyst, this helps answer not only 'what do I do?', but also 'how do I know I've done it correctly?'"
-
-
-
-Then spend a little more time on Assumptions & Confidence:
-
-> "And this is one of the areas I think is particularly important. Because we're using AI to interpret the workbook, we don't want the agent presenting every conclusion as though it has the same level of certainty."
-
-"So here it separates what it can verify directly from the workbook from what it has inferred. For example, it has high confidence around things like the primary data source, reconciliation structure and reporting layers because there's direct evidence within the workbook."
-
-
-
-Then scroll down to the AI-Inferred Information:
-
-> "Where the evidence isn't as explicit, it labels that information as inferred and lowers the confidence. So instead of hiding that uncertainty, it's making it visible to the analyst."
-
-
-
-Then scroll to Unable to Verify / Questions for Workbook Owner. I think this is actually the strongest part:
-
-> "And then anything it can't determine from the workbook is surfaced separately rather than guessed. It even turns those gaps into questions for the workbook owner, things like tolerance thresholds, timing requirements, macro behaviour or escalation procedures."
-
-"So this effectively gives the analyst a list of what still needs human confirmation."
-
-
-
-Then show the 78% overall confidence at the bottom:
-
-> "And finally, it summarizes that into an overall confidence assessment. In this example it's 78%, but more importantly, it shows where confidence is high, medium or low and why."
-
-
-
-Strong closing line for Pass 1
-
-I would end with:
-
-> "So the objective isn't for the AI to tell us that it understands 100% of the workbook. It's actually the opposite. We want it to tell us what it understands, what it's inferring, and what it still needs a human to confirm."
-
-
-
-Pause for a second after that.
-
-Then:
-
-> "So that's Pass 1 from the analyst's perspective. Pass 2 takes the same workbook but looks at it from a process intelligence perspective, how is the workbook actually built and how does information move through it?"
-
-
-
-That distinction, verified → inferred → unable to verify, is probably one of the best concepts in your entire demo. It helps address the question senior management is very likely to have in the back of their minds, "How do we know the AI isn't just making this up?"
+Pass 2 takes the same workbook, but instead of asking how an analyst runs it, we're trying to understand how the workbook itself is built and how the process works underneath.”
+“The first area I want to show is Workbook Architecture. Here, the agent has broken the workbook into functional layers, starting from source data, through transformation and calculation, into validation, reporting and distribution.”
+“So rather than opening 30-plus tabs and trying to understand how they fit together manually, this gives us a structured view of the workbook architecture and the role each group of sheets appears to play.”
+“The next view is Data Flow and Dependencies. This starts mapping how information moves through the workbook, from the source system into the Murex P&L sheet, through reconciliation and transformation layers, into calculations, reporting and final distribution.”
+“The value here is understanding not just what sheets exist, but what depends on what. That becomes useful for troubleshooting, change impact analysis, and eventually modernization because we can start identifying where the key dependencies actually sit.”
+“The third section is Formulas and Logic. Here the agent is looking at the calculation patterns driving the workbook, things like period aggregation, brokerage adjustments, rollups and reconciliation logic.”
+“It also starts surfacing repeated formula patterns and areas where the workbook could potentially be simplified or modernized. So we're moving beyond documenting the workbook and starting to understand the logic that actually drives the result.”
+“And finally, the Automation and Optimization section takes that analysis and turns it into potential opportunities. For this workbook, the agent identified areas such as automating data refreshes, email distribution, reconciliation exception handling, formula modernization and potentially using Python for more scalable data-quality checks.”
+“The important point is that these recommendations are being generated from what the agent has identified in the workbook itself. So the goal isn't just to produce documentation, it's to use that workbook intelligence to identify where there may be opportunities to reduce manual effort or modernize the process
 
 
 
