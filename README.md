@@ -1,3 +1,18 @@
+Hi Angela,
+Thanks for following up.
+I initially did not have access to the file paths provided, so I had to submit an access request, which was approved as of this morning. I’ve now been able to review the folders and noticed that each path contains a number of different subfolders and working files.
+Given the volume of files, I want to make sure we are selecting and grouping the correct materials before running them through the agent. Would there be someone from the team that I could set up a quick call with to walk through the folders and clarify which specific processes/SOPs you would like us to prioritize?
+For each process, it would also be helpful to understand which DFR sheet it relates to and which working files/procedures should be considered together. This will allow us to provide the agent with the relevant set of files for each process rather than trying to upload the full contents of each folder at once.
+Once we have that mapping clarified, I can begin working through the prioritized SOPs
+
+
+
+
+
+
+
+
+
 Here’s a message I’d send to the Excel Decoder test group. I’d keep it fairly casual since they already know what the Decoder is:
 
 > Hi everyone, quick update on the Excel Decoder. I’ve made some significant changes to the agent and updated the instructions based on the feedback and testing we’ve done so far.
