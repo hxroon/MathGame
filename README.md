@@ -1,9 +1,6 @@
-Hi Angela,
-Thanks for following up.
-I initially did not have access to the file paths provided, so I had to submit an access request, which was approved as of this morning. I’ve now been able to review the folders and noticed that each path contains a number of different subfolders and working files.
-Given the volume of files, I want to make sure we are selecting and grouping the correct materials before running them through the agent. Would there be someone from the team that I could set up a quick call with to walk through the folders and clarify which specific processes/SOPs you would like us to prioritize?
-For each process, it would also be helpful to understand which DFR sheet it relates to and which working files/procedures should be considered together. This will allow us to provide the agent with the relevant set of files for each process rather than trying to upload the full contents of each folder at once.
-Once we have that mapping clarified, I can begin working through the prioritized SOPs
+Hey Sean, really sorry — I wasn’t receiving any Webex messages until I restarted, so I’m just seeing this now.
+Based on our current tracker, we’ve received 49 SOP/source document submissions against the 443 processes currently in scope, which is roughly 11%, so Brent’s ~10% estimate is pretty accurate.
+The current breakdown shows submissions from Macro (11), Central Funding (37), and Global Equities (1). There may also be a couple of more recent submissions that haven’t been incorporated into these numbers yet. For example, I recently received additional files from Angela’s team, but I’m still working with them to clarify which processes/DFR sheets the working files relate to before adding them to the pipeline.
 
 
 
