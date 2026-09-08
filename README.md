@@ -1,3 +1,25 @@
+
+
+
+
+
+“Pass 2 takes the same workbook, but instead of asking how an analyst runs it, we're trying to understand how the workbook itself is built and how the process works underneath.”
+“The first area I want to show is Workbook Architecture. Here, the agent has broken the workbook into functional layers, starting from source data, through transformation and calculation, into validation, reporting and distribution.”
+“So rather than opening 30-plus tabs and trying to understand how they fit together manually, this gives us a structured view of the workbook architecture and the role each group of sheets appears to play.”
+“The next view is Data Flow and Dependencies. This starts mapping how information moves through the workbook, from the source system into the Murex P&L sheet, through reconciliation and transformation layers, into calculations, reporting and final distribution.”
+“The value here is understanding not just what sheets exist, but what depends on what. That becomes useful for troubleshooting, change impact analysis, and eventually modernization because we can start identifying where the key dependencies actually sit.”
+“The third section is Formulas and Logic. Here the agent is looking at the calculation patterns driving the workbook, things like period aggregation, brokerage adjustments, rollups and reconciliation logic.”
+“It also starts surfacing repeated formula patterns and areas where the workbook could potentially be simplified or modernized. So we're moving beyond documenting the workbook and starting to understand the logic that actually drives the result.”
+“And finally, the Automation and Optimization section takes that analysis and turns it into potential opportunities. For this workbook, the agent identified areas such as automating data refreshes, email distribution, reconciliation exception handling, formula modernization and potentially using Python for more scalable data-quality checks.”
+“The important point is that these recommendations are being generated from what the agent has identified in the workbook itself. So the goal isn't just to produce documentation, it's to use that workbook intelligence to identify where there may be opportunities to reduce manual effort or modernize the process.”
+“So if Pass 1 answers, ‘How do I run this workbook?’, Pass 2 is really answering, ‘How does this workbook work, and what can we learn from it?’”
+
+
+
+
+
+
+
 —SYSTEM-PROMPT-START—
 
 # ROLE
