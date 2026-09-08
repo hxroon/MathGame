@@ -4,7 +4,17 @@ This is the only source file I'm giving the agent. I upload this workbook, selec
 
 So from that workbook alone, this is the first output the agent generated. Pass 1 is designed from the analyst's perspective. Essentially, if I was given this workbook tomorrow and had never worked with it before, could I understand what I need, how to run it, and how to validate that I've done it correctly?
 
+"The first thing it does is establish what needs to be in place before I even start the process. So here it's identified the required access, the system dependencies, the file preparation, macro requirements, and even what state we expect the workbook to be in before processing."
+"The idea is that an analyst doesn't have to discover all of these dependencies through trial and error or by asking someone who already knows the process.
 
+"Then it takes what it found in the workbook and reconstructs it into an operating sequence. In this case, it's broken the process into 14 steps, from preparing the workbook, through the data imports and calculations, into reconciliation, reporting and ultimately distribution."
+"And what I like here is that it isn't just giving an analyst a list of steps. For each step it's identifying the action, where it happens in the workbook, what the expected result should be, how to validate it, potential issues, and the agent's confidence in that interpretation."
+
+
+"The other piece I wanted to highlight is validation. The agent has separated the controls it identified into pre-execution checks, data import validation, reconciliation validation and output validation."
+"So the analyst isn't only being told how to run the workbook. They're also being shown what they should check, what the expected result is, and what action to take when something doesn't look right."
+
+"There are additional sections as well for outputs and distribution, troubleshooting, and assumptions and confidence, but I won't go through every tab today."
 
 
 “Pass 2 takes the same workbook, but instead of asking how an analyst runs it, we're trying to understand how the workbook itself is built and how the process works underneath.”
