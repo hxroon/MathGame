@@ -1,3 +1,94 @@
+Absolutely. I’d make it sound more natural and executive-friendly—less like you’re reading documentation and more like you’re walking senior management through what the agent actually accomplished.
+
+Here’s a rewritten version of everything visible in the screenshots:
+
+1. Before You Begin — about 20–30 seconds
+
+Start on Before You Begin.
+
+> “The first thing the agent does is identify everything that needs to be in place before someone starts the process.
+
+It’s pulled out the required access, system dependencies, file preparation, macro requirements, and even the expected state of the workbook before processing begins.
+
+That’s important because an analyst shouldn’t have to learn these dependencies through trial and error—or rely on someone who already knows the process. We’re taking that knowledge and making it explicit and repeatable.”
+
+
+
+Then click Operating Steps.
+
+2. Operating Steps — about 35–45 seconds
+
+This should be the main part of the Pass 1 demonstration.
+
+> “From there, the agent takes what it learned from the workbook and turns it into an operating sequence.
+
+In this example, it identified 14 steps covering the process end to end—from preparing the workbook and importing the data, through calculations and reconciliation, and ultimately into reporting and distribution.
+
+But it’s doing more than creating a list of instructions. For each step, it captures what the analyst needs to do, where it happens in the workbook, what the expected result should be, and how to validate that it was completed correctly.
+
+It also flags potential issues and indicates how confident the agent is in its interpretation. So we’re starting to turn knowledge embedded in the workbook into something much more structured and operational.”
+
+
+
+Then click Validation Checks.
+
+3. Validation Checks — about 30–40 seconds
+
+> “The next piece I want to highlight is validation.
+
+The agent has identified the controls embedded in the process and organized them into areas such as pre-execution checks, data-import validation, reconciliation validation, and output validation.
+
+So we’re not just telling an analyst how to run the workbook. We’re also showing them what they need to check, what the expected result should be, and what to do when something doesn’t look right.”
+
+
+
+Point to the reconciliation section:
+
+> “For example, it identified the Book Mapping and Platform reconciliations as explicit validation points.
+
+That’s valuable because this type of control knowledge can easily be buried in formulas or individual tabs—or simply live in the head of the person who normally runs the process. The agent is making those controls visible.”
+
+
+
+Briefly acknowledge the other sections
+
+I would not spend time opening Common Issues or Outputs & Distribution unless someone asks about them.
+
+Instead, say:
+
+> “There are additional sections covering outputs and distribution, troubleshooting, and assumptions and confidence. I won’t go through every section today, but the idea is to capture the broader operating knowledge around the process—not just the individual steps.”
+
+
+
+Then go to Assumptions & Confidence.
+
+4. Assumptions & Confidence — about 15–20 seconds
+
+This is worth showing to senior management because it demonstrates an important safeguard around AI-generated content.
+
+> “One final feature I want to call out is how the agent handles uncertainty.
+
+It distinguishes between information it can verify directly from the workbook and information it has had to infer. It assigns confidence to those interpretations and explicitly identifies anything it couldn’t verify.
+
+So this isn’t intended to replace analyst judgment or the workbook owner. It gives us a structured starting point while making the areas that still require human confirmation very clear.”
+
+
+
+Stronger transition into Pass 2
+
+I’d finish Pass 1 with something like:
+
+> “So Pass 1 is really about extraction and reconstruction: taking knowledge that’s embedded in the workbook and turning it into a structured, reviewable operating procedure.
+
+Pass 2 is where we start testing and refining that output against additional evidence and human knowledge.”
+
+
+
+That gives the whole section a cleaner story: prerequisites → operating procedure → controls → uncertainty/human review → Pass 2.
+
+
+
+
 “This is the actual workbook I used for the test. It wasn't created for the agent, it's an existing Product Control workbook with multiple tabs, formulas, calculations, inputs, and dependencies.
 This is the only source file I'm giving the agent. I upload this workbook, select one of the three passes, and let me show you what it produced.”
 
