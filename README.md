@@ -1,3 +1,30 @@
+Before we get into the walkthrough, I just wanted to give you a quick overview of why we're doing this and where your process fits into the broader initiative.
+At a high level, the goal of BPM is to take a lot of the process knowledge that currently sits across different working files, systems, procedures and with individual analysts, and make that knowledge more structured and accessible.
+What we're ultimately trying to capture is not just the steps of a process, but also things like what systems are involved, who performs each part, where the important controls or escalation points are, and how the process flows from beginning to end.
+The longer-term vision is what you see on the right — having one queryable knowledge layer where somebody can ask a question about a Product Control process and get an answer based on documented and validated information
+
+
+“The second piece I wanted to highlight is how we're thinking about the SOP itself.
+We're not really looking at the SOP as just another Word document that gets created, signed off and stored somewhere. We're trying to create a standardized representation of how the process actually works.
+So when we capture a process, we're trying to understand the steps, systems, roles, controls and risks in a consistent structure.
+Once that information is standardized and, importantly, validated by the analyst who actually performs the process, it can eventually support other capabilities — things like process mapping, system information, identifying gaps, onboarding and knowledge retrieval.
+That's why your walkthrough today is really important. The documentation gives us a starting point, but you're the person who can tell us what actually happens in practice
+
+
+
+
+
+And this last slide just shows where the AI component comes into the process.
+On the left is where we are today. We're taking existing documentation and working files, combining that with analyst walkthroughs like this one, and using the SOP agent to help structure that information into a consistent format.
+The key thing we've learned through testing is that we don't want the AI filling in information just because something sounds logical. If something isn't documented or isn't clear from the walkthrough, we'd rather flag that as a gap and come back to the analyst than have the agent make an assumption.
+Once we have accurate, standardized and validated SOPs, the longer-term opportunity is what you see on the right. Those SOPs can potentially feed an enterprise knowledge solution where a new analyst could ask a question in natural language — for example, ‘How do I complete this process?’ or ‘What happens if this reconciliation doesn't tie?’ — and receive guidance grounded in the approved SOPs.
+So the quality of what we're capturing now is really what enables that future state
+
+
+
+
+
+
 Absolutely. I’d make it sound more natural and executive-friendly—less like you’re reading documentation and more like you’re walking senior management through what the agent actually accomplished.
 
 Here’s a rewritten version of everything visible in the screenshots:
