@@ -1,24 +1,238 @@
-Before we get into the walkthrough, I just wanted to give you a quick overview of why we're doing this and where your process fits into the broader initiative.
-At a high level, the goal of BPM is to take a lot of the process knowledge that currently sits across different working files, systems, procedures and with individual analysts, and make that knowledge more structured and accessible.
-What we're ultimately trying to capture is not just the steps of a process, but also things like what systems are involved, who performs each part, where the important controls or escalation points are, and how the process flows from beginning to end.
-The longer-term vision is what you see on the right — having one queryable knowledge layer where somebody can ask a question about a Product Control process and get an answer based on documented and validated information
 
 
-“The second piece I wanted to highlight is how we're thinking about the SOP itself.
-We're not really looking at the SOP as just another Word document that gets created, signed off and stored somewhere. We're trying to create a standardized representation of how the process actually works.
-So when we capture a process, we're trying to understand the steps, systems, roles, controls and risks in a consistent structure.
-Once that information is standardized and, importantly, validated by the analyst who actually performs the process, it can eventually support other capabilities — things like process mapping, system information, identifying gaps, onboarding and knowledge retrieval.
-That's why your walkthrough today is really important. The documentation gives us a starting point, but you're the person who can tell us what actually happens in practice
+INTRODUCTION
+
+START: Overview / opening slide
+
+“So today I wanted to show you an Excel Decoder Agent that I’ve been working on.
+
+The idea behind it is pretty simple. Within Product Control, we have complex workbooks where a lot of the process knowledge is embedded directly in the Excel file, whether that’s formulas, inputs, reconciliations, manual steps, or dependencies.
+
+What I’ve been testing is whether we can take one of those existing workbooks, feed it into an AI agent, and automatically translate that embedded knowledge into something that’s easier to understand and use.
+
+From a user perspective, it’s very straightforward. I upload the workbook, select the purpose, and the agent generates an HTML output that I can review and refine.
+
+There are three different lenses we can apply to the same workbook.
+
+Pass 1 is the analyst view, essentially, how do I actually operate this workbook? It identifies what I need, how I run it, what I validate, and how I complete the process.
+
+Pass 2 goes underneath the process and explains how the workbook actually works, including the architecture, data flows, formulas, controls, risks, and potential automation opportunities.
+
+And Pass 3 takes that intelligence and translates it into an IT view, including technical requirements, system and data dependencies, business rules, and implementation considerations.
+
+Ultimately, the strategic value is about capturing knowledge that’s currently embedded within individual workbooks and making it more reusable, whether that’s to reduce key-person dependency, accelerate onboarding, improve control transparency, or support future automation.
+
+Rather than spending more time on the slide, let me show you what this actually looks like using a real Product Control workbook.”
+
+
+---
+
+SHOW THE SOURCE WORKBOOK
+
+OPEN: FX Options PnL Masterfile
+
+“This is the actual workbook I used for the test. It wasn’t created for the agent, it’s an existing Product Control workbook with multiple tabs, formulas, calculations, inputs, and dependencies.
+
+This is the only source file I’m giving the agent. I upload this workbook, select one of the three passes, and the agent generates the output from what it can identify within the workbook.”
+
+Now move into the HTML output.
+
+
+---
+
+PASS 1, ANALYST VIEW
+
+“From that workbook alone, this is the first output the agent generated.
+
+Pass 1 is designed from the analyst’s perspective. Essentially, if I was given this workbook tomorrow and had never worked with it before, could I understand what I need, how to run it, and how to validate that I’ve done it correctly?”
+
+OPEN: Before You Begin
+
+“The first thing it does is establish what needs to be in place before I even start the process.
+
+So here it’s identified the required access, the system dependencies, the file preparation, macro requirements, and even what state we expect the workbook to be in before processing.”
+
+SCROLL DOWN
+
+“The idea is that an analyst doesn’t have to discover all of these dependencies through trial and error or by asking someone who already knows the process.”
+
+OPEN: Operating Steps
+
+“Then it takes what it found in the workbook and reconstructs it into an operating sequence.
+
+In this case, it’s broken the process into 14 steps, from preparing the workbook, through the data imports and calculations, into reconciliation, reporting and ultimately distribution.”
+
+SCROLL DOWN
+
+“And what I like here is that it isn’t just giving an analyst a list of steps.
+
+For each step it’s identifying the action, where it happens in the workbook, what the expected result should be, how to validate it, potential issues, and the agent’s confidence in that interpretation.”
+
+SCROLL DOWN
+
+“So this starts turning what was embedded within the workbook into something much more operational and usable for an analyst.”
+
+OPEN: Validation Checks
+
+“The other piece I wanted to highlight is validation.
+
+The agent has separated the controls it identified into pre-execution checks, data import validation, reconciliation validation and output validation.”
+
+SCROLL DOWN
+
+“So the analyst isn’t only being told how to run the workbook. They’re also being shown what they should check, what the expected result is, and what action to take when something doesn’t look right.”
+
+SCROLL DOWN
+
+“For example, here it’s surfaced the Book Mapping and Platform reconciliation as explicit validation points.
+
+That’s useful because some of this control knowledge can otherwise be buried within formulas, individual tabs, or simply known by the person who runs the process.”
+
+OPEN: Assumptions & Confidence
+
+“One feature I do want to call out is that the agent separates what it can verify directly from the workbook from what it has inferred.
+
+It assigns confidence and also identifies items it couldn’t verify.”
+
+SCROLL DOWN
+
+“So this isn’t intended to replace analyst judgement or the workbook owner. It gives us a structured starting point and makes the areas requiring human confirmation visible.”
+
+
+---
+
+
+PASS 2, WORKBOOK INTELLIGENCE
+
+OPEN: Workbook Architecture
+
+“Pass 2 takes the same workbook, but instead of asking how an analyst runs it, we’re trying to understand how the workbook itself is built and how the process works underneath.
+
+The first area I want to show is Workbook Architecture.
+
+Here, the agent has broken the workbook into functional layers, starting from source data, through transformation and calculation, into validation, reporting and distribution.”
+
+SCROLL DOWN
+
+“So rather than opening 30-plus tabs and trying to understand how they fit together manually, this gives us a structured view of the workbook architecture and the role each group of sheets appears to play.”
+
+OPEN: Data Flow and Dependencies
+
+“The next view is Data Flow and Dependencies.
+
+This starts mapping how information moves through the workbook, from the source system into the Murex P&L sheet, through reconciliation and transformation layers, into calculations, reporting and final distribution.”
+
+SCROLL DOWN
+
+“The value here is understanding not just what sheets exist, but what depends on what.
+
+That becomes useful for troubleshooting, change impact analysis, and eventually modernization because we can start identifying where the key dependencies actually sit.”
+
+OPEN: Formulas and Logic
+
+“The third section is Formulas and Logic.
+
+Here the agent is looking at the calculation patterns driving the workbook, things like period aggregation, brokerage adjustments, rollups and reconciliation logic.”
+
+SCROLL DOWN
+
+“It also starts surfacing repeated formula patterns and areas where the workbook could potentially be simplified or modernized.
+
+So we’re moving beyond documenting the workbook and starting to understand the logic that actually drives the result.”
+
+OPEN: Automation and Optimization
+
+“And finally, the Automation and Optimization section takes that analysis and turns it into potential opportunities.
+
+For this workbook, the agent identified areas such as automating data refreshes, email distribution, reconciliation exception handling, formula modernization and potentially using Python for more scalable data-quality checks.”
+
+SCROLL DOWN
+
+“The important point is that these recommendations are being generated from what the agent has identified in the workbook itself.
+
+So the goal isn’t just to produce documentation, it’s to use that workbook intelligence to identify where there may be opportunities to reduce manual effort or modernize the process.”
+
+
+---
+
+PASS 3, TECHNICAL VIEW
+
+“The final pass is Pass 3, which shifts the focus from the end user and the business process to the technical architecture of the workbook.
+
+This pass is designed for Finance IT, developers, or transformation teams that may eventually need to support or modernize the workbook.
+
+OPEN: Architecture
+
+“The first section I want to highlight is Architecture.
+
+The agent takes the workbook analysis from the previous passes and organizes the workbook into a technical architecture.
+
+At the top, we can see the external source, in this case Murex, feeding the workbook through the query connection. From there, the agent identifies the source worksheets, transformation and reconciliation components, the macro and calculation layers, and ultimately the reporting and distribution outputs.
+
+What I find useful here is that it does not simply provide a list of 32 worksheets. It classifies them based on their role within the overall process.”
+
+SCROLL DOWN
+
+“You can see that more clearly here.
+
+The agent has separated the workbook into functional layers, including import, reference, transformation, macro support, calculations, validation, reporting, and archive.
+
+It also identifies the dependencies between those layers.
+
+So if someone from IT had this workbook, they would have a starting point for understanding not only what exists, but how the components are intended to interact.”
+
+SCROLL DOWN
+
+“And underneath that, it translates those layers into a data transformation pipeline, showing how source data moves through transformation, calculations, validation, and ultimately reporting.
+
+This is really the main purpose of Pass 3, turning the workbook into technical documentation that another team can actually investigate and support.”
+
+
+---
+
+PASS 3, MODERNIZATION
+
+OPEN: Modernization Roadmap
+
+“The final section I want to show is the Modernization Roadmap, because this demonstrates how the output can potentially be used beyond documentation.
+
+Based on what the agent identified in the workbook, it compares the existing Excel-based environment with potential future-state technologies.”
+
+SCROLL DOWN
+
+“For example, the current process relies on areas such as manual Murex refreshes, VBA and formulas, Excel-based reporting, manual distribution, and file-server infrastructure.
+
+The agent then proposes potential modernization opportunities, such as Power Query or Dataflows for ingestion, more scalable calculation technologies, Power BI for reporting, Power Automate for distribution, and cloud-based infrastructure.”
+
+SCROLL DOWN
+
+“Rather than recommending that everything be replaced immediately, it also organizes the potential migration into stages.
+
+So this starts giving us a potential path from understanding the current process to identifying what a future state could look like.”
+
+
+---
+
+CLOSING
+
+“So overall, the three passes look at the exact same workbook from three different perspectives.
+
+Together, the three passes are intended to turn a complex workbook into structured documentation that can be used by different teams for different purposes.
+
+
+
+
+And importantly, this isn’t intended to replace the analyst or process owner. The agent gives us a structured starting point based on what it can identify from the workbook, while clearly surfacing the areas that still require human validation.
+
+For me, that’s really the potential value, taking knowledge that already exists inside these workbooks and making it much easier to understand, validate, transfer, and eventually act on.”
 
 
 
 
 
-And this last slide just shows where the AI component comes into the process.
-On the left is where we are today. We're taking existing documentation and working files, combining that with analyst walkthroughs like this one, and using the SOP agent to help structure that information into a consistent format.
-The key thing we've learned through testing is that we don't want the AI filling in information just because something sounds logical. If something isn't documented or isn't clear from the walkthrough, we'd rather flag that as a gap and come back to the analyst than have the agent make an assumption.
-Once we have accurate, standardized and validated SOPs, the longer-term opportunity is what you see on the right. Those SOPs can potentially feed an enterprise knowledge solution where a new analyst could ask a question in natural language — for example, ‘How do I complete this process?’ or ‘What happens if this reconciliation doesn't tie?’ — and receive guidance grounded in the approved SOPs.
-So the quality of what we're capturing now is really what enables that future state
+
+
+
 
 
 
