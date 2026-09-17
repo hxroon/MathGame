@@ -1,3 +1,26 @@
+“Before I show the Excel.Decoder, I just want to quickly explain the workbook I used for testing.
+This is the FX Options P&L Masterfile. It's essentially one of the core working files used to support the FX Options Product Control process. It's a fairly large workbook with roughly 30 to 40 tabs, and different tabs serve different purposes throughout the P&L process.
+At a high level, the workbook brings together information from different sources and supports the analyst in producing, validating and reconciling P&L. So there are tabs containing inputs and supporting data, tabs where calculations and transformations are happening, reconciliation tabs, and then reporting or output tabs such as the Trader Sheet and DFR-related outputs.
+The challenge is that when somebody opens a workbook like this for the first time, it's not immediately obvious how everything connects. You might have 30-plus tabs, thousands of formulas, links between sheets, macros and different inputs, but Excel itself doesn't really explain the overall architecture or business process behind them.
+And that's really the problem I'm trying to solve with Excel.Decoder.”
+Then go directly into the tool:
+“The idea behind Excel.Decoder is to take a workbook like this and automatically reverse-engineer its structure.
+Rather than someone manually going through every tab and formula, it analyzes the workbook to identify the major inputs, calculation or transformation sheets, outputs, relationships between tabs, formulas and macros, and then builds a view of how information flows through the workbook.
+So for this FX Options example, instead of just seeing 30 or 40 individual tabs, we want to be able to understand something more like: where does the data come in, what happens to it, what sheets depend on each other, and ultimately where does the P&L or reporting output come out?
+The longer-term idea is that we can then combine that technical workbook understanding with the SOP and analyst knowledge to get a much more complete picture of the process.”
+If you're actually opening the Excel file
+This would make the demo stronger. Open the workbook first and literally click through 3–4 representative tabs, rather than trying to explain all 30+.
+You could say:
+“Just to give you a sense of the complexity, you can see there are a significant number of tabs here. We have things like the Trader Sheet, DFR and Murex P&L-related tabs, Deal-by-Deal information, platform reconciliation and book-mapping tabs, as well as supporting and macro-related sheets.
+I'm not trying to have the Decoder explain every cell individually. What I'm trying to get it to understand is the architecture behind all of this — which sheets are inputs, which are doing calculations, which are reconciliations, which are outputs, and how they're connected.”
+
+
+
+
+
+
+
+
 
 
 INTRODUCTION
