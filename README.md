@@ -1,3 +1,5 @@
+Get-ChildItem .\sample_data\ -File | Select-Object Name
+
 Your feedback can be quite different from your colleague’s. Their comments focus mainly on breaking large maps into phases and the timeout/save issue. A useful angle for yours is the AI interaction, readability, and ease of refining the output—especially the difference you noticed between this tool and the agent.
 
 Here’s a manager-ready version you could send:
