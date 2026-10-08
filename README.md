@@ -1,4 +1,11 @@
-Get-ChildItem .\sample_data\ -File | Select-Object Name
+Using the attached AI input file, generate the P&L decomposition commentary for every product included.
+
+Follow the instructions and financial facts provided in the file. Do not invent numerical values, drivers, or explanations that are not supported by the data.
+
+Preserve the product names and ordering, and return the complete commentary in the required output format, without additional introductory text.
+
+
+
 
 Your feedback can be quite different from your colleague’s. Their comments focus mainly on breaking large maps into phases and the timeout/save issue. A useful angle for yours is the AI interaction, readability, and ease of refining the output—especially the difference you noticed between this tool and the agent.
 
