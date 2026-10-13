@@ -1,3 +1,150 @@
+Here’s a shorter, more natural 5 to 7 minute demo script that covers the important technical points without being overly detailed. I’ve included exactly what to show and what to run in the terminal.
+
+Decomp Commentary Agent: Demo Script
+
+1. Introduction: What I built (1 minute)
+
+Show: Original Excel workbook.
+
+I wanted to walk through the Python preprocessing approach I’ve been working on for the Decomp Commentary Agent and show how it could improve the commentary we’re generating.
+
+Currently, we’re relying on Haiku to read the Excel workbook, understand the hierarchy, perform calculations, identify the drivers, and generate commentary.
+
+The idea here was to separate those responsibilities. Instead of having the AI do everything, Python handles the numerical analysis and reconciliation, while Haiku focuses on generating the actual commentary.
+
+This should help us produce more consistent and detailed explanations without putting as much responsibility on the model.
+
+2. Run the Python script (1 minute)
+
+Show: VS Code terminal.
+
+Paste this command:
+
+So here I’m running the Python script against the May 12 workbook.
+
+It automatically identifies the relevant sheets and columns, extracts the financial data, and builds the hierarchy between the businesses.
+
+It then calculates the major P&L drivers, identifies offsets, and reconciles the totals.
+
+One thing I specifically wanted to account for was flexibility. Rather than relying on fixed cell positions, the script uses labels and headers, so changes like moving rows or adding businesses shouldn’t necessarily break the process.
+
+Point out: 28 rows processed, 0 with reconciliation FAIL.
+
+3. Explain the check report (1 minute)
+
+Show: check_report.txt
+
+Once Python finishes, it generates this check report.
+
+This is essentially our validation step. It shows the Actual, Estimate, and Variance for each business and whether the numerical reconciliation checks passed.
+
+If something doesn’t reconcile, it’s flagged rather than silently adjusted.
+
+In this example, all 28 rows passed the reconciliation checks. We also have some informational flags that identify areas where the data or commentary might need additional review.
+
+So before anything reaches the AI, we already have a structured set of financial information that we can compare directly against Excel.
+
+4. Explain the three AI input files (1 minute)
+
+Show: ai_input_part1.txt, ai_input_part2.txt, ai_input_part3.txt
+
+The next step is where Python generates these three text files.
+
+They’re essentially the same workbook broken into manageable sections for Haiku.
+
+Each contains the financial values, business hierarchy, key drivers, offsets, and any available analyst commentary.
+
+Instead of asking Haiku to figure out all of that independently, we’re giving it the numerical analysis upfront.
+
+This allows the model to focus on explaining what happened rather than trying to calculate everything itself.
+
+5. Show the agent and dashboard (1 to 2 minutes)
+
+Show: Internal Haiku agent and the generated HTML dashboard.
+
+I then upload these three files to our internal agent, which uses the information to generate the commentary.
+
+Here’s the dashboard it produced.
+
+We can see the business, Actual, Estimate, Variance, original Decomp Commentary, and AI-generated commentary.
+
+The main difference is that the AI has more context about the underlying drivers, so it can produce more detailed explanations, including what contributed to a movement and what offset it.
+
+We can also generate commentary for parent-level businesses by using the underlying child data, even where the original workbook doesn’t contain a comment.
+
+The goal isn’t necessarily to generate longer commentary, but to make it more meaningful and accurate.
+
+If demonstrating the Python renderer, save the agent responses as ai_response_part1.txt, ai_response_part2.txt, and ai_response_part3.txt in the output folder, then run:
+
+If you’re showing the HTML dashboard generated directly by the internal agent, you don’t need this command.
+
+6. Limitations and next steps (1 minute)
+
+There are still a few things I want to test.
+
+First, I’ve tested this on the May 12 workbook, but I’d like to run it across several dates and potentially other desks to make sure the extraction remains consistent.
+
+Second, Python can identify numerical drivers, but it can’t always explain the business reason behind a movement. That still depends on the analyst commentary and information available to Haiku.
+
+Finally, while the reconciliation checks help validate the numbers, we’d still need to review the AI-generated explanations for accuracy.
+
+My next step would be to run this alongside our current agent, compare the outputs, and determine whether the preprocessing is actually improving commentary quality.
+
+7. Closing (20 seconds)
+
+Overall, the idea is to use Python for what it’s good at, which is extracting, calculating, and validating the numbers, and use Haiku for what it’s good at, which is turning that information into explanations.
+
+If we can make that separation work consistently, I think it could be a useful improvement to our existing Decomp Commentary process.
+
+⸻
+
+Terminal cheat sheet
+
+1. Run the Excel preprocessing [Copy]
+
+⸻
+
+2. Open the check report [Copy]
+
+⸻
+
+3. Open the AI input [Copy]
+
+⸻
+
+4. Render the final report (optional) [Copy]
+
+My suggestion: Spend the most time showing the check report and comparing the old versus new commentary. Those two parts demonstrate the value of your work much more clearly than walking through the code itself.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Using the attached AI input file, generate the P&L decomposition commentary for every product included.
 
 Follow the instructions and financial facts provided in the file. Do not invent numerical values, drivers, or explanations that are not supported by the data.
