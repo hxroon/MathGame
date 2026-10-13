@@ -20,6 +20,9 @@ Show: VS Code terminal.
 
 Paste this command:
 
+python main.py prepare "sample_data/Daily_SpreadDecompTEReport_20260512.xlsx"
+
+
 So here I’m running the Python script against the May 12 workbook.
 
 It automatically identifies the relevant sheets and columns, extracts the financial data, and builds the hierarchy between the businesses.
@@ -58,25 +61,6 @@ Instead of asking Haiku to figure out all of that independently, we’re giving 
 
 This allows the model to focus on explaining what happened rather than trying to calculate everything itself.
 
-5. Show the agent and dashboard (1 to 2 minutes)
-
-Show: Internal Haiku agent and the generated HTML dashboard.
-
-I then upload these three files to our internal agent, which uses the information to generate the commentary.
-
-Here’s the dashboard it produced.
-
-We can see the business, Actual, Estimate, Variance, original Decomp Commentary, and AI-generated commentary.
-
-The main difference is that the AI has more context about the underlying drivers, so it can produce more detailed explanations, including what contributed to a movement and what offset it.
-
-We can also generate commentary for parent-level businesses by using the underlying child data, even where the original workbook doesn’t contain a comment.
-
-The goal isn’t necessarily to generate longer commentary, but to make it more meaningful and accurate.
-
-If demonstrating the Python renderer, save the agent responses as ai_response_part1.txt, ai_response_part2.txt, and ai_response_part3.txt in the output folder, then run:
-
-If you’re showing the HTML dashboard generated directly by the internal agent, you don’t need this command.
 
 6. Limitations and next steps (1 minute)
 
@@ -102,17 +86,24 @@ Terminal cheat sheet
 
 1. Run the Excel preprocessing [Copy]
 
+python main.py prepare "sample_data/Daily_SpreadDecompTEReport_20260512.xlsx"
+
 ⸻
 
 2. Open the check report [Copy]
 
+code "output/Daily_SpreadDecompTEReport_20260512/check_report.txt"
 ⸻
 
 3. Open the AI input [Copy]
 
+code "output/Daily_SpreadDecompTEReport_20260512/ai_input_part1.txt"
+
 ⸻
 
 4. Render the final report (optional) [Copy]
+
+python main.py render "output/Daily_SpreadDecompTEReport_20260512"
 
 My suggestion: Spend the most time showing the check report and comparing the old versus new commentary. Those two parts demonstrate the value of your work much more clearly than walking through the code itself.
 
