@@ -1,3 +1,61 @@
+Hi all,
+
+Please review the chat link below and scan through the open questions it's raised: [insert link]
+
+I'm setting up a call tomorrow where you can walk me through them and help guide the answers so we can keep moving on the SOP conversion.
+
+Let me know if anything comes up before then.
+
+Hi all,
+
+We're rolling out an SOP generation agent for your team. It takes our existing process documentation and converts it into a standardized SOP — and instead of guessing at anything that's missing from the source, it flags it as an open question for us to fill in.
+
+Here's an example of how it works: [insert link]
+
+Take a look before tomorrow so you've got a sense of the process. I'm setting up a call tomorrow to walk through it together and get started on your SOPs.
+
+Let me know if you have any questions before then.
+
+
+
+
+
+
+
+
+
+Hi all,
+
+Following up from our earlier conversations — one of the biggest issues you flagged was that the agent's assumptions were too farfetched at times. We took that feedback and reworked it.
+
+The revised version doesn't fill gaps with assumed or "typical" content anymore. If something's missing from the source, it flags it as an open question instead of guessing, so nothing ends up in the SOP that wasn't actually confirmed by us.
+
+Chat link: [insert link]
+
+Please review before tomorrow, especially how it's handling the open questions this time around. I'm setting up a call tomorrow to go through it together and see if this addresses what you ran into before.
+
+Let me know if anything's unclear before then.
+
+
+
+
+Hi all,
+
+Following up on the assumptions being too farfetched — we've reworked the agent to address that.
+
+Please review the chat link below and scan through the open questions it's raised: [insert link]
+
+I'm setting up a call tomorrow where you can walk me through them and help guide the answers so we can keep moving on the SOP conversion.
+
+Let me know if anything comes up before then.
+
+
+
+
+
+
+
+
 Here’s a shorter, more natural 5 to 7 minute demo script that covers the important technical points without being overly detailed. I’ve included exactly what to show and what to run in the terminal.
 
 Decomp Commentary Agent: Demo Script
