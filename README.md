@@ -1,3 +1,58 @@
+# Meeting script
+
+## 1. Intro (1 min)
+**Show:** the first screen, the Extraction Summary.
+
+**Say:**
+"Thanks for making time. You know what we're doing and why, so I'll focus on what's new. We're testing an updated agent. Before it writes the SOP, it now produces a triage summary of everything it couldn't confirm from the source files. We answer those points first, and then it builds the SOP. That makes the output based on facts, not assumptions."
+
+## 2. What the agent pulled out (2 min)
+**Show:** scroll through the Extraction Summary, then the Step List.
+
+**Say:**
+"The agent read the files and the daily steps overview we gave it. Here's what it extracted: the systems it saw (Planet, Platform, Felix, and the macro), and that reconciliation content is present while IPV and month-end are not in the source. It also pulled **19 steps**, and it added none of its own. Everything in square brackets, like [GAP-3], is something it wouldn't fill in. It flagged it instead."
+
+## 3. How it flags things (1 min)
+**Show:** scroll to the Open Items: Triage table.
+
+**Say:**
+"This table is its list of open items. There are three types. **Missing** means the source doesn't say. **Inferred** means the agent made an assumption and wants us to confirm it. **Conflict** means the source is inconsistent. You don't need to go through every row. They roll up into five questions."
+
+## 4. The five questions (10 to 15 min)
+**Show:** scroll to the bottom, the "To proceed with SOP generation, please" list.
+
+**Say:**
+"These are the five things the agent needs. I'll go through them one at a time."
+
+**Q1. Step list and phases**
+"The agent grouped the steps into phases by itself, since our overview didn't have them. For example, it put steps D7 to D10 under EOD Valuation and D11 to D15 under Reconciliation. Does that match how your team thinks about the day? And is the order right?"
+
+**Q2. Owners**
+"Who performs each step? The source names no roles. Roles by phase are fine. Also, who do you escalate to when something goes wrong?"
+
+**Q3. Timing**
+"There are no times anywhere in the source. Roughly when does each stage happen? Collection, consolidation and macro run, EOD comparison, re-download, final variance check, and final lock and submission."
+
+**Q4. System names**
+"Is 'Planet' one system, both as a data source and where we submit? What's the full name of 'Platform'? What is Felix, and is it part of this process? What tool runs the macro? And where's the reconciliation template stored?"
+
+**Q5. Tolerances**
+"What counts as a 'material difference' and 'within expectations'? What are the variance limits for the controls, and what happens when one is breached?"
+
+**Tip:** write answers down as you go. If they ask what a question means, scroll up to the table and point to the row (for example, "that's GAP-16").
+
+## 5. Close (1 min)
+**Say:**
+"Thanks, this is exactly what I needed. I'll give these answers to the agent, and it will generate the SOP from confirmed facts. Anything still unanswered stays flagged in the document instead of being guessed. I'll send you the draft when it's ready."
+
+## After the meeting
+Reply to the agent with their answers and any step-list corrections, then type **CONFIRMED**. It won't start the SOP until you do.
+
+Want a one-page version of the five questions you can keep next to you during the meeting?
+
+
+
+
 Hi all,
 
 Please review the chat link below and scan through the open questions it's raised: [insert link]
