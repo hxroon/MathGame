@@ -1,75 +1,56 @@
 # Meeting script
 
+
+# Meeting script: SOP agent triage review (CMU and DGF)
+
 ## 1. Intro (1 min)
-**Show:** the first screen, the Extraction Summary.
+**Show:** the Extraction Summary at the top.
 
 **Say:**
-"Thanks for making time. You know what we're doing and why, so I'll focus on what's new. We're testing an updated agent. Before it writes the SOP, it now produces a triage summary of everything it couldn't confirm from the source files. We answer those points first, and then it builds the SOP. That makes the output based on facts, not assumptions."
+"Thanks for making time. You know what we're doing and why, so I'll focus on what's new. We're testing an updated agent. Before it writes the SOP, it gives us a triage summary of everything it couldn't confirm from the source files. We clarify those points first, and then it builds the SOP from confirmed facts instead of assumptions. That should give us a higher quality output."
 
-## 2. What the agent pulled out (2 min)
-**Show:** scroll through the Extraction Summary, then the Step List.
-
-**Say:**
-"The agent read the files and the daily steps overview we gave it. Here's what it extracted: the systems it saw (Planet, Platform, Felix, and the macro), and that reconciliation content is present while IPV and month-end are not in the source. It also pulled **19 steps**, and it added none of its own. Everything in square brackets, like [GAP-3], is something it wouldn't fill in. It flagged it instead."
-
-## 3. How it flags things (1 min)
-**Show:** scroll to the Open Items: Triage table.
+## 2. What the agent found (2 min)
+**Show:** scroll through the Extraction Summary, then the step list.
 
 **Say:**
-"This table is its list of open items. There are three types. **Missing** means the source doesn't say. **Inferred** means the agent made an assumption and wants us to confirm it. **Conflict** means the source is inconsistent. You don't need to go through every row. They roll up into five questions."
+"It covers CMU and DGF in London and Toronto. It found 63 daily steps, 7 Monday-only steps for the Friday P&L, 91 month-end steps, and 28 controls. It added no steps of its own. Anything it couldn't confirm is tagged in square brackets, like [Q2] or [Q3], instead of guessed."
 
-## 4. The five questions (10 to 15 min)
-**Show:** scroll to the bottom, the "To proceed with SOP generation, please" list.
+## 3. Quick validation (2 min)
+**Show:** step list, then control list.
 
 **Say:**
-"These are the five things the agent needs. I'll go through them one at a time."
+"I won't go through every step. Does the overall shape look right? Pre-market checks, the reconciliations (Rec 1A through 8), P&L sign-off, the Monday steps, and month-end. Tell me if a whole section looks wrong or missing.
 
-**Q1. Step list and phases**
-"The agent grouped the steps into phases by itself, since our overview didn't have them. For example, it put steps D7 to D10 under EOD Valuation and D11 to D15 under Reconciliation. Does that match how your team thinks about the day? And is the order right?"
+One correction. The agent's summary says '91 daily steps,' but the tables show 63 daily and 91 month-end. I'll correct that when I reply to it."
 
-**Q2. Owners**
-"Who performs each step? The source names no roles. Roles by phase are fine. Also, who do you escalate to when something goes wrong?"
+## 4. The questions (10 to 15 min)
+**Show:** scroll to Quality Flags, then refer back to the tables as needed.
 
-**Q3. Timing**
-"There are no times anywhere in the source. Roughly when does each stage happen? Collection, consolidation and macro run, EOD comparison, re-download, final variance check, and final lock and submission."
+1. **Line of business.** "What's the LOB? It isn't stated in the source."
+2. **Owners.** "No step has a named owner. Can you give me roles by section: pre-market, reconciliations, P&L sign-off, Monday-only, and month-end?"
+3. **Break tolerances.** "Tolerances are missing for Recs 1A, 1B, and 2 through 8. What are they? For the month-end controls C22 to C28, is there a threshold, or is completion the check?"
+4. **System status.** "Are RIMMS, SLIM, Opics, Apex TXN, RATS, Colline, Murex, and RiskHub all current, or are some legacy or being retired? Also, is 'Coline' the same as 'Colline'?"
+5. **Timing overlap.** "How does the bank holiday procedure work when it falls on a month-end?"
+6. **Appendix A, item 13.** "The daily steps reference it but the exact item isn't clear. What does it refer to?"
+7. **Step 58 and C17.** "Step 58 is 'discuss issues with traders; finalize P&L,' and no system is given. Where does that happen? And for control C17, is the threshold 5 to 10k for CMU and 10k for DGF, or something different?"
+8. **M93 and RIBS Tokyo.** "Month-end step M81 references 'M93,' but the steps stop at M91. Is that a cell reference or a missing step? And steps 68 and 69 reference RIBS Tokyo. Is Tokyo in scope?"
 
-**Q4. System names**
-"Is 'Planet' one system, both as a data source and where we submit? What's the full name of 'Platform'? What is Felix, and is it part of this process? What tool runs the macro? And where's the reconciliation template stored?"
-
-**Q5. Tolerances**
-"What counts as a 'material difference' and 'within expectations'? What are the variance limits for the controls, and what happens when one is breached?"
-
-**Tip:** write answers down as you go. If they ask what a question means, scroll up to the table and point to the row (for example, "that's GAP-16").
+**Tip:** write down each answer as you go. If someone asks what a question refers to, point to the row on screen.
 
 ## 5. Close (1 min)
 **Say:**
-"Thanks, this is exactly what I needed. I'll give these answers to the agent, and it will generate the SOP from confirmed facts. Anything still unanswered stays flagged in the document instead of being guessed. I'll send you the draft when it's ready."
+"Thanks, this is exactly what I needed. I'll send your answers to the agent, and it will generate the SOP from confirmed facts. Anything still unanswered stays flagged in the document instead of being guessed. I'll share the draft when it's ready."
 
 ## After the meeting
-Reply to the agent with their answers and any step-list corrections, then type **CONFIRMED**. It won't start the SOP until you do.
-
-Want a one-page version of the five questions you can keep next to you during the meeting?
+Reply to the agent with the answers and the corrected step counts, then type **CONFIRMED**. It won't start the SOP until you do.
 
 
 
 
-Hi all,
 
-Please review the chat link below and scan through the open questions it's raised: [insert link]
 
-I'm setting up a call tomorrow where you can walk me through them and help guide the answers so we can keep moving on the SOP conversion.
 
-Let me know if anything comes up before then.
 
-Hi all,
-
-We're rolling out an SOP generation agent for your team. It takes our existing process documentation and converts it into a standardized SOP — and instead of guessing at anything that's missing from the source, it flags it as an open question for us to fill in.
-
-Here's an example of how it works: [insert link]
-
-Take a look before tomorrow so you've got a sense of the process. I'm setting up a call tomorrow to walk through it together and get started on your SOPs.
-
-Let me know if you have any questions before then.
 
 
 
