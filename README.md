@@ -1,5 +1,4 @@
 
-# Project summary for your year-end review
 
 **What it is:** An AI agent that converts source process documentation (spreadsheets, notes, step overviews) into standardized Product Control SOPs. The goal is SOPs that are accurate and traceable to a source, instead of padded with plausible-sounding content the agent made up.
 
@@ -28,7 +27,32 @@ Two things would strengthen it:
 1. **Real numbers.** Teams onboarded, SOPs produced, hours saved, or reduction in corrections.
 2. **Feedback from the pilot teams.** After today's meeting, a quote or result would help.
 
-I can tighten this to a specific word limit or format if you tell me what your review template looks like.
+**The problem:** your Decomp Commentary Agent (Haiku 4.5, 8K context) reads the whole Excel workbook, builds the hierarchy, does the maths, formats the numbers and writes commentary. That overload is the likely cause of the vague output, such as "C$ 106.0 portfolio revaluations was the largest contributor". The v7.1 prompt's fill-in-the-blank templates are another likely cause.
+
+**The idea:** Python works out what happened numerically, and the AI explains it in words.
+
+```
+Excel workbook → Python script → facts (.txt / .json) → RBC Assist agent → dashboard
+```
+
+**What's built** (`decomp_agent.zip`):
+- **Python pipeline:** it reads both sheets (Spread Decmp and Spread Commentary) by header text and row labels, not cell addresses. It builds the parent/child hierarchy from the layout and reconciles every total against its parts. Reconciliation gaps are flagged, never forced to tie. It ranks drivers by size, works out which child led each driver and what offset it, and pulls client and book names out of the analysts' comments.
+- **Outputs:** `ai_input_part1/2/3.txt` (the facts for the agent), `check_report.txt` (for checking against Excel), `facts.json` (full audit detail), and an optional `render` step that builds the dashboard itself.
+- **New agent prompt (v9):** it asks the AI to explain in order: result versus Estimate, main driver, who led, what offset, and the analyst's colour. It allows connecting the verified numbers but not inventing causes.
+- **Supporting files:** 36 tests, a sample workbook that copies your layout, an example of target commentary, a README and the demo script.
+
+**How you use it:**
+1. Run `python main.py prepare` on the day's workbook.
+2. Check `check_report.txt` against Excel.
+3. Give the three part files to the agent and have it generate the dashboard. This is the workflow you've been using.
+
+**Status and open items:**
+- **Untested on real data:** it has only run on a synthetic workbook built from your screenshots. Your real May 12 file is the first true test.
+- **Prompt:** you've run the agent, but I don't know whether you pasted in the v9 instructions. If not, it used the old prompt.
+- **No safety check yet:** the check that flags invented figures only runs inside `render`, so the agent-built dashboard hasn't been checked. I offered a small `audit` command for it.
+- **Comparison:** nobody has put the old and new dashboards side by side for the same day, so "better commentary" is still unproven.
+
+Next step: send me the new dashboard's HTML or a screenshot, and I'll check its figures against the facts and compare it to the v9 target.
 
 
 
