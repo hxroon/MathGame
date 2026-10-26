@@ -1,3 +1,45 @@
+
+# Project summary for your year-end review
+
+**What it is:** An AI agent that converts source process documentation (spreadsheets, notes, step overviews) into standardized Product Control SOPs. The goal is SOPs that are accurate and traceable to a source, instead of padded with plausible-sounding content the agent made up.
+
+**The problem it solves:** The original agent had one way of handling gaps: infer something, label it, and keep going. That produced assumptions that were too far-fetched, which hurt trust on at least one team that tried it.
+
+**What you built:**
+- **A triage step before any SOP is written.** The agent extracts steps, controls, systems, and owners, then lists everything it couldn't confirm (tagged Missing, Inferred, or Conflict) instead of guessing.
+- **A confirmation gate.** The SOP is only generated after an analyst reviews the triage and replies CONFIRMED.
+- **A consolidated gaps and clarification register,** so open items live in one place instead of being buried in the draft.
+- **Supporting controls:** conflicting-source handling, a gap-density threshold, a LOCK command to freeze approved sections, and re-triage when source documents change mid-session.
+- **A comparison** against a stricter version your manager is developing, to inform the final design.
+
+**Rollout and impact:**
+- Rolling out to multiple teams, including one with no prior SOP conversion and one returning team.
+- Running walkthrough sessions where analysts answer the agent's questions.
+- Migrating the agent from RBC Assist to GitHub Copilot, set up as a skill.
+- In one test run, the agent extracted 63 daily steps, 7 Monday-only steps, 91 month-end steps, and 28 controls, with every unconfirmed item flagged instead of guessed.
+
+**Skills shown:** AI system prompt design, root-cause analysis of agent failures, process documentation, stakeholder rollout, and critical review of AI output. For example, you caught the agent's miscount of "91 daily steps" in its own summary.
+
+## Draft blurb
+
+"Designed and rolled out an AI-assisted SOP generation agent for Product Control. I diagnosed why the original agent fabricated content (a single infer-and-label path for information gaps) and redesigned it with a triage-and-confirmation workflow that surfaces gaps for analyst review before any SOP is written. I'm piloting it with multiple teams and migrating it to GitHub Copilot."
+
+Two things would strengthen it:
+1. **Real numbers.** Teams onboarded, SOPs produced, hours saved, or reduction in corrections.
+2. **Feedback from the pilot teams.** After today's meeting, a quote or result would help.
+
+I can tighten this to a specific word limit or format if you tell me what your review template looks like.
+
+
+
+
+
+
+
+
+
+
+
 # Meeting script
 
 
