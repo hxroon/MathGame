@@ -1,3 +1,10 @@
+Yes, carry on, but in this order, saving each file as soon as it's written:
+1. Write the revised prompt to prompts\sop-agent-prompt-revised.md and tell me when it's saved.
+2. Write the change log and the three risks to prompts\change-log.md and tell me when it's saved.
+3. Only then build the Word script. Keep it simple: title page, table of contents, headings, tables, page numbers, gaps register. Test it once on sample content.
+Don't wait for me between steps, but confirm each file is saved before moving on.
+
+
 You are helping me revise an existing agent system prompt (pasted after this message). Treat it as a working prompt to improve, not rewrite from scratch.
 
 CONTEXT
