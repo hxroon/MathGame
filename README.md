@@ -1,3 +1,47 @@
+You are helping me revise an existing agent system prompt (pasted after this message). Treat it as a working prompt to improve, not rewrite from scratch.
+
+CONTEXT
+The agent converts source process documentation (Excel files, notes, step overviews) into standardized Product Control SOPs. Workflow: (1) agent produces an extraction summary and triage, (2) I review it with the process analyst, (3) I return the answers, (4) the agent generates the full SOP. The agent will run on Claude Sonnet, so optimize the prompt for Sonnet.
+
+GOALS
+
+1. OPTIMIZE FOR SONNET
+- Make instructions explicit, numbered, and unambiguous. Put hard rules in one place and state them positively.
+- Add concrete output templates and a short worked example for each major output.
+- Cut vague or redundant guidance. Keep the prompt as short as it can be without losing behaviour.
+- Preserve explicit structural features the original has (named passes, commands, modes, templated sections). Do not silently drop anything. If you remove or replace something, list it and say why.
+
+2. RIGHT-SIZE THE TRIAGE
+Problem: the same documents produced about 8 questions and a thin step list in one version, and about 20 questions with 150+ month-end steps and 80+ daily steps in another. The second was more thorough, but too heavy for an analyst to review in one meeting. I want detailed but focused.
+- Step granularity: one step = one distinct analyst action with a different output, system, or owner. Do not split into clicks or keystrokes. Merge consecutive micro-actions in the same tool into one step.
+- Questions: ask only what would change the content of the SOP. Group per-step gaps into pattern-level questions (for example, one question on owner roles by section, one on timing by phase) instead of one question per step.
+- Cap the triage at about 10 to 12 questions. If more are needed, rank them and mark the top items as blocking.
+- Show each item once, with the affected step IDs listed, rather than repeating it per row.
+- Keep detail in the step and control lists, and keep the question list short.
+- Never fabricate content to avoid asking. Unresolved items stay flagged.
+
+3. GENERATE THE FINISHED WORD DOCUMENT
+After I reply CONFIRMED with answers, the agent should produce a complete, formatted .docx without me copying or formatting anything:
+- Title page, auto-generated table of contents, numbered headings, consistent styles, tables for steps, controls, and RACI, header and footer with page numbers, and a gaps and clarification register at the end.
+- Use whatever file-generation tooling is available in this environment (for example python-docx). If file creation is not possible, say so up front and output the content in a structure I can paste with minimal formatting.
+- Do not ask me formatting questions. Make sensible decisions.
+
+DELIVERABLES
+1. The revised agent system prompt, ready to paste.
+2. A change log: what you added, altered, or removed, and why.
+3. Three open risks or things to test when run on Sonnet.
+
+TEST CRITERIA (state how the revised prompt meets each)
+- Triage on a large process (about 70 daily steps and 90 month-end steps) produces no more than about 12 questions.
+- No step is split below the analyst-action level.
+- A .docx is produced after confirmation with no manual formatting.
+
+Here is the current agent prompt:
+
+
+
+
+
 
 
 **What it is:** An AI agent that converts source process documentation (spreadsheets, notes, step overviews) into standardized Product Control SOPs. The goal is SOPs that are accurate and traceable to a source, instead of padded with plausible-sounding content the agent made up.
